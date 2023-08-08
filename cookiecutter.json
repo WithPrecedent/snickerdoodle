@@ -1,0 +1,20 @@
+{
+  "project_name": "",
+  "package_name": "{{cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_')}}",
+  "repo_name": "{{cookiecutter.project_name.lower().replace(' ', '_')}}",
+  "author_name": "",
+  "author_email": "",
+  "github_user": "",
+  "description": "",
+  "version": "0.1.0",
+  "url": "",
+  "license": [
+    "MIT",
+    "BSD 3 Clause",
+    "ISC license",
+    "Apache Software License 2.0",
+    "GNU General Public License v3",
+    "Other"]
+  }
+
+

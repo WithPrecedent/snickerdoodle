@@ -1,0 +1,54 @@
+# Action for regular updates to any branch
+
+name: update
+
+on: [push, pull_request]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10", "3.11"]
+        os: [ubuntu-latest, macOS-latest, windows-latest]
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v3
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - name: Setup PDM
+      uses: pdm-project/setup-pdm@v2
+      id: setup-pdm
+      with:
+        python-version: ${{ matrix.python-version }}
+  
+    - name: Check output
+      shell: bash
+      run: |
+        echo ${{ steps.setup-pdm.outputs.pdm-bin }}
+        echo ${{ steps.setup-pdm.outputs.pdm-version }}
+        echo ${{ steps.setup-pdm.outputs.python-path }}
+        echo ${{ steps.setup-pdm.outputs.python-version }}
+
+    - name: Install dependencies
+      shell: bash
+      run: pdm install -v && pdm info
+
+    - name: Run Tests
+      run: pdm run -v pytest tests
+
+    - name: Run Ruff
+      run: pdm run ruff check --format=github .
+
+    - name: Build documentation with MkDocs
+      run: pdm run mkdocs build
+
+    - name: Deploy documentation to GitHub Pages
+      run: pdm run mkdocs gh-deploy --force --clean --verbose

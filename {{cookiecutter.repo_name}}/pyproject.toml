@@ -1,0 +1,158 @@
+# Project packaging rules and instructions
+
+[project]
+name = "{{cookiecutter.project_name}}"
+description = "{{cookiecutter.description}}"
+authors = [{name = "{{cookiecutter.author_name}}", email = "{{cookiecutter.author_email}}"}]
+version = "dynamic"
+license = {text = "{{cookiecutter.license}}"}
+readme = "README.md"
+requires-python = ">=3.10"
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Software Development"]
+keywords = []
+dependencies = []
+
+[project.urls]
+Documentation = "https://GITHUB_USER.github.io/{{cookiecutter.repo_name}}"
+Repository = "https://github.com/GITHUB_USER/{{cookiecutter.repo_name}}"
+Issues = "https://github.com/GITHUB_USER/{{cookiecutter.repo_name}}/issues"
+Discussions = "https://github.com/GITHUB_USER/{{cookiecutter.repo_name}}/discussions"
+Changelog = "https://GITHUB_USER.github.io/{{cookiecutter.repo_name}}/changelog"
+
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
+
+[tool.pdm]
+plugins = ["sync-pre-commit-lock[pdm]", "pdm-multirun"]
+
+[tool.pdm.build]
+package-dir = "src"
+# editable-backend = "editables"
+
+[tool.pdm.dev-dependencies]
+docs = [
+    "markdown-callouts >= 0.2",
+    "markdown-exec >= 0.5",
+    "mkdocs >= 1.3",
+    "mkdocs-coverage >= 0.2",
+    "mkdocs-gen-files >= 0.3",
+    "mkdocs-git-committers-plugin-2 >= 1.1",
+    "mkdocs-literate-nav >= 0.4",
+    "mkdocs-material >= 7.3",
+    "mkdocs-minify-plugin >= 0.6.4",
+    "mkdocstrings[python] >= 0.18",
+    "toml >= 0.10"]
+quality = ["pre-commit>=3.3.2", "ruff >= 0.0.246"]
+tests = [
+    "coverage>=7.2.7",
+    "pytest >= 6.2",
+    "pytest-cov >= 3.0",
+    "pytest-randomly >= 3.10",
+    "pytest-xdist >= 2.4"]
+
+[tool.pdm.version]
+source = "file"
+path = "src/__init__.py"
+
+[tool.pytest.ini_options]
+addopts = "--showlocals"
+asyncio_mode = "auto"
+filterwarnings = ["ignore::DeprecationWarning"]
+pythonpath = ["src"]
+
+[tool.ruff]
+extend-exclude = ["docs", "scripts", "site", "tests", ".*.*"]
+fix = true
+fixable = ["ALL"]
+ignore = [
+    "A001",  # Variable is shadowing a Python builtin
+    "ANN101",  # Missing type annotation for self
+    "ANN102",  # Missing type annotation for cls
+    "ANN204",  # Missing return type annotation for special method __str__
+    "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed
+    "ARG003",  # Unused class method argument: `parameters`
+    "ARG005",  # Unused lambda argument
+    "C901",  # Too complex
+    "D105",  # Missing docstring in magic method
+    "D400",  # First line must end in a period
+    "D415",  # First line must end in a period, question mark, or exclamation point
+    "D417",  # Missing argument description in the docstring
+    "E501",  # Line too long
+    "E731",  # Do not assign a `lambda` expression, use a `def`
+    "ERA001",  # Commented out code
+    "EXE002",  # No shebang is present in an executable file
+    "FBT001",  # Boolean positional arg in function definition
+    "G004",  # Logging statement uses f-string
+    "PLR0911",  # Too many return statements
+    "PLR0912",  # Too many branches
+    "PLR0913",  # Too many arguments to function call
+    "PLR0915",  # Too many statements
+    "Q000",  # Single quotes found but double quotes preferred
+    "SLF001", # Private member accessed
+    "TID252",  # Relative imports are banned
+    "TRY003",]  # Avoid specifying long messages outside the exception class
+line-length = 80
+select = [
+    "A",
+    "ANN",
+    "ARG",
+    "B",
+    "BLE",
+    "C",
+    "C4",
+    "COM",
+    "D",
+    "DTZ",
+    "E",
+    "ERA",
+    "EXE",
+    "F",
+    "FBT",
+    "G",
+    "I",
+    "ICN",
+    "INP",
+    "ISC",
+    "N",
+    "NPY",
+    "PD",
+    "PGH",
+    "PIE",
+    "PL",
+    "PLC",
+    "PLE",
+    "PLR",
+    "PLW",
+    "PT",
+    "PYI",
+    "Q",
+    "RUF",
+    "RSE",
+    "RET",
+    "S",
+    "SIM",
+    "SLF",
+    "T",
+    "T10",
+    "T20",
+    "TCH",
+    "TID",
+    "TRY",
+    "UP",
+    "W",
+    "YTT",]
+
+[tool.ruff.flake8-quotes]
+docstring-quotes = "double"
+
+[tool.ruff.isort]
+known-first-party = ["{{cookiecutter.repo_name}}"]
