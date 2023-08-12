@@ -7,14 +7,12 @@
   "github_user": "",
   "description": "",
   "version": "0.1.0",
-  "url": "",
+  "url": "{{'https://www.github.com/' + cookiecutter.github_user + '/' + cookiecutter.repo_name}}",
   "license": [
-    "MIT",
-    "BSD 3 Clause",
-    "ISC license",
+    "MIT License",
+    "BSD License",
+    "ISC License",
     "Apache Software License 2.0",
     "GNU General Public License v3",
     "Other"]
-  }
-
-
+}

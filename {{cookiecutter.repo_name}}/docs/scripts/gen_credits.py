@@ -83,21 +83,21 @@ def _render_credits() -> str:
     }
     template_text = dedent(
         """
-        These projects were used to build *{{ project_name }}*. **Thank you!**
+        {% raw %}
+        These projects were used to build *{{"{{"}} project_name {{"}}"}}*. **Thank you!**
 
         [`python`](https://www.python.org/) |
         [`pdm`](https://pdm.fming.dev/) |
-
         {% macro dep_line(dep) -%}
-        [`{{ dep.name }}`](https://pypi.org/project/{{ dep.name }}/) | {{ dep.summary }} | {{ ("`" ~ dep.spec ~ "`") if dep.spec else "" }} | `{{ dep.version }}` | {{ dep.license }}
+        [`{{"{{"}} dep.name }}`](https://pypi.org/project/{{"{{"}} dep.name {{"}}"}}/) | {{"{{"}} dep.summary {{"}}"}} | {{"{{"}} ("`" ~ dep.spec ~ "`") if dep.spec else "" {{"}}"}} | `{{"{{"}} dep.version {{"}}"}}` | {{"{{"}} dep.license {{"}}"}}
         {%- endmacro %}
-
+ 
         ### Runtime dependencies
 
         Project | Summary | Version (accepted) | Version (last resolved) | License
         ------- | ------- | ------------------ | ----------------------- | -------
         {% for dep in prod_dependencies -%}
-        {{ dep_line(dep) }}
+        {{"{{"}} dep_line(dep) {{"}}"}}
         {% endfor %}
 
         ### Development dependencies
@@ -105,10 +105,12 @@ def _render_credits() -> str:
         Project | Summary | Version (accepted) | Version (last resolved) | License
         ------- | ------- | ------------------ | ----------------------- | -------
         {% for dep in dev_dependencies -%}
-        {{ dep_line(dep) }}
+        {{"{{"}} dep_line(dep) {{"}}"}}
         {% endfor %}
 
-        {% if more_credits %}**[More credits from the author]({{ more_credits }})**{% endif %}
+        {% if more_credits %}**[More credits from the author]({{"{{"}} more_credits {{"}}"}})**{% endif %}
+        
+        {% endraw %}
         """,
     )
     jinja_env = SandboxedEnvironment(undefined=StrictUndefined)
