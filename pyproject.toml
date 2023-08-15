@@ -1,15 +1,15 @@
 # Project packaging rules and instructions
 
 [project]
-name = "{{cookiecutter.project_name}}"
-description = "{{cookiecutter.description}}"
-authors = [{name = "{{cookiecutter.author_name}}", email = "{{cookiecutter.author_email}}"}]
-version = "dynamic"
-license = {text = "{{cookiecutter.license}}"}
+name = "snickerdoodle"
+description = "easy-to-use, modern cookiecutter template for Python"
+authors = [{name = "coreyrayburnyung", email = "coreyrayburnyung@gmail.com"}]
+version = "0.1.0"
+license = {text = "Apache 2.0"}
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.8"
 classifiers = [
-    "Development Status :: 4 - Beta",
+    "Development Status :: 4 - Alpha",
     "Intended Audience :: Developers",
     "Programming Language :: Python",
     "Programming Language :: Python :: 3",
@@ -21,11 +21,11 @@ keywords = []
 dependencies = []
 
 [project.urls]
-Documentation = "https://{{cookiecutter.github_user}}.github.io/{{cookiecutter.repo_name}}"
-Repository = "https://github.com/{{cookiecutter.github_user}}/{{cookiecutter.repo_name}}"
-Issues = "https://github.com/{{cookiecutter.github_user}}/{{cookiecutter.repo_name}}/issues"
-Discussions = "https://github.com/{{cookiecutter.github_user}}/{{cookiecutter.repo_name}}/discussions"
-Changelog = "https://{{cookiecutter.github_user}}.github.io/{{cookiecutter.repo_name}}/changelog"
+Documentation = "https://WithPrecedent.github.io/snickerdoodle"
+Repository = "https://github.com/WithPrecedent/snickerdoodle"
+Issues = "https://github.com/WithPrecedent/snickerdoodle/issues"
+Discussions = "https://github.com/WithPrecedent/snickerdoodle/discussions"
+Changelog = "https://WithPrecedent.github.io/snickerdoodle/changelog"
 
 [build-system]
 requires = ["pdm-backend"]
@@ -35,8 +35,8 @@ build-backend = "pdm.backend"
 plugins = ["sync-pre-commit-lock[pdm]", "pdm-multirun"]
 
 [tool.pdm.build]
-package-dir = "src"
-# editable-backend = "editables"
+package-dir = "."
+editable-backend = "editables"
 
 [tool.pdm.dev-dependencies]
 docs = [
@@ -59,15 +59,11 @@ tests = [
     "pytest-randomly >= 3.13.0",
     "pytest-xdist >= 3.3.1"]
 
-[tool.pdm.version]
-source = "file"
-path = "src/{{cookiecutter.repo_name}}/__init__.py"
-
 [tool.pytest.ini_options]
 addopts = "--showlocals"
 asyncio_mode = "auto"
 filterwarnings = ["ignore::DeprecationWarning"]
-pythonpath = ["src"]
+pythonpath = ["."]
 
 [tool.ruff]
 extend-exclude = ["docs", "scripts", "site", "tests", ".*.*"]
@@ -153,4 +149,5 @@ select = [
 docstring-quotes = "double"
 
 [tool.ruff.isort]
-known-first-party = ["{{cookiecutter.repo_name}}"]
+known-first-party = ["snickerdoodle"]
+
