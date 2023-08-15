@@ -3,7 +3,7 @@
 # Project Information
 
 site_name: snickerdoodle
-site_description: "easy-to-use, modern cookiecutter template for Python"
+site_description: "Easy-to-use, modern cookiecutter template for Python"
 site_url: https://WithPrecedent.github.io/snickerdoodle
 repo_name: WithPrecedent/snickerdoodle
 repo_url: https://github.com/WithPrecedent/snickerdoodle
@@ -11,9 +11,8 @@ watch: [
   mkdocs.yml, 
   README.md, 
   CONTRIBUTING.md, 
-  CHANGELOG.md, 
-  src/snickerdoodle]
-copyright: Copyright; {% now 'local', '%Y' %} {{cookiecutter.author_name}}
+  CHANGELOG.md]
+copyright: Copyright 2023, Corey Rayburn Yung
 docs_dir: docs
 
 # Documentation Structure
@@ -24,10 +23,6 @@ nav:
   - Changelog: changelog.md
   - Credits: credits.md
   - License: license.md
-- User Guide:
-  - Design: design.md
-  - Recipes: recipes.md
-- API: reference/
 - Development:
   - Contributing: contributing.md
   - Code of Conduct: code_of_conduct.md
