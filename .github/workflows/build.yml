@@ -1,12 +1,12 @@
-# Action for regular updates to any branch
+# Builds package and creates environment
 
-name: ci
+name: build
 
-on: [push, pull_request]
+on: workflow_call
 
 jobs:
 
-  build:
+  build_package:
 
     runs-on: ubuntu-latest
     strategy:
@@ -39,9 +39,3 @@ jobs:
     - name: Install dependencies
       shell: bash
       run: pdm install -v && pdm info
-
-    - name: Build documentation with MkDocs
-      run: pdm run mkdocs build
-
-    - name: Deploy documentation to GitHub Pages
-      run: pdm run mkdocs gh-deploy --force --clean --verbose

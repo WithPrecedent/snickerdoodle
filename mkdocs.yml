@@ -3,7 +3,7 @@
 # Project Information
 
 site_name: snickerdoodle
-site_description: "Easy-to-use, modern cookiecutter template for Python"
+site_description: "Easy-to-use, general-purpose, modern cookiecutter template for Python"
 site_url: https://WithPrecedent.github.io/snickerdoodle
 repo_name: WithPrecedent/snickerdoodle
 repo_url: https://github.com/WithPrecedent/snickerdoodle

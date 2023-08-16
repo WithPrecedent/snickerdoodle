@@ -36,7 +36,7 @@ plugins = ["sync-pre-commit-lock[pdm]", "pdm-multirun"]
 
 [tool.pdm.build]
 package-dir = "src"
-# editable-backend = "editables"
+editable-backend = "editables"
 
 [tool.pdm.dev-dependencies]
 docs = [
