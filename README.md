@@ -1,6 +1,6 @@
 # snickerdoodle
-
-<div align="center">
+<!-- 
+<div align="center"> -->
 
 | | |
 | --- | --- |
@@ -12,7 +12,7 @@
 | Tools | [![Documentation](https://img.shields.io/badge/MkDocs-magenta?style=for-the-badge&logo=markdown&labelColor=gray)](https://squidfunk.github.io/mkdocs-material/) [![Linter](https://img.shields.io/endpoint?style=for-the-badge&url=https://raw.githubusercontent.com/charliermarsh/Ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/Ruff) [![Dependency Manager](https://img.shields.io/badge/PDM-blueviolet?style=for-the-badge&logo=affinity&labelColor=gray)](https://PDM.fming.dev) [![Pre-commit](https://img.shields.io/badge/pre--commit-brightgreen?style=for-the-badge&logo=pre-commit&logoColor=white&labelColor=gray)](https://github.com/TezRomacH/python-package-template/blob/master/.pre-commit-config.yaml) [![CI](https://img.shields.io/badge/github_actions-yellow?style=for-the-badge&logo=githubactions&labelColor=gray)](https://github.com/features/actions) [![Editor Settings](https://img.shields.io/badge/editor_config-blue?style=for-the-badge&logo=editorconfig&labelColor=gray)](https://github.com/features/actions) [![Template Manager](https://img.shields.io/badge/cookiecutter-brown?style=for-the-badge&logo=cookiecutter&labelColor=gray)](https://www.cookiecutter.io/)
 | | |
 
-</div>
+<!-- </div> -->
 
 -----
 
