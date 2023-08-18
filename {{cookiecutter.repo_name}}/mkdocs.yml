@@ -13,7 +13,7 @@ watch: [
   CONTRIBUTING.md, 
   CHANGELOG.md, 
   src/{{cookiecutter.repo_name}}]
-copyright: Copyright; {% now 'local', '%Y' %} {{cookiecutter.author_name}}
+copyright: Copyright, {% now 'local', '%Y' %} {{cookiecutter.author_name}}
 docs_dir: docs
 
 # Documentation Structure

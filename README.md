@@ -63,8 +63,8 @@ After your repository is created, you can start setting the dependencies in `pyp
 
 Unfortunately, there is no easy way to integrate GitHub repository settings into a `cookiecutter` template. After you setup your repository on GitHub, there are two GitHub repository settings that you should change for `snickerdoodle` to work.
 
-1) In your repository, change Settings/Display/Pages/Source to "GitHub Actions". This will delegate documentation construction and deployment to GitHub Actions and prevent it from automatically running an extra action for documentation deployment.
-2) In your repository, change Settings/Actions/General/Workflow Permissions to "Read and Write Permissions." This is necessary for proper documentation deployment.
+1. In your repository, change Settings/Pages/Branch to "gh-pages" and "/root". This will prevent GitHub Actions from automatically running an extra action for documentation deployment.
+2. In your repository, change Settings/Actions/General/Workflow Permissions to "Read and Write Permissions." This is necessary for proper documentation deployment.
 
 ## Contributing
 

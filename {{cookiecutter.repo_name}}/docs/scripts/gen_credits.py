@@ -119,9 +119,8 @@ def _render_credits() -> str:
         {{"{{"}} dep_line(dep) {{"}}"}}
         {{"{"}}% endfor %{{"}"}}
 
-        {{"{"}}% if more_credits %{{"}"}}**[More credits from the author]({{"{"}} more_credits }})**{"{{"}}% endif %{{"}"}}
-        """,
-    )
+        {{"{"}}% if more_credits %{{"}"}}**[More credits from the author]({{"{{"}} more_credits {{"}}"}})**{{"{"}}% endif %{{"}"}}
+        """,)
     jinja_env = SandboxedEnvironment(undefined=StrictUndefined)
     return jinja_env.from_string(template_text).render(**template_data)
 
