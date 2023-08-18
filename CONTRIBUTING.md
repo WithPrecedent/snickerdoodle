@@ -2,18 +2,16 @@
 
 Contributions are welcome and greatly appreciated!
 Every little bit helps, and credit will always be given.
-
-## Environment Setup
-
-Fork and clone the repository, then:
+Environment Setup
 
 ## Development
 
 Follow this basic process:
 
-1. Create a new branch: `git checkout -b feature-or-bugfix-name`.
-2. Edit the code.
-3. If you added functionality or features, update the documentation accordingly.
+1. Fork and clone the repositor.
+2. Create a new branch: `git checkout -b feature-or-bugfix-name`.
+3. Edit the code.
+4. If you added functionality or features, update the documentation accordingly.
 
 If you are unsure about how to fix or ignore a warning, just let the continuous 
 integration fail, and we will help you during review.
@@ -34,7 +32,7 @@ git commit --fixup=SHA
 Once all the changes are approved, you can squash your commits:
 
 ```bash
-git rebase -i --autosquash master
+git rebase -i --autosquash main
 ```
 
 And force-push:

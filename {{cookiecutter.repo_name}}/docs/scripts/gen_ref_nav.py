@@ -1,4 +1,8 @@
-"""Generate the code reference pages and navigation."""
+"""Generate the code reference pages and navigation.
+
+This code is adapted from pawamoy's packages. See, e.g., 
+https://github.com/pawamoy/duty/blob/main/scripts/gen_ref_nav.py.
+"""
 
 from pathlib import Path
 

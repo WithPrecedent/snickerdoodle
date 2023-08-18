@@ -1,6 +1,6 @@
 # Action for regular updates to any branch
 
-name: update
+name: ci
 
 on: [push, pull_request]
 

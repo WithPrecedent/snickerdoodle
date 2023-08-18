@@ -3,6 +3,6 @@ hide:
 - toc
 ---
 
-```python exec = "yes"
+```python exec="yes"
 --8<-- "docs/scripts/gen_credits.py"
 ```

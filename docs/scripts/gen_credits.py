@@ -54,7 +54,6 @@ def _get_deps(
             "license": _get_license(dep_name), 
             **parsed, 
             **lock_pkgs[dep_name]}
-
     again = True
     while again:
         again = False
@@ -64,7 +63,7 @@ def _get_deps(
                     "dependencies", []):
                     parsed = regex.match(pkg_dependency).groupdict()  # type: ignore[union-attr]
                     dep_name = parsed["dist"].lower()
-                    if (dep_name in lock_pkgs
+                    if (dep_name in lock_pkgs 
                         and dep_name not in deps
                         and dep_name != project["name"]):
                         deps[dep_name] = {
@@ -82,32 +81,31 @@ def _render_credits() -> str:
         chain(  # type: ignore[arg-type]
             project.get("dependencies", []),
             chain(*project.get("optional-dependencies", {}).values()),),)
+
     template_data = {
         "project_name": project_name,
         "prod_dependencies": sorted(
-            prod_dependencies.values(), 
-            key = lambda dep: dep["name"]),
+            prod_dependencies.values(), key=lambda dep: dep["name"]),
         "dev_dependencies": sorted(
-            dev_dependencies.values(), 
-            key = lambda dep: dep["name"]),
+            dev_dependencies.values(), key=lambda dep: dep["name"]),
         "more_credits": "",}
     template_text = dedent(
         """
-        {% raw %}
-        These projects were used to build *{{"{{"}} project_name {{"}}"}}*. **Thank you!**
+        These projects were used to build *{{ project_name }}*. **Thank you!**
 
         [`python`](https://www.python.org/) |
-        [`pdm`](https://pdm.fming.dev/) |
+        [`pdm`](https://pdm.fming.dev/)
+
         {% macro dep_line(dep) -%}
-        [`{{"{{"}} dep.name }}`](https://pypi.org/project/{{"{{"}} dep.name {{"}}"}}/) | {{"{{"}} dep.summary {{"}}"}} | {{"{{"}} ("`" ~ dep.spec ~ "`") if dep.spec else "" {{"}}"}} | `{{"{{"}} dep.version {{"}}"}}` | {{"{{"}} dep.license {{"}}"}}
+        [`{{ dep.name }}`](https://pypi.org/project/{{ dep.name }}/) | {{ dep.summary }} | {{ ("`" ~ dep.spec ~ "`") if dep.spec else "" }} | `{{ dep.version }}` | {{ dep.license }}
         {%- endmacro %}
- 
+
         ### Runtime dependencies
 
         Project | Summary | Version (accepted) | Version (last resolved) | License
         ------- | ------- | ------------------ | ----------------------- | -------
         {% for dep in prod_dependencies -%}
-        {{"{{"}} dep_line(dep) {{"}}"}}
+        {{ dep_line(dep) }}
         {% endfor %}
 
         ### Development dependencies
@@ -115,14 +113,12 @@ def _render_credits() -> str:
         Project | Summary | Version (accepted) | Version (last resolved) | License
         ------- | ------- | ------------------ | ----------------------- | -------
         {% for dep in dev_dependencies -%}
-        {{"{{"}} dep_line(dep) {{"}}"}}
+        {{ dep_line(dep) }}
         {% endfor %}
 
-        {% if more_credits %}**[More credits from the author]({{"{{"}} more_credits {{"}}"}})**{% endif %}
-        
-        {% endraw %}
+        {% if more_credits %}**[More credits from the author]({{ more_credits }})**{% endif %}
         """,)
-    jinja_env = SandboxedEnvironment(undefined = StrictUndefined)
+    jinja_env = SandboxedEnvironment(undefined=StrictUndefined)
     return jinja_env.from_string(template_text).render(**template_data)
 
 

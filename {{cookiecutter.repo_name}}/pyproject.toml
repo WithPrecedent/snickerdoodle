@@ -4,10 +4,10 @@
 name = "{{cookiecutter.project_name}}"
 description = "{{cookiecutter.description}}"
 authors = [{name = "{{cookiecutter.author_name}}", email = "{{cookiecutter.author_email}}"}]
-version = "dynamic"
 license = {text = "{{cookiecutter.license}}"}
 readme = "README.md"
 requires-python = ">=3.10"
+dynamic = ["version"]
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
@@ -55,7 +55,7 @@ quality = ["pre-commit >= 3.3.3", "ruff >= 0.0.284"]
 tests = [
     "coverage >= 7.2.7",
     "pytest >= 7.4.0",
-    "pytest-cov >= 4.1.o",
+    "pytest-cov >= 4.1.0",
     "pytest-randomly >= 3.13.0",
     "pytest-xdist >= 3.3.1"]
 
