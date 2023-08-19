@@ -24,7 +24,6 @@ dependencies = []
 Documentation = "https://{{cookiecutter.github_user}}.github.io/{{cookiecutter.repo_name}}"
 Repository = "https://github.com/{{cookiecutter.github_user}}/{{cookiecutter.repo_name}}"
 Issues = "https://github.com/{{cookiecutter.github_user}}/{{cookiecutter.repo_name}}/issues"
-Discussions = "https://github.com/{{cookiecutter.github_user}}/{{cookiecutter.repo_name}}/discussions"
 Changelog = "https://{{cookiecutter.github_user}}.github.io/{{cookiecutter.repo_name}}/changelog"
 
 [build-system]

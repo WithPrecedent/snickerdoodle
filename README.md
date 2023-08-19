@@ -2,7 +2,7 @@
 
 | | |
 | --- | --- |
-| Version | [![PyPI Latest Release](https://img.shields.io/pypi/v/snickerdoodle.svg?style=for-the-badge&label=pypi&logo=PyPI&color=darkorange)](https://pypi.org/project/snickerdoodle/) [![GitHub Latest Release](https://img.shields.io/github/tag/withprecedent/snickerdoodle?style=for-the-badge&label=branch&logo=github&color=navy)](https://github.com/withprecedent/snickerdoodle/graphs/tags) 
+| Version | [![PyPI Latest Release](https://img.shields.io/pypi/v/snickerdoodle.svg?style=for-the-badge&label=pypi&logo=PyPI&color=darkorange)](https://pypi.org/project/snickerdoodle/) [![GitHub Latest Release](https://img.shields.io/github/tag/withprecedent/snickerdoodle?style=for-the-badge&label=branch&logo=github&color=navy)](https://github.com/withprecedent/snickerdoodle/graphs/tags)
 | Status | [![Development Status](https://img.shields.io/badge/Development-Active-Green?style=for-the-badge&logo=git)](https://www.repostatus.org/#active) [![Project Stability](https://img.shields.io/badge/stability-beta-firebrick?style=for-the-badge&logo=git)](https://www.repostatus.org/#active) [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg?style=for-the-badge&logo=apache&color=goldenrod)](https://opensource.org/licenses/Apache-2.0)
 | Docs | [![Hosted By](https://img.shields.io/badge/hosted_by-github_pages-blue?style=for-the-badge&logo=github&color=navy)](https://withprecedent.github.io/snickerdoodle)
 | Compatibility | [![Compatible Python Versions](https://img.shields.io/pypi/pyversions/snickerdoodle?style=for-the-badge&logo=python&color=darkorange)](https://pypi.python.org/pypi/snickerdoodle/) [![Linux](https://img.shields.io/badge/linux-maroon?style=for-the-badge&logo=linux&labelColor=gray)](https://www.linux.org/) [![MacOS](https://img.shields.io/badge/macos-yellow?style=for-the-badge&logo=apple&labelColor=gray)](https://www.apple.com/macos/) [![Windows](https://img.shields.io/badge/windows-blue?style=for-the-badge&logo=windows&labelColor=gray)](https://www.microsoft.com/en-us/windows?r=1)
@@ -13,8 +13,6 @@
 -----
 
 ## What is snickerdoodle?
-
-*`snickerdoodle` is still under heavy construction and is not feature complete (see Issues for missing features).*
 
 `snickerdoodle`is an easy-to-use cookiecutter template for Python projects utilizing `pdm`, `mkdocs`, GitHub Actions, `ruff`, and other modern tools. To see what a repository looks like using the template, you can check out [`snickerdoodle_demo`](https://github.com/withprecedent/snickerdoodle_demo).
 

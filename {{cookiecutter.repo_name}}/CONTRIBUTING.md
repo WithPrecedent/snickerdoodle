@@ -13,7 +13,7 @@ Follow this basic process:
 3. Edit the code.
 4. If you added functionality or features, update the documentation accordingly.
 
-If you are unsure about how to fix or ignore a warning, just let the continuous 
+If you are unsure about how to fix or ignore a warning, just let the continuous
 integration fail, and we will help you during review.
 
 Don't bother updating the changelog, we will take care of this.

@@ -27,7 +27,7 @@ jobs:
       id: setup-pdm
       with:
         python-version: ${{"{{"}} matrix.python-version {{"}}"}}
-  
+
     - name: Check output
       shell: bash
       run: |

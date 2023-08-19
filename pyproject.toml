@@ -24,7 +24,6 @@ dependencies = []
 Documentation = "https://WithPrecedent.github.io/snickerdoodle"
 Repository = "https://github.com/WithPrecedent/snickerdoodle"
 Issues = "https://github.com/WithPrecedent/snickerdoodle/issues"
-Discussions = "https://github.com/WithPrecedent/snickerdoodle/discussions"
 Changelog = "https://WithPrecedent.github.io/snickerdoodle/changelog"
 
 [build-system]
@@ -150,4 +149,3 @@ docstring-quotes = "double"
 
 [tool.ruff.isort]
 known-first-party = ["snickerdoodle"]
-

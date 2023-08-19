@@ -1,6 +1,6 @@
 """Script to generate the project's credits.
 
-This code is adapted from pawamoy's packages. See, e.g., 
+This code is adapted from pawamoy's packages. See, e.g.,
 https://github.com/pawamoy/duty/blob/main/scripts/gen_credits.py.
 """
 
@@ -51,8 +51,8 @@ def _get_deps(
         if dep_name not in lock_pkgs:
             continue
         deps[dep_name] = {
-            "license": _get_license(dep_name), 
-            **parsed, 
+            "license": _get_license(dep_name),
+            **parsed,
             **lock_pkgs[dep_name]}
     again = True
     while again:
@@ -63,12 +63,12 @@ def _get_deps(
                     "dependencies", []):
                     parsed = regex.match(pkg_dependency).groupdict()  # type: ignore[union-attr]
                     dep_name = parsed["dist"].lower()
-                    if (dep_name in lock_pkgs 
+                    if (dep_name in lock_pkgs
                         and dep_name not in deps
                         and dep_name != project["name"]):
                         deps[dep_name] = {
-                            "license": _get_license(dep_name), 
-                            **parsed, 
+                            "license": _get_license(dep_name),
+                            **parsed,
                             **lock_pkgs[dep_name]}
                         again = True
     return deps

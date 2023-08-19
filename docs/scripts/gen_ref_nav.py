@@ -1,6 +1,6 @@
 """Generate the code reference pages and navigation.
 
-This code is adapted from pawamoy's packages. See, e.g., 
+This code is adapted from pawamoy's packages. See, e.g.,
 https://github.com/pawamoy/duty/blob/main/scripts/gen_ref_nav.py.
 """
 
@@ -36,4 +36,3 @@ for path in sorted(Path("src").rglob("*.py")):
 
 with mkdocs_gen_files.open("reference/SUMMARY.md", "w") as nav_file:
     nav_file.writelines(nav.build_literate_nav())
-    

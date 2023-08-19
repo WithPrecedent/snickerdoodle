@@ -8,9 +8,9 @@ site_url: https://WithPrecedent.github.io/snickerdoodle
 repo_name: WithPrecedent/snickerdoodle
 repo_url: https://github.com/WithPrecedent/snickerdoodle
 watch: [
-  mkdocs.yml, 
-  README.md, 
-  CONTRIBUTING.md, 
+  mkdocs.yml,
+  README.md,
+  CONTRIBUTING.md,
   CHANGELOG.md]
 copyright: Copyright 2023, Corey Rayburn Yung
 docs_dir: docs

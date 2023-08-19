@@ -8,10 +8,10 @@ site_url: https://{{cookiecutter.github_user}}.github.io/{{cookiecutter.repo_nam
 repo_name: {{cookiecutter.github_user}}/{{cookiecutter.repo_name}}
 repo_url: https://github.com/{{cookiecutter.github_user}}/{{cookiecutter.repo_name}}
 watch: [
-  mkdocs.yml, 
-  README.md, 
-  CONTRIBUTING.md, 
-  CHANGELOG.md, 
+  mkdocs.yml,
+  README.md,
+  CONTRIBUTING.md,
+  CHANGELOG.md,
   src/{{cookiecutter.repo_name}}]
 copyright: Copyright, {% now 'local', '%Y' %} {{cookiecutter.author_name}}
 docs_dir: docs

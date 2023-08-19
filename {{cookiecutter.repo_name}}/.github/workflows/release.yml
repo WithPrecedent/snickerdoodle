@@ -11,14 +11,14 @@ env:
   LANG: en_US.utf-8
   LC_ALL: en_US.utf-8
   PYTHONIOENCODING: UTF-8
-      
+
 jobs:
 
   main:
 
     name: Merge development to to main
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: git checkout
         uses: actions/checkout@v3
@@ -37,4 +37,3 @@ jobs:
         with:
           pull-request-number: ${{"{{"}} steps.open-pr.outputs.pr_number {{"}}"}}
           merge-method: merge
-
