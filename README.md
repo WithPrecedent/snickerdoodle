@@ -3,7 +3,7 @@
 | | |
 | --- | --- |
 | Version | [![PyPI Latest Release](https://img.shields.io/pypi/v/snickerdoodle.svg?style=for-the-badge&label=pypi&logo=PyPI&color=darkorange)](https://pypi.org/project/snickerdoodle/) [![GitHub Latest Release](https://img.shields.io/github/tag/withprecedent/snickerdoodle?style=for-the-badge&label=branch&logo=github&color=navy)](https://github.com/withprecedent/snickerdoodle/graphs/tags) 
-| Status | [![Development Status](https://img.shields.io/badge/Development-Active-Green?style=for-the-badge&logo=git)](https://www.repostatus.org/#active) [![Project Stability](https://img.shields.io/badge/Stability-Alpha-firebrick?style=for-the-badge&logo=git)](https://www.repostatus.org/#active) [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg?style=for-the-badge&logo=apache&color=goldenrod)](https://opensource.org/licenses/Apache-2.0)
+| Status | [![Development Status](https://img.shields.io/badge/Development-Active-Green?style=for-the-badge&logo=git)](https://www.repostatus.org/#active) [![Project Stability](https://img.shields.io/badge/stability-beta-firebrick?style=for-the-badge&logo=git)](https://www.repostatus.org/#active) [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg?style=for-the-badge&logo=apache&color=goldenrod)](https://opensource.org/licenses/Apache-2.0)
 | Docs | [![Hosted By](https://img.shields.io/badge/hosted_by-github_pages-blue?style=for-the-badge&logo=github&color=navy)](https://withprecedent.github.io/snickerdoodle)
 | Compatibility | [![Compatible Python Versions](https://img.shields.io/pypi/pyversions/snickerdoodle?style=for-the-badge&logo=python&color=darkorange)](https://pypi.python.org/pypi/snickerdoodle/) [![Linux](https://img.shields.io/badge/linux-maroon?style=for-the-badge&logo=linux&labelColor=gray)](https://www.linux.org/) [![MacOS](https://img.shields.io/badge/macos-yellow?style=for-the-badge&logo=apple&labelColor=gray)](https://www.apple.com/macos/) [![Windows](https://img.shields.io/badge/windows-blue?style=for-the-badge&logo=windows&labelColor=gray)](https://www.microsoft.com/en-us/windows?r=1)
 | Stats | [![PyPI Download Rate (per month)](https://img.shields.io/pypi/dm/snickerdoodle?style=for-the-badge&logo=pypi&color=darkorange)](https://pypi.org/project/snickerdoodle) [![GitHub Contributors](https://img.shields.io/github/contributors/withprecedent/snickerdoodle?style=for-the-badge&label=contributors&logo=github&color=darksalmon)](https://github.com/withprecedent/snickerdoodle/graphs/contributors) [![GitHub Contributors](https://img.shields.io/github/issues/withprecedent/snickerdoodle?style=for-the-badge&label=issues&logo=github&color=deeppink)](https://github.com/withprecedent/snickerdoodle/graphs/contributors) [![GitHub Stars](https://img.shields.io/github/stars/withprecedent/snickerdoodle?style=for-the-badge&label=Stars&logo=github&color=firebrick)](https://github.com/withprecedent/snickerdoodle/stargazers) [![GitHub Forks](https://img.shields.io/github/forks/withprecedent/snickerdoodle?style=for-the-badge&label=forks&logo=github&color=coral)](https://github.com/withprecedent/snickerdoodle/forks)
@@ -63,8 +63,10 @@ After your repository is created, you can start setting the dependencies in `pyp
 
 Unfortunately, there is no easy way to integrate GitHub repository settings into a `cookiecutter` template. After you setup your repository on GitHub, there are two GitHub repository settings that you should change for `snickerdoodle` to work.
 
-1. In your repository, change Settings/Pages/Source to "GitHub Actions". This will delegate documentation construction and deployment to GitHub Actions and prevent it from automatically running an extra action for documentation deployment.
-2. In your repository, change Settings/Actions/General/Workflow Permissions to "Read and Write Permissions." This is necessary for proper documentation deployment.
+1. In your repository, change Settings/Pages/Branch to "gh-pages" and "/root".
+2. In your repository, change Settings/Actions/General/Workflow Permissions to "Read and Write Permissions."
+
+These steps are necessary necessary for proper documentation deployment.
 
 ## Contributing
 
