@@ -1,4 +1,4 @@
-# User Guide
+# Advanced Usage
 
 ## Questionnaire
 
@@ -24,14 +24,14 @@ These are the tools that `snickerdoodle` incorporates:
 
 ## Badges
 
-`snickerdoodle` provides a large number of badges. You should feel free to delete any you do not need from the `README.md` file.
+`snickerdoodle` provides a large number of badges. You should feel free to delete any you do not need from the `README.md` file. That will also remove the badges in the front page of your documentation.
 
-By default, the template uses the badge style called "for-the-badge." If you would prefer the standard [Shields.io dynamic badges](https://shields.io) instead of the "for-the-badge" style used in `snickerdoodle`, do a find and replace in the `readme.md` file to replace "?style=for-the-badge&" with "?" and "?style=for-the-badge" with "". A pending issue for this template is to make this an option in the `cookiecutter` construction.
+By default, the template uses the badge style called "for-the-badge." If you would prefer the standard [Shields.io dynamic badges](https://shields.io) instead of the "for-the-badge" style used in `snickerdoodle`, perform a find and replace in the `readme.md` file to replace "?style=for-the-badge&" with "?" and "?style=for-the-badge" with "". I might make this an option in the `cookiecutter` construction in a future update.
 
 ## Versioning
 
-When you publish a new version, you should first manually adjust the version in the created repository's `__init__.py` file. It will then be automatically adjusted in `pyproject.toml` as well. I decided not to use automatic semantic versioning because the process thinks so many minor updates are "major" and you will [find yourself on version 12.0.0](https://hynek.me/articles/semver-will-not-save-you/) and still in alpha or beta.
+When you publish a new version, you should first manually adjust the version in the created repository's `__init__.py` file. It will then be automatically adjusted in `pyproject.toml` as well. I decided not to use automatic semantic versioning because the process thinks so many minor updates are "major" and you will [find yourself on version 12.0.0](https://hynek.me/articles/semver-will-not-save-you/) and still in alpha or beta. And, while [calendar versioning](https://calver.org/) makes sense, it is alien and confusing to users unfamiliar with it.
 
 ## Formatting and Linting
 
-All of the formatting and linting options (of the created project, not the template) are implemented through `ruff` and are incorporated into the created project's `pyproject.toml` file. So, you can adjust any [`ruff` rules](https://beta.ruff.rs/docs/rules/) there.
+All of the formatting and linting options (of the created project, not the template) are implemented through `ruff` and are incorporated into the created project's `pyproject.toml` file. So, you can adjust any [`ruff` rules](https://beta.ruff.rs/docs/rules/) there. `ruff` is automatically run with each GitHub push. However, that only creates a report of problems with the repository. To automatically fix them, I suggest using `pre-commit`. The created repository has a `pre-commit` command to run `ruff` with the `fix` option invoked.

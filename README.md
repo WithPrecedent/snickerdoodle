@@ -14,7 +14,7 @@
 
 ## What is snickerdoodle?
 
-`snickerdoodle`is an easy-to-use cookiecutter template for Python projects utilizing `pdm`, `mkdocs`, GitHub Actions, `ruff`, and other modern tools. To see what a repository looks like using the template, you can check out [`snickerdoodle_demo`](https://github.com/withprecedent/snickerdoodle_demo).
+`snickerdoodle`is an easy-to-use, general-purpose cookiecutter template for Python projects utilizing `pdm`, `mkdocs`, GitHub Actions, `ruff`, and other modern tools. To see what a repository looks like using the template, you can check out [`snickerdoodle_demo`](https://github.com/withprecedent/snickerdoodle_demo).
 
 ## Why use snickerdoodle?
 
@@ -26,45 +26,27 @@ There are an enormous number of cookiecutter templates. However, many are diffic
 * (Nearly) Turn-Key: a template should be easy to deploy and immediately use without having to understand or examine the underlying code.
 * Flexible: beyond the core tools, a template should be easy to add other components too (including external services that you use).
 
-To meet those goals, `snickerdoodle` uses [`pdm`](https://pdm.fming.dev/latest/), a modern dependency manager (that meets PEP 621 requirements), GitHub Actions for CI/CD, and GitHub Pages for documentation hosting. The only other dependency for the template is, obviuosly, `cookiecutter`. Further, rather than adopting a rigid, opinionated approach, `snickerdoodle` includes nice-looking and functional defaults (like the badges table above, which will include several other badges in your created project). There are also nice extras, like an automatically generated credits page in the documentation, that should work with any Python project. `snickerdoodle`  makes no assumptions about the type of Python project you are creating and includes base template options that are (nearly) universal.
+To meet those goals, `snickerdoodle` uses [`pdm`](https://pdm.fming.dev/latest/), a modern dependency manager (that follows PEP 621 syntax), GitHub Actions for CI/CD, and GitHub Pages for documentation hosting. The only other dependency for the template is, obviuosly, `cookiecutter`.
+
+Further, rather than adopting a rigid, opinionated approach, `snickerdoodle` includes nice-looking and functional defaults (like the badges table above, which will include several other badges in your created project). There are also nice extras, like an automatically generated credits page in the documentation, that should work with any Python project. `snickerdoodle`  makes no assumptions about the type of Python project you are creating and includes base template options that are (nearly) universal.
 
 ## Getting started
 
-The following describes the basic usage of the `snickerdoodle` template. If you want to modify its settings or have other questions, you should consult the [template user guide](https://withprecedent.github.io/snickerdoodle/guide/).
+This section describes the basic usage of the `snickerdoodle` template. If you want to modify its settings or have other questions, you should consult the [template user guide](https://withprecedent.github.io/snickerdoodle/advanced/).
 
 ### Requirements
 
-To use `snickerdoodle` and the repository that it creates, you need [`python`](https://www.python.org/), [`git`](https://git-scm.com/), [`cookiecutter`](https://www.cookiecutter.io/) (or [`cruft`](https://github.com/cruft/cruft)), and [`pdm`](https://pdm.fming.dev/latest/) installed on your system. You also need a GitHub account.
+To use `snickerdoodle` and the repository that it creates, you need [`python`](https://www.python.org/), [`git`](https://git-scm.com/), [`cookiecutter`](https://www.cookiecutter.io/) (or [`cruft`](https://github.com/cruft/cruft)), and [`pdm`](https://pdm.fming.dev/latest/) installed on your system. You also need a GitHub account. If you have not already, set up your GitHub credentials on your local computer.
 
-### Installation
+### Setup
 
-To create a repository from the `snickerdoodle` template, you can use `cookiecutter` to access it directly from GitHub:
+If you are new to cookiecutter or simply want to make sure the created repository works as intended, follow the instructions in the [`snickerdoodle` tutorial](https://withprecedent.github.io/snickerdoodle/tutorial/).
 
-```sh
-cookiecutter gh:WithPrecedent/snickerdoodle
-```
+If you are familiar with creating cookiecutter templates, you can go about the normal template construction process with one important addition: after you create the remote repository on GitHub, change Settings/Actions/General/Workflow Permissions to "Read and Write Permissions." This is necessary for the repository documentation to be properly deployed. Then, follow the instructions for setting up your [virtual environment](https://withprecedent.github.io/snickerdoodle/tutorial/#Create-Virtual-Environment) and [deploying your documentation](https://withprecedent.github.io/snickerdoodle/tutorial/#Deploy-Documentation) in the [`snickerdoodle` tutorial](https://withprecedent.github.io/snickerdoodle/tutorial/). It is especially important to follow the document deployment process for the first time - after that GitHub Actions will automatically update and redeploy the documentation (and you need not use the manual process again).
 
-Or, you can clone the repository and then apply the template:
+## Usage
 
-```sh
-# Go to folder where your cookiecutter templates are stored locally.
-git clone git@github.com:WithPrecedent/snickerdoodle.git
-# Go to folder where your code repostiories are stored locally.
-cookiecutter snickerdoodle/
-```
-
-### Usage
-
-As with any `cookiecutter`, project generation requires you to answer several questions. `snickerdoodle` attempts to make this process quick, easy, and painless. The default options, often created from your previous answers, are sensible so that you can just hit "return" in reponse to most questions.
-
-After your repository is created, you can start setting the dependencies in `pyproject.toml` and then build your distribution using `pdm install`. This will also create a virtual environment for your project that you may use for testing, debugging, and documentation deployment.
-
-Unfortunately, there is no easy way to integrate GitHub repository settings into a `cookiecutter` template. After you setup your repository on GitHub, there are two GitHub repository settings that you should change for `snickerdoodle` to work.
-
-1. In your repository, change Settings/Pages/Branch to "gh-pages" and "/root".
-2. In your repository, change Settings/Actions/General/Workflow Permissions to "Read and Write Permissions."
-
-These steps are necessary necessary for proper documentation deployment.
+After your repository is created, you can start setting the dependencies in `pyproject.toml`. Every push to GitHub will run any tests in the "Tests" folder, deploy documentation, and apply `ruff`. If you wish to publish your repository to [PyPi](https://pypi.org), I recommend using the [`pdm publish` command](https://pdm.fming.dev/latest/usage/publish/).
 
 ## Contributing
 
@@ -72,10 +54,16 @@ Contributors are always welcome and should find `snickerdoodle` easy to work wit
 
 ## Similar Projects
 
-These are other templates using `pdm`:
+These are other templates using `pdm` as their dependency manager:
 
-* [cookiecutter-docker-python-pdm](https://github.com/mnako/cookiecutter-docker-python-pdm): template which uses Docker and `black`.
-* [cookie](https://github.com/chris-santiago/cookie): simlar to `snickerdoodle`, this template uses `mkdocs` and Github Actions, but also adds `conda`, Nox, `black`, and `pyright`.
+* [cookiecutter-docker-python-pdm](https://github.com/mnako/cookiecutter-docker-python-pdm): uses Docker and `black`.
+* [cookie](https://github.com/chris-santiago/cookie): uses `mkdocs` and Github Actions, but also adds `conda`, Nox, `black`, and `pyright`.
+
+And, these are other general-purpose templates that are well-maintained, modern, and well-documented:
+
+* [cookiecutter-hypermodern-python](https://github.com/cjolowicz/cookiecutter-hypermodern-python): uses, among other tools, `sphinx`, GitHub Actions, Nox, `mypy`, `flake8`, and `poetry`. If you do not mind those choices and wanted a modern, maintained template, this is the one to use.
+* [cookiecutter-pylibrary](https://github.com/ionelmc/cookiecutter-pylibrary): a newer template that is minimal compared to most and uses, among other tools, `sphinx`, GitHub Actions, Setuptools, Tox, and Travis-CI.
+* [wolt python package cookiecutter](https://github.com/woltapp/wolt-python-package-cookiecutter): an interesting template that uses [`cruft`](https://github.com/cruft/cruft) instead of base `cookiecutter`. The created repository uses, among other tools, 'mkdocs', GitHub Actions, `black`, `flake8`, and `poetry`.
 
 ## Acknowledgements
 

@@ -1,0 +1,30 @@
+# Action for merging branches
+
+name: merge
+
+# Allows this Action to be called by other Actions or through GitHub
+on: [workflow_call, workflow_dispatch]
+
+jobs:
+
+  merge_branches:
+    name: Merge
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: git checkout
+      uses: actions/checkout@v3
+
+    - name: Create pull request
+      id: open-pr
+      uses: repo-sync/pull-request@v2
+      with:
+        destination_branch: ${{"{{"}} github.event.repository.default_branch {{"}}"}}
+        pr_title: "[Automated] Merge ${{"{{"}} github.ref_name {{"}}"}} into ${{"{{"}} github.event.repository.default_branch {{"}}"}}"
+        pr_body: "Automated Pull Request"
+
+    - name: Enable automerge
+      if: steps.open-pr.outputs.pr_number != ''
+      run: gh pr merge --merge --auto "1"
+      env:
+        GH_TOKEN: ${{"{{"}} secrets.PAT {{"}}"}}

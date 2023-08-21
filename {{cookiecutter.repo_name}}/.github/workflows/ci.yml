@@ -1,13 +1,15 @@
 # Action for regular updates to any branch
 
-name: ci
+# This Action builds, tests, and lints the package. Then, it builds the
+# documentation and deploys it on GitHub Pages.
+
+name: continuous integration
 
 on: [push, pull_request]
 
 jobs:
 
-  build:
-
+  build_and_test:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -16,10 +18,11 @@ jobs:
         os: [ubuntu-latest, macOS-latest, windows-latest]
 
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout Repository
+      uses: actions/checkout@v3
 
     - name: Set up Python
-      uses: actions/setup-python@v3
+      uses: actions/setup-python@v4
       with:
         python-version: ${{"{{"}} matrix.python-version {{"}}"}}
 
@@ -46,6 +49,51 @@ jobs:
 
     - name: Run Ruff
       run: pdm run ruff check --format=github .
+
+  lint_and_format:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.x
+
+    - name: Setup PDM
+      uses: pdm-project/setup-pdm@v3
+      with:
+        python-version: 3.x
+
+    - name: Install dependencies
+      shell: bash
+      run: pdm install -v && pdm info
+
+    - name: Run Ruff
+      run: pdm run ruff check --format=github .
+
+  document_and_deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.x
+
+    - name: Setup PDM
+      uses: pdm-project/setup-pdm@v3
+      with:
+        python-version: 3.x
+
+    - name: Install dependencies
+      shell: bash
+      run: pdm install -v && pdm info
 
     - name: Build documentation with MkDocs
       run: pdm run mkdocs build

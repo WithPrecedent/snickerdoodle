@@ -1,13 +1,13 @@
-# Builds package and creates environment
+# Action for linting and formatting a repository.
 
-name: build
+name: lint
 
 # Allows this Action to be called by other Actions or through GitHub
 on: [workflow_call, workflow_dispatch]
 
 jobs:
 
-  build:
+  lint_and_format:
     runs-on: ubuntu-latest
 
     steps:
@@ -24,14 +24,9 @@ jobs:
       with:
         python-version: 3.x
 
-    - name: Check output
-      shell: bash
-      run: |
-        echo ${{"{{"}} steps.setup-pdm.outputs.pdm-bin {{"}}"}}
-        echo ${{"{{"}} steps.setup-pdm.outputs.pdm-version {{"}}"}}
-        echo ${{"{{"}} steps.setup-pdm.outputs.python-path {{"}}"}}
-        echo ${{"{{"}} steps.setup-pdm.outputs.python-version {{"}}"}}
-
     - name: Install dependencies
       shell: bash
       run: pdm install -v && pdm info
+
+    - name: Run Ruff
+      run: pdm run ruff check --format=github .

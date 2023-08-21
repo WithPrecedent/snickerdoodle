@@ -23,7 +23,9 @@ nav:
   - Changelog: changelog.md
   - Credits: credits.md
   - License: license.md
-- User Guide: guide.md
+- User Guide:
+  - Tutorial: tutorial.md
+  - Advanced Usage: advanced.md
 - Development:
   - Contributing: contributing.md
   - Code of Conduct: code_of_conduct.md
@@ -103,7 +105,7 @@ markdown_extensions:
 - pymdownx.tasklist:
     custom_checkbox: true
 - sane_lists
-- tables:
+- tables
 - toc:
     permalink: true
 

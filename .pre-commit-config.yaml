@@ -1,23 +1,10 @@
 repos:
 
-# - repo: https://github.com/pdm-project/pdm
-#   rev: "2.8.2"
-#   hooks:
-#   - id: pdm-lock-check
-#     files: ^pdm.lock$
-
 - repo: https://github.com/pre-commit/pre-commit-hooks
   rev: "v4.4.0"
   hooks:
   - id: check-ast
   - id: check-toml
-  # - id: check-yaml
   - id: detect-private-key
   - id: end-of-file-fixer
   - id: trailing-whitespace
-
-# - repo: https://github.com/astral-sh/ruff-pre-commit
-#   rev: "v0.0.285"
-#   hooks:
-#   - id: ruff
-#     args: [--fix, --exit-non-zero-on-fix]
