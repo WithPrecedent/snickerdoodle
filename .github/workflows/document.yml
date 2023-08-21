@@ -33,3 +33,5 @@ jobs:
 
     - name: Deploy documentation to GitHub Pages
       run: pdm run mkdocs gh-deploy --force --clean --verbose
+      env:
+        GITHUB_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
