@@ -20,15 +20,15 @@
 
 There are an enormous number of cookiecutter templates. However, many are difficult to use, inflexible, and/or underdocumented. I created `snickerdoodle` because I couldn't find another `cookiecutter` template meeting these criteria:
 
-* Modern: most templates are older and do not use current best practices, such as [`pyproject.toml`](https://peps.python.org/pep-0621/) and one of the [numerous dependency managers](https://jairoandres.com/management-dependencies-in-python/) that make project management much easier.
+* Modern: most templates are older and do not use current best practices, such as [`pyproject.toml`](https://peps.python.org/pep-0621/) or one of the [numerous dependency managers](https://jairoandres.com/management-dependencies-in-python/) that make project management much easier.
 * PEP-Compatible: all included tools should meet the design specifications of all finalized [PEPs](https://peps.python.org/pep-0001/) (that rules out `poetry`, which, three years after PEP adoption, is still not [PEP 621](https://peps.python.org/pep-0621/) compatible).
 * No External Services: I wanted a template that didn't require external services offering CI/CD, code coverage, code analysis, etc. This is particularly true for services that are neither free nor open-source (e.g. [sonarcloud.io](https://www.sonarsource.com/products/sonarcloud/), which is in an increasing number of newer templates).
 * (Nearly) Turn-Key: a template should be easy to deploy and immediately use without having to understand or examine the underlying code.
 * Flexible: beyond the core tools, a template should be easy to add other components too (including external services that you use).
 
-To meet those goals, `snickerdoodle` uses [`pdm`](https://pdm.fming.dev/latest/), a modern dependency manager (that follows PEP 621 syntax), GitHub Actions for CI/CD, and GitHub Pages for documentation hosting. The only other dependency for the template is, obviuosly, `cookiecutter`.
+To meet those goals, `snickerdoodle` uses [`pdm`](https://pdm.fming.dev/latest/), a modern dependency manager (that follows PEP 621 syntax), GitHub Actions for CI/CD, and `mkdocs`  on GitHub Pages for documentation. The only other dependency for the template is, obviuosly, `cookiecutter`.
 
-Further, rather than adopting a rigid, opinionated approach, `snickerdoodle` includes nice-looking and functional defaults (like the badges table above, which will include several other badges in your created project). There are also nice extras, like an automatically generated credits page in the documentation, that should work with any Python project. `snickerdoodle`  makes no assumptions about the type of Python project you are creating and includes base template options that are (nearly) universal.
+Further, rather than adopting a rigid, opinionated approach, `snickerdoodle` focuses on including nice-looking and functional defaults (like the badges table above, which will include several other badges in your created project). There are also nice extras, like an automatically generated credits page (borrowed from [pawamoy](https://github.com/pawamoy)) in the documentation, that should work with any Python project. `snickerdoodle`  makes no assumptions about the type of Python project you are creating and includes base template options that are (nearly) universal.
 
 ## Getting started
 

@@ -6,11 +6,11 @@ The questionnaire is derived from the `cookiecutter.json` file, if you wish to i
 
 There are couple distinctions between questions worth mentioning:
 
-* "project_name" refers to the title for the project that you would like to appear on the top of the README file and docs. Spaces and capital letters are allowed in the "project_name".
-* "package_name" means the name used to store the package at [PyPi](https://pypi.org). Dashes, but not underscores or capital letters, are allowed in the "package_name." The default option will be the "project_name" with any spaces converted to dashes and all uppercase letters changed to lowercase.
-* "repo_name" is the end of the URL for the repository. Underscores, but not dashes or capital letters, are allowed in the "package_name." The default option will be the "project_name" with any spaces converted to underscores and all uppercase letters changed to lowercase.
+* "project_name" refers to the title for the project that you would like to appear on the top of the README file and docs. Capital letters, dashes, and spaces are allowed in the "project_name".
+* "package_name" means the name used to store the package at [PyPi](https://pypi.org). Dashes (but not capital letters, underscores or spaces) are allowed in the "package_name." The default option will be the "project_name" with any spaces or underscores converted to dashes and all uppercase letters changed to lowercase.
+* "repo_name" is the end of the URL for the repository. Underscores (but not capital letters or spaces) are allowed in the "repo_name." The default option will be the "project_name" with any spaces converted to underscores and all uppercase letters changed to lowercase.
 
-So, if you have a "project_name" of "MeowMeow Beans", the "package_name" would be "meowmeow-beans" and the "repo_name" would be "meowmeow_beans." For single word, lowercase packages, there are no differences between the three names. Unless you have a really good reason, you should simply accept the defaults for the "package_name" and "repo_name."
+So, if you have a "project_name" of "MeowMeow Beans", the "package_name" would be "meowmeow_beans" and the "repo_name" would be "meowmeow-beans." For single word, lowercase packages, there are no differences between the three names. Unless you have a really good reason, you should simply accept the defaults for the "package_name" and "repo_name."
 
 ## Core Components
 

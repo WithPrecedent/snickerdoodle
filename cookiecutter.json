@@ -1,7 +1,7 @@
 {
   "project_name": "",
-  "package_name": "{{cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_')}}",
-  "repo_name": "{{cookiecutter.project_name.lower().replace(' ', '_')}}",
+  "package_name": "{{cookiecutter.project_name.lower().replace(' ', '-').replace('_', '-')}}",
+  "repo_name": "{{cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_')}}",
   "author_name": "",
   "author_email": "",
   "github_user": "",
@@ -14,5 +14,6 @@
     "ISC License",
     "Apache Software License 2.0",
     "GNU General Public License v3",
-    "Other"]
+    "Other"],
+  "commit_to_github": ["n"]
 }
