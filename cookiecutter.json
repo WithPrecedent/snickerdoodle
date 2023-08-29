@@ -7,7 +7,7 @@
   "github_user": "",
   "description": "",
   "version": "0.1.0",
-  "url": "{{'https://www.github.com/' + cookiecutter.github_user + '/' + cookiecutter.repo_name}}",
+  "url": "{{'https://github.com/' + cookiecutter.github_user + '/' + cookiecutter.package_name}}",
   "license": [
     "MIT License",
     "BSD License",
@@ -15,5 +15,5 @@
     "Apache Software License 2.0",
     "GNU General Public License v3",
     "Other"],
-  "commit_to_github": ["n"]
+  "commit_to_github": false
 }

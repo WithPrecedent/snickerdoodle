@@ -23,8 +23,8 @@ VALID_REPO: Pattern[str] = re.compile(
     r'^([a-z0-9]|[a-z0-9][a-z0-9_]*[a-z0-9])$')
 # Checks repository url, assuming it is at GitHub.
 VALID_REPO_URL: Pattern[str] = re.compile(
-    r'[https://github.com|https://www.github.com][/]([a-z0-9]|' \
-    r'[a-z0-9][a-z0-9_]*[a-z0-9])[/]([a-z0-9]|[a-z0-9][a-z0-9_]*[a-z0-9])')
+    'https:\/\/github\.com\/[A-Za-z0-9]([A-Za-z0-9]|-(?!-))*[A-Za-z0-9]' \
+    '\/[A-Za-z0-9]([A-Za-z0-9]|-(?!-))*[A-Za-z0-9]\/?$') # noqa
 
 
 def validate_text(text: str, regex: Pattern, error_label: str) -> None:
@@ -66,12 +66,12 @@ def validate_url_exists(url: str) -> None:
         message = (
             f'{url} could not be validated because there was a problem with'
             f'the internet connection.')
-        raise ConnectionError(message) #noqa: W0707
+        raise ConnectionError(message) # noqa: W0707
     except (requests.exceptions.HTTPError, requests.exceptions.ConnectionError):
         message = (
             f'You must first create a repository on GitHub to use the '
             f'"commit_to_github" option. {url} does not currently exist.')
-        raise ValueError(message) #noqa: W0707
+        raise ValueError(message) # noqa: W0707
 
 
 def main() -> None:

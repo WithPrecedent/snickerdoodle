@@ -1,5 +1,9 @@
 # snickerdoodle
 
+<p align="center">
+<img src="./docs/img/snickerdoodle.png" alt="snickerdoodle cookie logo" style="width:250px;"/>
+</p>
+
 | | |
 | --- | --- |
 | Version | [![PyPI Latest Release](https://img.shields.io/pypi/v/snickerdoodle.svg?style=for-the-badge&label=pypi&logo=PyPI&color=darkorange)](https://pypi.org/project/snickerdoodle/) [![GitHub Latest Release](https://img.shields.io/github/v/tag/WithPrecedent/snickerdoodle?style=for-the-badge&label=branch&logo=github&color=navy)](https://github.com/WithPrecedent/snickerdoodle/releases)
