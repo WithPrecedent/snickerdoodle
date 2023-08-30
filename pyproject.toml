@@ -98,10 +98,10 @@ ignore = [
     "S0001",  # Use of assert detected
     "SLF001", # Private member accessed
     "TID252",  # Relative imports are banned
-    "TRY003",  # Avoid specifying long messages outside the exception class
-    "W0105",  # String statement has no effect
-    "W0221",  # Arguments differ
-    "W0222",]  # Access to a protected member
+    "TRY003",]  # Avoid specifying long messages outside the exception class
+    # "W0105",  # String statement has no effect
+    # "W0221",  # Arguments differ
+    # "W0222",]  # Access to a protected member
 line-length = 80
 select = [
     "A",  # flake8-buttons

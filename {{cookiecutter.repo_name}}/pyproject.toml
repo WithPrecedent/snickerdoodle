@@ -84,6 +84,8 @@ ignore = [
     "C901",  # Too complex
     "D105",  # Missing docstring in magic method
     "D400",  # First line must end in a period
+    "D401",  # First line of docstring should be in imperative mood
+    "D407",  # Missing dashed underline after section ("Args")
     "D415",  # First line must end in a period, question mark, or exclamation point
     "E501",  # Line too long
     "E731",  # Do not assign a `lambda` expression, use a `def`
@@ -95,60 +97,66 @@ ignore = [
     "PLR0912",  # Too many branches
     "PLR0913",  # Too many arguments to function call
     "PLR0915",  # Too many statements
+    "PLR1711", # Useless 'return' at the end of function
     "Q000",  # Single quotes found but double quotes preferred
+    "S0001",  # Use of assert detected
     "SLF001", # Private member accessed
     "TID252",  # Relative imports are banned
     "TRY003",]  # Avoid specifying long messages outside the exception class
+    # "W0105",  # String statement has no effect
+    # "W0221",  # Arguments differ
+    # "W0222",]  # Access to a protected member
 line-length = 80
 select = [
-    "A",
-    "ANN",
-    "ARG",
-    "B",
-    "BLE",
-    "C",
-    "C4",
-    "COM",
-    "D",
-    "DTZ",
-    "E",
-    "ERA",
-    "EXE",
-    "F",
-    "FBT",
-    "G",
-    "I",
-    "ICN",
-    "INP",
-    "ISC",
-    "N",
-    "NPY",
-    "PD",
-    "PGH",
-    "PIE",
-    "PL",
-    "PLC",
-    "PLE",
-    "PLR",
-    "PLW",
-    "PT",
-    "PYI",
-    "Q",
-    "RUF",
-    "RSE",
-    "RET",
-    "S",
-    "SIM",
-    "SLF",
-    "T",
-    "T10",
-    "T20",
-    "TCH",
-    "TID",
-    "TRY",
-    "UP",
-    "W",
-    "YTT",]
+    "A",  # flake8-buttons
+    "ANN",  # flake8-annotations
+    "ARG",  # flake8-unused-arguments
+    "B",  # flake8-bugbear
+    "BLE",  # flake8-blind-except
+    "C",  #
+    "C4",  # flake8-comprehensions
+    "COM",  # flake8-commas
+    "D",  # pydocstyle
+    "DTZ",  # flake8-datetimez
+    "E",  # pydocstyle errors
+    "ERA",  # eradicate
+    "EXE",  # flake8-executable
+    "F",  # Pyflakes
+    "FBT",  # flake8-boolean-trap
+    "G",  # flake8-logging-format
+    "I",  # isort
+    "ICN",  # flake8-import-conventions
+    "INP",  # flake8-no-pep420
+    "ISC",  # flake8-implicit-str-concat
+    "N",  # pep8-naming
+    "NPY",  # NumPy-specific rules
+    "PD",  # pandas-vet
+    "PGH",  # pygrep-hooks
+    "PIE",  # flake8-pie
+    "PL",  # Pylint
+    "PLC",  # Pylint
+    "PLE",  # Pylint
+    "PLR",  # Pylint
+    "PLW",  # Pylint
+    "PT",  # flake8-pytest-style
+    "PTH",  # flake8-use-pathlib
+    "PYI",  # flake8-pyi
+    "Q",  # flake8-quotes
+    "RUF",  # Ruff-specific rules
+    "RSE",  # flake8-raise
+    "RET",  # flake8-return
+    "S",  # bandit
+    "SIM",  # flake8-slots
+    "SLF",  # flake8-self
+    "T",  #
+    "T10",  # flake8-debugger
+    "T20",  # flake8-print
+    "TCH",  # flake8-type-checking
+    "TID",  # flake8-tidy-imports
+    "TRY",  # tryceratops
+    "UP",  # pyupgrade
+    "W",  # pydocstyle warnings
+    "YTT",]  # flake8-2020
 
 [tool.ruff.flake8-quotes]
 docstring-quotes = "double"
