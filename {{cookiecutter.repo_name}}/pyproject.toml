@@ -50,7 +50,9 @@ docs = [
     "mkdocs-minify-plugin >= 0.7.1",
     "mkdocstrings[python] >= 0.22.0",
     "toml >= 0.10.2"]
-quality = ["pre-commit >= 3.3.3", "ruff >= 0.0.284"]
+quality = [
+    "pre-commit >= 3.3.3",
+    "ruff >= 0.0.286"]
 tests = [
     "coverage >= 7.2.7",
     "pytest >= 7.4.0",
