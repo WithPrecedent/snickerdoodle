@@ -99,7 +99,7 @@ ignore = [
     "PLR0915",  # Too many statements
     "PLR1711", # Useless 'return' at the end of function
     "Q000",  # Single quotes found but double quotes preferred
-    "S0001",  # Use of assert detected
+    # "S0001",  # Use of assert detected
     "SLF001", # Private member accessed
     "TID252",  # Relative imports are banned
     "TRY003",]  # Avoid specifying long messages outside the exception class
