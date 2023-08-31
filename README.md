@@ -1,7 +1,7 @@
 # snickerdoodle
 
 <p align="center">
-<img src="https://github.com/WithPrecedent/snickerdoodle/blob/main/docs/img/snickerdoodle.png" alt="snickerdoodle cookie logo" style="width:250px;"/>
+<img src="https://github.com/WithPrecedent/snickerdoodle/blob/main/docs/img/snickerdoodle.png?raw=true" alt="snickerdoodle cookie logo" style="width:250px;"/>
 </p>
 
 | | |

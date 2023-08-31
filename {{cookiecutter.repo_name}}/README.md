@@ -28,7 +28,11 @@
 
 ### Installation
 
-[TODO: Briefly describe, with code blocks, how to install the project]
+To install `{{ cookiecutter.project_name }}`, use `pip`:
+
+```sh
+pip install {{ cookiecutter.repo_name }}
+```
 
 ### Usage
 

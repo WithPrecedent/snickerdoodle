@@ -31,7 +31,9 @@ requires = ["pdm-backend"]
 build-backend = "pdm.backend"
 
 [tool.pdm]
-plugins = ["sync-pre-commit-lock[pdm]", "pdm-multirun"]
+plugins = [
+    "sync-pre-commit-lock[pdm]", 
+    "pdm-multirun"]
 
 [tool.pdm.build]
 package-dir = "src"
