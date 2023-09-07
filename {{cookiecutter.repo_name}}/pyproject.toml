@@ -1,7 +1,7 @@
 # Project packaging rules and instructions
 
 [project]
-name = "{{cookiecutter.project_name}}"
+name = "{{cookiecutter.repo_name}}"
 description = "{{cookiecutter.description}}"
 authors = [{name = "{{cookiecutter.author_name}}", email = "{{cookiecutter.author_email}}"}]
 license = {text = "{{cookiecutter.license}}"}
