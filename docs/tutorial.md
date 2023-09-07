@@ -23,13 +23,32 @@ git clone git@github.com:WithPrecedent/snickerdoodle.git
 cookiecutter snickerdoodle/
 ```
 
-As with any `cookiecutter`, project generation requires you to answer several questions. `snickerdoodle` attempts to make this process quick, easy, and painless. The default options, often created from your previous answers, are sensible so that you can just hit "return" in reponse to most questions.
+## Questionnaire
 
-If you use `cookiecutter` a lot (or plan to do so), I suggest [creating a configuration file](https://cookiecutter.readthedocs.io/en/2.3.0/advanced/user_config.html) with some answers to the questionnaire. For example, I have included my configuration file in this repository: [`cc_config.yaml`](https://github.com/WithPrecedent/snickerdoodle/blob/main/cc_config.yaml). You can then use the configuration file (which you should probably put in the parent folder for your coder repositories) when you call `cookiecutter` as follows:
+As with any `cookiecutter`, project generation requires you to input information
+in what is referred to as the "questionnaire." `snickerdoodle` attempts to make this process quick, easy, and
+painless. The default options, often created from your previous answers, are
+sensible so that you can just hit "return" in reponse to many requests. Or, if
+you prefer, as explained in the [advanced guide](https://withprecedent.github.io/snickerdoodle/advanced/#configuration-file), you can create a configuration
+file with many or all of your answers.
 
-```sh
-cookiecutter gh:WithPrecedent/snickerdoodle --config-file cc_config.yaml
-```
+These are the variable for which information will be requested, how your answers
+will be used, the default value (if any), and
+any limitations on your answer:
+
+| Variable | Use | Default | Limitations |
+| --- | --- | --- | --- |
+| `project_name` | project title on README and docs | None | alphanumeric characters |
+| `package_name` | project title on PyPI.org | `project_name` with spaces and underscores changed to dashes | alphanumeric characters with no spaces or underscores |
+| `repo_name` | project title on GitHub | `project_name` with spaces and dashes changed to underscores | alphanumeric characters with no spaces or dashes |
+| `author_name` | in `pyproject.toml` and docs | None | alphanumeric characters |
+| `author_email` | in `pyproject.toml` | None | alphanumeric characters |
+| `github_user`  | to infer URL and in `pyproject.toml` | None | alphanumeric characters |
+| `description`  | to infer URL and in `pyproject.toml` | None | alphanumeric characters |
+| `version` | in `__init__.py` for project | "0.1.0" | any valid version format |
+| `url` | in `pyproject.toml` | formed from `github_user` and `repo_name` | any valid GitHub url |
+| `license` | content of the constructed LICENSE file and in `pyproject.toml` | Apache Software License 2.0 | numbers 1-6 associated with these licenses: Apache Software License 2.0, BSD License, ISC License, GNU General Public License v3, MIT License, Other |
+| `badge_style` | badges in README and docs |  [![for-the-badge style](https://img.shields.io/badge/style-for--the--badge-blue?style=for-the-badge)](https://www.shields.io/) | numbers 1-5 associated with: [![for-the-badge style](https://img.shields.io/badge/style-for--the--badge-blue?style=for-the-badge)](https://www.shields.io/), [![flat style](https://img.shields.io/badge/style-flat-green?style=flat)](https://www.shields.io/), [![flat-square style](https://img.shields.io/badge/style-flat--square-orange?style=flat-square)](https://www.shields.io/), [![plastic style](https://img.shields.io/badge/style-plastic-purple?style=plastic)](https://www.shields.io/), [![social style](https://img.shields.io/badge/style-social-red?style=social)](https://www.shields.io/) |
 
 ## Connect Remote and Local Repositories
 

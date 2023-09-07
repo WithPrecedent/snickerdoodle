@@ -87,6 +87,7 @@ ignore = [
     "D105",  # Missing docstring in magic method
     "D400",  # First line must end in a period
     "D401",  # First line of docstring should be in imperative mood
+    "D406",  # Section name should end with a newline - bugged for 'Attributes:'
     "D407",  # Missing dashed underline after section ("Args")
     "D415",  # First line must end in a period, question mark, or exclamation point
     "E501",  # Line too long
@@ -95,6 +96,7 @@ ignore = [
     "EXE002",  # No shebang is present in an executable file
     "FBT001",  # Boolean positional arg in function definition
     "G004",  # Logging statement uses f-string
+    "PTH123",  # `open()` should be replaced by `Path.open()`
     "PLR0911",  # Too many return statements
     "PLR0912",  # Too many branches
     "PLR0913",  # Too many arguments to function call

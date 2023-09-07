@@ -9,11 +9,16 @@
   "version": "0.1.0",
   "url": "{{'https://github.com/' + cookiecutter.github_user + '/' + cookiecutter.package_name}}",
   "license": [
-    "MIT License",
+    "Apache Software License 2.0",
     "BSD License",
     "ISC License",
-    "Apache Software License 2.0",
     "GNU General Public License v3",
+    "MIT License",
     "Other"],
-  "commit_to_github": false
+  "badge_style": [
+    "for-the-badge",
+    "flat", 
+    "flat-square", 
+    "plastic", 
+    "social"]
 }

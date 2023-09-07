@@ -1,16 +1,12 @@
 # Advanced Usage
 
-## Questionnaire
+## Configuration File
 
-The questionnaire is derived from the `cookiecutter.json` file, if you wish to implement different questions.
+If you use `cookiecutter` a lot (or plan to do so), I suggest [creating a configuration file](https://cookiecutter.readthedocs.io/en/2.3.0/advanced/user_config.html) with some answers to the questionnaire. For example, I have included my configuration file in this repository: [`cc_config.yaml`](https://github.com/WithPrecedent/snickerdoodle/blob/main/cc_config.yaml). You can then use the configuration file (which you should probably put in the parent folder for your coder repositories) when you call `cookiecutter` as follows:
 
-There are couple distinctions between questions worth mentioning:
-
-* "project_name" refers to the title for the project that you would like to appear on the top of the README file and docs. Capital letters, dashes, and spaces are allowed in the "project_name".
-* "package_name" means the name used to store the package at [PyPi](https://pypi.org). Dashes (but not capital letters, underscores or spaces) are allowed in the "package_name." The default option will be the "project_name" with any spaces or underscores converted to dashes and all uppercase letters changed to lowercase.
-* "repo_name" is the end of the URL for the repository. Underscores (but not capital letters or spaces) are allowed in the "repo_name." The default option will be the "project_name" with any spaces converted to underscores and all uppercase letters changed to lowercase.
-
-So, if you have a "project_name" of "MeowMeow Beans", the "package_name" would be "meowmeow_beans" and the "repo_name" would be "meowmeow-beans." For single word, lowercase packages, there are no differences between the three names. Unless you have a really good reason, you should simply accept the defaults for the "package_name" and "repo_name."
+```sh
+cookiecutter gh:WithPrecedent/snickerdoodle --config-file cc_config.yaml
+```
 
 ## Core Components
 
@@ -21,12 +17,6 @@ These are the tools that `snickerdoodle` incorporates:
 * [`ruff`](https://github.com/astral-sh/ruff): a relatively new player in formatting, it aims to serve as a one-stop, extremely fast (it's written in `Rust`) formatting and linting package. `snickerdoodle` implements some reasonable defaults while still allowing user flexibility (e.g., it does not implement [`black`](https://github.com/psf/black) - although you can do that through `ruff`, if you would prefer). By default, the template activates the parts of `ruff` that incorporate, among other packages: `Flake8`, `Bandit`, `pydocstyle`, and `pylint`.
 * [Github Actions](https://github.com/features/actions): if you store your package on Github, which `snickerdoodle` assumes, [there are strong reasons](https://resources.github.com/devops/tools/automation/actions/) to prefer Github Actions as your CI/CD tool. `snickerdoodle` includes workflows for updating, releasing, and publishing your package while also deploying the accompanying documentation.
 * [GitHub Pages](https://pages.github.com/): There is a lot to be said for [Read the Docs](https://readthedocs.com) as a documentation host site. However, `mkdocs` works better on GitHub Pages and once you start using GitHub Actions, the automatic updating advantage of Read the Docs disappears. I also like that GitHub Pages is not dependent on ads placed on documentation pages for its survival. This was a close call and I might consider adding a Read the Docs option in a future version of `snickerdoodle`.
-
-## Badges
-
-`snickerdoodle` provides a large number of badges. You should feel free to delete any you do not need from the `README.md` file. That will also remove the badges in the front page of your documentation.
-
-By default, the template uses the badge style called "for-the-badge." If you would prefer the standard [Shields.io dynamic badges](https://shields.io) instead of the "for-the-badge" style used in `snickerdoodle`, perform a find and replace in the `readme.md` file to replace "?style=for-the-badge&" with "?" and "?style=for-the-badge" with "". I might make this an option in the `cookiecutter` construction in a future update.
 
 ## Versioning
 

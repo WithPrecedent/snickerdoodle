@@ -1,8 +1,9 @@
 """Cookiecutter hook for pre project generation."""
 
-from typing import Pattern
 import re
-import requests
+from typing import Pattern
+
+# import requests
 
 
 # Package names must be lower-case letters, numbers, or dashes, but not start
@@ -44,36 +45,6 @@ def validate_text(text: str, regex: Pattern, error_label: str) -> None:
         raise ValueError(message)
 
 
-def validate_url_exists(url: str) -> None:
-    """Ensures that 'url' exists.
-
-    Args:
-        url: repository url to check.
-
-    Raises:
-        ConnectionError: if there is an internet connection issue that prevents
-            a check as to whether "url" exists.
-        ValueError: if "url" does not exist.
-
-    """
-    try:
-        response = requests.head(
-            url,
-            allow_redirects = True,
-            timeout = (10, 20))
-        response.raise_for_status()
-    except requests.exceptions.Timeout:
-        message = (
-            f'{url} could not be validated because there was a problem with'
-            f'the internet connection.')
-        raise ConnectionError(message) # noqa: W0707
-    except (requests.exceptions.HTTPError, requests.exceptions.ConnectionError):
-        message = (
-            f'You must first create a repository on GitHub to use the '
-            f'"commit_to_github" option. {url} does not currently exist.')
-        raise ValueError(message) # noqa: W0707
-
-
 def main() -> None:
     """Calls validation functions."""
     validate_text(
@@ -92,8 +63,6 @@ def main() -> None:
         text = "{{ cookiecutter.url }}",
         regex = VALID_REPO_URL,
         error_label = "repository url")
-    if {{ cookiecutter.commit_to_github }}:
-        validate_url_exists(url = "{{ cookiecutter.url }}")
 
 
 if __name__ == "__main__":
