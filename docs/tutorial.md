@@ -38,17 +38,17 @@ any limitations on your answer:
 
 | Variable | Use | Default | Limitations |
 | --- | --- | --- | --- |
-| `project_name` | project title on README and docs | None | alphanumeric characters |
-| `package_name` | project title on PyPI.org | `project_name` with spaces and underscores changed to dashes | alphanumeric characters with no spaces or underscores |
-| `repo_name` | project title on GitHub | `project_name` with spaces and dashes changed to underscores | alphanumeric characters with no spaces or dashes |
-| `author_name` | in `pyproject.toml` and docs | None | alphanumeric characters |
-| `author_email` | in `pyproject.toml` | None | alphanumeric characters |
-| `github_user`  | to infer URL and in `pyproject.toml` | None | alphanumeric characters |
-| `description`  | to infer URL and in `pyproject.toml` | None | alphanumeric characters |
+| `project_name` | project title on README and docs | None | alphanumeric |
+| `package_name` | project title on PyPI.org | `project_name` with spaces and underscores changed to dashes | alphanumeric with no spaces or underscores |
+| `repo_name` | project title on GitHub | `project_name` with spaces and dashes changed to underscores | alphanumeric with no spaces or dashes |
+| `author_name` | in `pyproject.toml` and docs | None | alphanumeric |
+| `author_email` | in `pyproject.toml` | None | alphanumeric |
+| `github_user`  | to infer URL and in `pyproject.toml` | None | alphanumeric |
+| `description`  | to infer URL and in `pyproject.toml` | None | alphanumeric |
 | `version` | in `__init__.py` for project | "0.1.0" | any valid version format |
 | `url` | in `pyproject.toml` | formed from `github_user` and `repo_name` | any valid GitHub url |
-| `license` | content of the constructed LICENSE file and in `pyproject.toml` | Apache Software License 2.0 | numbers 1-6 associated with these licenses: Apache Software License 2.0, BSD License, ISC License, GNU General Public License v3, MIT License, Other |
-| `badge_style` | badges in README and docs |  [![for-the-badge style](https://img.shields.io/badge/style-for--the--badge-blue?style=for-the-badge)](https://www.shields.io/) | numbers 1-5 associated with: [![for-the-badge style](https://img.shields.io/badge/style-for--the--badge-blue?style=for-the-badge)](https://www.shields.io/), [![flat style](https://img.shields.io/badge/style-flat-green?style=flat)](https://www.shields.io/), [![flat-square style](https://img.shields.io/badge/style-flat--square-orange?style=flat-square)](https://www.shields.io/), [![plastic style](https://img.shields.io/badge/style-plastic-purple?style=plastic)](https://www.shields.io/), [![social style](https://img.shields.io/badge/style-social-red?style=social)](https://www.shields.io/) |
+| `license` | content of the constructed LICENSE file and in `pyproject.toml` | Apache 2.0 | Apache 2.0, BSD, ISC, GNU General Public v3, MIT, Other |
+| `badge_style` | badges in README and docs |  [![for-the-badge style](https://img.shields.io/badge/style-for--the--badge-blue?style=for-the-badge)](https://www.shields.io/) | [![for-the-badge style](https://img.shields.io/badge/style-for--the--badge-blue?style=for-the-badge)](https://www.shields.io/), [![flat style](https://img.shields.io/badge/style-flat-green?style=flat)](https://www.shields.io/), [![flat-square style](https://img.shields.io/badge/style-flat--square-orange?style=flat-square)](https://www.shields.io/), [![plastic style](https://img.shields.io/badge/style-plastic-purple?style=plastic)](https://www.shields.io/), [![social style](https://img.shields.io/badge/style-social-red?style=social)](https://www.shields.io/) |
 
 ## Connect Remote and Local Repositories
 
