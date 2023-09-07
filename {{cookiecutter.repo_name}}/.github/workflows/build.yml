@@ -2,8 +2,8 @@
 
 name: build
 
-# Allows this Action to be called by other Actions or through GitHub
-on: [workflow_call, workflow_dispatch]
+# Allows this Action to be called by other Actions
+on: workflow_call
 
 jobs:
 

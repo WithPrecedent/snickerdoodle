@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 <!-- insertion marker -->
 
+## 0.1.4
+
+* Added documentation for included GitHub Actions
+* Fixed bugs in all Actions except `merge.yml`, which is untested
+* Streamlined `README.md`
+
 ## 0.1.3
 
 * Fixed bug when cookiecutter.project_name has a space in it

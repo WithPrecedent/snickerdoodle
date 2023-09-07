@@ -1,4 +1,5 @@
 # Action for merging branches
+# This action is currently untested
 
 name: merge
 

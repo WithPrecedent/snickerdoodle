@@ -24,4 +24,29 @@ When you publish a new version, you should first manually adjust the version in 
 
 ## Formatting and Linting
 
-All of the formatting and linting options (of the created project, not the template) are implemented through `ruff` and are incorporated into the created project's `pyproject.toml` file. So, you can adjust any [`ruff` rules](https://beta.ruff.rs/docs/rules/) there. `ruff` is automatically run with each GitHub push. However, that only creates a report of problems with the repository. To automatically fix them, I suggest using `pre-commit`. The created repository has a `pre-commit` command to run `ruff` with the `fix` option invoked.
+All of the formatting and linting options (of the created project, not the
+template) are implemented through `ruff` and are incorporated into the created
+project's `pyproject.toml` file. So, you can adjust any [`ruff`
+rules](https://beta.ruff.rs/docs/rules/) there. `ruff` is automatically run with
+each GitHub push. However, that only creates a report of problems with the
+repository. To automatically fix them, I suggest using `pre-commit`. The created
+repository has a `pre-commit` command to run `ruff` with the `fix` option
+invoked. To use `pre-commit`, follow its [user
+guide](https://pre-commit.com/#usage). If you activate `pre-commit`, it will then be automatically run on every push to GitHub.
+
+## GitHub Actions
+
+These are the available actions for a repository created by `snickerdoodle`:
+
+| GitHub Action | Trigger | Jobs |
+| --- | --- | --- |
+| `ci` | automatically on push | builds repo, runs tests, lints, formats, builds docs, and deploys docs |
+| `build` | another Action | builds repo |
+| `document` | another Action or manually on GitHub| builds and deploys docs |
+| `lint` | another Action or manually on GitHub | lints repository with `ruff` |
+| `merge` | another Action or manually on GitHub | merges `development` branch into `main` (currently untested Action) |
+| `publish` | another Action or manually on GitHub | publishes repository on PyPI (must configure PyPI to accept as [trusted publisher](https://docs.pypi.org/trusted-publishers/adding-a-publisher/)) |
+
+To run an Action on GitHub, go to your repository, click "Actions" and select
+one of the Actions listed on the left side of the screen. Only those Actions
+listed in the chart above with manual triggers can be activated via GitHub.

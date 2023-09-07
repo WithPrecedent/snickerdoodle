@@ -2,11 +2,11 @@
 
 name: document
 
-# Allows this Action to be called by other Actions or through GitHub
 on:
   push:
     branches:
       - main
+  # Allows this Action to be called by other Actions or through GitHub
   workflow_call:
   workflow_dispatch:
 

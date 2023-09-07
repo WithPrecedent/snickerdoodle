@@ -24,37 +24,69 @@
 
 There are an enormous number of cookiecutter templates. However, many are difficult to use, inflexible, and/or underdocumented. I created `snickerdoodle` because I couldn't find another `cookiecutter` template meeting these criteria:
 
-* Modern: most templates are older and do not use current best practices, such as [`pyproject.toml`](https://peps.python.org/pep-0621/) or one of the [numerous dependency managers](https://jairoandres.com/management-dependencies-in-python/) that make project management much easier.
-* PEP-Compatible: all included tools should meet the design specifications of all finalized [PEPs](https://peps.python.org/pep-0001/) (that rules out `poetry`, which, three years after PEP adoption, is still not [PEP 621](https://peps.python.org/pep-0621/) compatible).
-* No External Services: I wanted a template that didn't require external services offering CI/CD, code coverage, code analysis, etc. This is particularly true for services that are neither free nor open-source (e.g. [sonarcloud.io](https://www.sonarsource.com/products/sonarcloud/), which is in an increasing number of newer templates).
-* (Nearly) Turn-Key: a template should be easy to deploy and immediately use without having to understand or examine the underlying code.
-* Flexible: beyond the core tools, a template should be easy to add other components too (including external services that you use).
+* **Modern**: follows best practices, using modern, actively developed tools.
+* **No Required Services**: beyond GitHub, you can use whatever code coverage or analysis tools you like.
+* **PEP-Compliant**: all of the tools follow all finalized
+  [PEPs](https://peps.python.org/pep-0001/) (unfortunately, that rules out `poetry`, which,
+  three years after the PEP adoption, is still not [PEP
+  621](https://peps.python.org/pep-0621/) compliant).
+* **Thoughtful**: rather than adopting a rigid, opinionated approach,
+  `snickerdoodle` uses reasonable, but easy-to-change, defaults. It also
+  offers some extras to make your repository look great (like the
+  badges table above, which will include several other badges in your created
+  project and you can select your preferred badge style) and the automatically
+  generated credits page in your created repository's documentation (credit for
+  that goes
+to [pawamoy](https://github.com/pawamoy)).
+* **Well-Documented**: unlike many templates, the internal and [external
+  documentation](https://withprecedent.github.io/snickerdoodle) make it easy for you to understand, and, thus, modify the
+  template.
 
 To meet those goals, `snickerdoodle` uses [`pdm`](https://pdm.fming.dev/latest/), a modern dependency manager (that follows PEP 621 syntax), GitHub Actions for CI/CD, and `mkdocs`  on GitHub Pages for documentation. The only other dependency for the template is, obviuosly, `cookiecutter`.
 
-Further, rather than adopting a rigid, opinionated approach, `snickerdoodle` focuses on including nice-looking and functional defaults (like the badges table above, which will include several other badges in your created project). There are also nice extras, like an automatically generated credits page (borrowed from [pawamoy](https://github.com/pawamoy)) in the documentation, that should work with any Python project. `snickerdoodle`  makes no assumptions about the type of Python project you are creating and includes base template options that are (nearly) universal.
-
 ## Getting started
-
-This section describes the basic usage of the `snickerdoodle` template. If you want to modify its settings or have other questions, you should consult the [template user guide](https://withprecedent.github.io/snickerdoodle/advanced/).
 
 ### Requirements
 
-To use `snickerdoodle` and the repository that it creates, you need [`python`](https://www.python.org/), [`git`](https://git-scm.com/), [`cookiecutter`](https://www.cookiecutter.io/) (or [`cruft`](https://github.com/cruft/cruft)), and [`pdm`](https://pdm.fming.dev/latest/) installed on your system. You also need a GitHub account. If you have not already, set up your GitHub credentials on your local computer.
+To use `snickerdoodle` and the repository that it creates, you need [`python`](https://www.python.org/), [`git`](https://git-scm.com/), [`cookiecutter`](https://www.cookiecutter.io/) (or [`cruft`](https://github.com/cruft/cruft)), and [`pdm`](https://pdm.fming.dev/latest/) installed on your system. You also need a GitHub account. If you have not already, set up your [GitHub credentials](https://docs.github.com/en/get-started/quickstart/set-up-git) on your computer.
 
 ### Setup
 
-If you are new to cookiecutter or simply want to make sure the created repository works as intended, follow the instructions in the [`snickerdoodle` tutorial](https://withprecedent.github.io/snickerdoodle/tutorial/).
+If you are new to `cookiecutter` or simply want to guarantee that the created repository works as intended, follow the instructions in the [`snickerdoodle` tutorial](https://withprecedent.github.io/snickerdoodle/tutorial/).
 
-If you are familiar with creating cookiecutter templates, you can go about the normal template construction process with one important addition: after you create the remote repository on GitHub, change Settings/Actions/General/Workflow Permissions to "Read and Write Permissions." This is necessary for the repository documentation to be properly deployed. Then, follow the instructions for setting up your [virtual environment](https://withprecedent.github.io/snickerdoodle/tutorial/#Create-Virtual-Environment) and [deploying your documentation](https://withprecedent.github.io/snickerdoodle/tutorial/#Deploy-Documentation) in the [`snickerdoodle` tutorial](https://withprecedent.github.io/snickerdoodle/tutorial/). It is especially important to follow the document deployment process for the first time - after that GitHub Actions will automatically update and redeploy the documentation (and you need not use the manual process again).
+If you are familiar with creating cookiecutter templates, you can go about the
+normal template construction process with a two important additions. First, after you
+create the remote repository on GitHub, change "Settings/Actions/General/Workflow
+Permissions" to "Read and Write Permissions." This is necessary for the
+repository documentation to be properly deployed. Second, follow the instructions
+for setting up your [virtual
+environment](https://withprecedent.github.io/snickerdoodle/tutorial/#Create-Virtual-Environment)
+and [deploying your
+documentation](https://withprecedent.github.io/snickerdoodle/tutorial/#Deploy-Documentation)
+in the [`snickerdoodle`
+tutorial](https://withprecedent.github.io/snickerdoodle/tutorial/). It is
+especially important to follow the document deployment process for your initial deployment - after that GitHub Actions will automatically update and redeploy the
+documentation (and you need not use the manual process again).
 
 ## Usage
 
-After your repository is created, you can start setting the dependencies in `pyproject.toml`. Every push to GitHub will run any tests in the "Tests" folder, deploy documentation, and apply `ruff`. If you wish to publish your repository to [PyPi](https://pypi.org), I recommend using the [`pdm publish` command](https://pdm.fming.dev/latest/usage/publish/).
+After your repository is created, you can start setting the dependencies in
+`pyproject.toml`. Every push to GitHub will run any tests in the "tests" folder,
+deploy documentation, and apply `ruff`. If you wish to publish your repository
+to [PyPI](https://pypi.org), I recommend using the [`pdm publish`
+command](https://pdm.fming.dev/latest/usage/publish/) or the `publish` GitHub
+Action, if you set up PyPI to recognize the Action as a [trusted publisher](https://docs.pypi.org/trusted-publishers/adding-a-publisher/).
 
 ## Contributing
 
-Contributors are always welcome and should find `snickerdoodle` easy to work with. The template is highly documented so that users and developers can make `snickerdoodle` work with their projects. Feel free to grab an issue to work on or make a suggested improvement. If you wish to contribute, please read the [Contribution Guide](./contributing.md) and [Code of Conduct](./code_of_conduct.md).
+Contributors are always welcome and should find `snickerdoodle` easy to work
+with. The template is highly documented so that users and developers can adapt
+or extend`snickerdoodle` to work with their projects. So, forking and creating
+different template spins is encouraged. If you want to contribute directly to
+the project, feel free to grab an [issue](https://github.com/WithPrecedent/snickerdoodle/issues) to work on
+or make a suggested improvement. If you wish to contribute, please read the
+[Contribution Guide](./contributing.md) and [Code of
+Conduct](./code_of_conduct.md).
 
 ## Similar Projects
 

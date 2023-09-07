@@ -1,4 +1,6 @@
 # Action for merging branches
+# This action is currently untested
+
 name: merge
 
 # Allows this Action to be called by other Actions or through GitHub
