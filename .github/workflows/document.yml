@@ -3,7 +3,12 @@
 name: document
 
 # Allows this Action to be called by other Actions or through GitHub
-on: [workflow_call, workflow_dispatch]
+on:
+  push:
+    branches:
+      - main
+  workflow_call:
+  workflow_dispatch:
 
 jobs:
   build_and_deploy_documentation:
