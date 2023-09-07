@@ -1,0 +1,25 @@
+name: update
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+
+  build:
+    name: Deploy Docs
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+
+    - name: Deploy Documentation to GitHub Pages
+      uses: mhausenblas/mkdocs-deploy-gh-pages@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        CONFIG_FILE: ./mkdocs.yml
+        EXTRA_PACKAGES: build-base
+        REQUIREMENTS: ./pyproject.toml
+        

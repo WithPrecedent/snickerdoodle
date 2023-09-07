@@ -36,7 +36,7 @@ These are the variable for which information will be requested, how your answers
 will be used, the default value (if any), and
 any limitations on your answer:
 
-| Variable | Use | Default | Limitations |
+| <div style="width:100px">Variable</div> | Use | Default | Limitations |
 | --- | --- | --- | --- |
 | `project_name` | project title on README and docs | None | alphanumeric |
 | `package_name` | project title on PyPI.org | `project_name` with spaces and underscores changed to dashes | alphanumeric with no spaces or underscores |
