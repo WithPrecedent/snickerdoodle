@@ -24,8 +24,8 @@ VALID_REPO: Pattern[str] = re.compile(
     r'^([a-z0-9]|[a-z0-9][a-z0-9_]*[a-z0-9])$')
 # Checks repository url, assuming it is at GitHub.
 VALID_REPO_URL: Pattern[str] = re.compile(
-    'https:\/\/github\.com\/[A-Za-z0-9]([A-Za-z0-9]|-(?!-))*[A-Za-z0-9]' \
-    '\/[A-Za-z0-9]([A-Za-z0-9]|-(?!-))*[A-Za-z0-9]\/?$') # noqa
+    'https:\/\/github\.com\/[A-Za-z0-9]([A-Za-z0-9_]|-(?!-))*[A-Za-z0-9_]' \
+    '\/[A-Za-z0-9_]([A-Za-z0-9_]|-(?!-))*[A-Za-z0-9_]\/?$') # noqa
 
 
 def validate_text(text: str, regex: Pattern, error_label: str) -> None:

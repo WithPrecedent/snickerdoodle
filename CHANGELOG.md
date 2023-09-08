@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 
 <!-- insertion marker -->
 
+## 0.1.5
+
+* Changed badge colors to more closely match colors of the associated tool or brand
+* Fixed capitalization in badges for consistency with different badge styles and
+  associated tool or brand's normal capitalization
+* Fixed remaining bugs due to differences in `project_name`, `package_name`, and
+  `repo_name` in `cookiecutter` templating
+
 ## 0.1.4
 
 * Added documentation for included GitHub Actions

@@ -4,7 +4,7 @@
 name = "snickerdoodle"
 description = "Easy-to-use, general-purpose, modern cookiecutter template for Python"
 authors = [{name = "coreyrayburnyung", email = "coreyrayburnyung@gmail.com"}]
-version = "0.1.4"
+version = "0.1.5"
 license = {text = "Apache 2.0"}
 readme = "README.md"
 requires-python = ">=3.8"

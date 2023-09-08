@@ -1,4 +1,4 @@
-# Create Repository Tutorial
+# Tutorial
 
 Follow these steps to ensure there are no problems with the created repository. You can try to mirror these steps using your IDE, but I cannot guarantee you will not run into problems later.
 
@@ -52,7 +52,8 @@ any limitations on your answer:
 
 ## Connect Remote and Local Repositories
 
-Enter the folder that you just created (which should be the "repo_name") and initialize git:
+Enter the folder that you just created (which should be the "repo_name") and
+initialize git as followa:
 
 ```sh
 # If your shell does not use "cd" to change directory, substitute the
