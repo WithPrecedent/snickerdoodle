@@ -48,7 +48,14 @@ To meet those goals, `snickerdoodle` uses [`pdm`](https://pdm.fming.dev/latest/)
 
 ### Requirements
 
-To use `snickerdoodle` and the repository that it creates, you need [`python`](https://www.python.org/), [`git`](https://git-scm.com/), [`cookiecutter`](https://www.cookiecutter.io/) (or [`cruft`](https://github.com/cruft/cruft)), and [`pdm`](https://pdm.fming.dev/latest/) installed on your system. You also need a GitHub account. If you have not already, set up your [GitHub credentials](https://docs.github.com/en/get-started/quickstart/set-up-git) on your computer.
+To use `snickerdoodle` and the repository that it creates, you need
+[`python`](https://www.python.org/), [`git`](https://git-scm.com/),
+[`cookiecutter`](https://www.cookiecutter.io/) (or
+[`cruft`](https://github.com/cruft/cruft) or [`cookieninja`](https://github.com/cookieninja-generator/cookieninja)), and
+[`pdm`](https://pdm.fming.dev/latest/) installed on your system. You also need a
+GitHub account. If you have not already, set up your [GitHub
+credentials](https://docs.github.com/en/get-started/quickstart/set-up-git) on
+your computer.
 
 ### Setup
 
