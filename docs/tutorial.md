@@ -11,7 +11,7 @@ Go to your GitHub repositories and click "+". Name the new repository that you a
 In the parent folder of where you want your new repository, you can use `cookiecutter` (or
 [`cruft`](https://github.com/cruft/cruft) or
 [`cookieninja`](https://github.com/cookieninja-generator/cookieninja)) to access
-it directly from GitHub:
+the `snickerdoodle` template directly from GitHub:
 
 ```sh
 cookiecutter gh:WithPrecedent/snickerdoodle
