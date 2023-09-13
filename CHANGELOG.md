@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 <!-- insertion marker -->
 
+## 0.1.6
+
+* Added dependabot to both the template and the created repository
+* Added option to initialize and commit to GitHub (including building and
+  deploying initial documentation to GitPages)
+* Added option to create a virtual environment with `pdm`
+
 ## 0.1.5
 
 * Changed badge colors to more closely match colors of the associated tool or brand

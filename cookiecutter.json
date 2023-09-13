@@ -20,5 +20,7 @@
     "flat", 
     "flat-square", 
     "plastic", 
-    "social"]
+    "social"],
+  "commit_to_github": false,
+  "create_virtual_environment": false
 }
