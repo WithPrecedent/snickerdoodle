@@ -53,21 +53,6 @@ def commit_to_git_subprocess(url: str, folder: str | pathlib.Path) -> None:
     execute_commands(commands = git_commands, folder = folder)
 
 
-# def commit_to_git_gitpython(url: str, folder: str | pathlib.Path) -> None:
-#     """Initializes and commits repository to GitHub through shell.
-
-#     Args:
-#         url: url for GitHub repository.
-
-#     """
-#     import git
-#     repo = git.Repo.init(folder)
-#     repo.index.add('.')
-#     repo.index.commit("initial commit")
-#     repo.create_remote("origin", url=url)
-#     repo.remote("origin").push('main')
-
-
 def build_and_deploy_docs(folder: str | pathlib.Path) -> None:
     """Builds and deploys docs using `subprocess`, `pdm`, and `mkdocs`.
 
