@@ -4,7 +4,9 @@ Follow these steps to ensure there are no problems with your created repository.
 
 ## Create Remote Repository
 
-Go to your GitHub Repositories page and click "+". Name the new repository that you are creating the same as the "repo_name" you will use in answering the questionnaire.
+Go to your GitHub Repositories page and click "+". Name the new repository that
+you are creating the same as the "repo_name" you will use in answering the
+questionnaire. In the repository, change Settings/Actions/General/Workflow Permissions to "Read and Write Permissions." This is necessary for the repository documentation to be properly deployed.
 
 ## Create Local Repository
 
