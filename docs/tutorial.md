@@ -1,10 +1,10 @@
 # Tutorial
 
-Follow these steps to ensure there are no problems with the created repository. You can try to mirror these steps using your IDE, but I cannot guarantee you will not run into problems later.
+Follow these steps to ensure there are no problems with your created repository. You can try to mirror these steps using your IDE, but I cannot guarantee you will not run into problems later.
 
 ## Create Remote Repository
 
-Go to your GitHub repositories and click "+". Name the new repository that you are creating the same as the "repo_name" you will use in answering the questionnaire. In the repository, change Settings/Actions/General/Workflow Permissions to "Read and Write Permissions." This is necessary for the repository documentation to be properly deployed.
+Go to your GitHub Repositories page and click "+". Name the new repository that you are creating the same as the "repo_name" you will use in answering the questionnaire.
 
 ## Create Local Repository
 
@@ -23,10 +23,10 @@ Or, you can clone the repository and then apply the template:
 # Go to folder where your cookiecutter templates are stored locally.
 git clone git@github.com:WithPrecedent/snickerdoodle.git
 # Go to folder where your code repostiories are stored locally.
-cookiecutter snickerdoodle/
+cookiecutter snickerdoodle
 ```
 
-## Questionnaire
+## Answer Questionnaire
 
 As with any `cookiecutter`, project generation requires you to input information
 in what is referred to as the "questionnaire." `snickerdoodle` attempts to make this process quick, easy, and
@@ -52,8 +52,13 @@ any limitations on your answer:
 | `url` | in `pyproject.toml` | formed from `github_user` and `repo_name` | any valid GitHub url |
 | `license` | content of the constructed LICENSE file and in `pyproject.toml` | Apache 2.0 | Apache 2.0, BSD, ISC, GNU General Public v3, MIT, Other |
 | `badge_style` | badges in README and docs |  [![for-the-badge style](https://img.shields.io/badge/style-for--the--badge-blue?style=for-the-badge)](https://www.shields.io/) | [![for-the-badge style](https://img.shields.io/badge/style-for--the--badge-blue?style=for-the-badge)](https://www.shields.io/), [![flat style](https://img.shields.io/badge/style-flat-green?style=flat)](https://www.shields.io/), [![flat-square style](https://img.shields.io/badge/style-flat--square-orange?style=flat-square)](https://www.shields.io/), [![plastic style](https://img.shields.io/badge/style-plastic-purple?style=plastic)](https://www.shields.io/), [![social style](https://img.shields.io/badge/style-social-red?style=social)](https://www.shields.io/) |
+| `commit_to_github` | whether to make an initial commit to GitHub | "n" (no commit) | Must have [GitHub credentials stored](https://docs.github.com/en/get-started/quickstart/set-up-git) |
+| `create_virtual_environment` | whether to create a virtual environment in ".venv" folder | "n" (no environment created) | Must have `pdm` installed |
 
 ## Connect Remote and Local Repositories
+
+*This step is unnecessary if you opted to `commit_to_github` in the
+questionnaire.*
 
 Enter the folder that you just created (which should be the "repo_name") and
 initialize git as followa:
@@ -78,6 +83,9 @@ Your first commit with the new repository should now be visible on GitHub.
 
 ## Create Virtual Environment
 
+*This step is unnecessary if you opted to `create_virtual_environment` in the
+questionnaire.*
+
 To create an environment with all of your dependencies (including development dependencies), enter the following in the repository folder.
 
 ```sh
@@ -88,6 +96,10 @@ pdm use -f .venv
 Any time you update your dependencies, you should rerun `pdm install`. But, you do not need to enter `pdm use`, unless you have a particular need within the environment.
 
 ## Deploy Documentation
+
+*This step is unnecessary if you opted to `commit_to_github` and
+`create_virtual_environment` in the
+questionnaire.*
 
 Unlike `poetry`, `pdm` does not use a shell. Instead, after you have created a virtual environment, enter the following commands to deploy your documentation.
 
