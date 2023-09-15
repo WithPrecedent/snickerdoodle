@@ -1,5 +1,7 @@
-# Releases a new version on GitHub whenever a commit message matches the
-# version format (e.g. "v0.1.2"). For further documentation on this Action, see:
+# Releases a new version on GitHub whe a commit message is a version number.
+
+# To trigger this Action, the commit message must match the version format 
+# (e.g. "v0.1.2"). For further documentation on this Action, see:
 # https://github.com/marketplace/actions/github-create-tag-release
 
 name: GitHub Release

@@ -1,4 +1,4 @@
-# Action for regular updates to any branch
+# Automatic jobs upon a commit or pull-request
 
 # This Action builds, tests, and lints the package. Then, it builds the
 # documentation and deploys it on GitHub Pages.

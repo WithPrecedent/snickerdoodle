@@ -1,4 +1,4 @@
-# Action for securely publishing the package on PyPI
+# Securely publishes the repository on PyPI
 
 # This code is adapted  from the model Action in the PDM documentation:
 # https://pdm.fming.dev/latest/usage/publish/

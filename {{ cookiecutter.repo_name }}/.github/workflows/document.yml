@@ -1,4 +1,4 @@
-# Action for building and deploying documentation for the package
+# Builds and deploys documentation for the package
 
 name: document
 
@@ -6,6 +6,7 @@ name: document
 on: [workflow_call, workflow_dispatch]
 
 jobs:
+
   build_and_deploy_documentation:
     name: Build and deploy docs
     runs-on: ubuntu-latest

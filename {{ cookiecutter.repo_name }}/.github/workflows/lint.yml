@@ -1,4 +1,4 @@
-# Action for linting and formatting a repository.
+# Issues a linting and formatting report for the repository.
 
 name: lint
 
