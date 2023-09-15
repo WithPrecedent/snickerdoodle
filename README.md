@@ -41,10 +41,10 @@ find another `cookiecutter` template meeting these criteria:
   environment with `pdm`. This allows you to start coding right away.
 * **Flexible**: incorporates GitHub's best resources (Actions, Pages, and
   Dependabot) without mandating the usage of any other external services
-  (SonarCloud, Travis, CircleCI, tox, etc.). `snickerdoodle` makes adding such features easy, but without
+  (SonarCloud, Travis, CircleCI, Tox, etc.). `snickerdoodle` makes adding such features easy, but without
   forcing you to accept services that you do not want.
 * **Low-Maintenance**: utilizing GitHub Actions, every commit to GitHub will run all
-  tests, lint the code, and deploy updated documentation. Among other Actions are
+  tests, lint the code, and deploy updated documentation. Among other included Actions are
   workflows to publish your repository to PyPI and merge a development branch
   into the main branch. You might never need to use the terminal again (unless
   you want to).
@@ -88,8 +88,8 @@ your computer.
 
 If you are new to `cookiecutter` or simply want to guarantee that the created repository works as intended, follow the instructions in the [`snickerdoodle` tutorial](https://withprecedent.github.io/snickerdoodle/tutorial/).
 
-If you are familiar with creating cookiecutter templates, you can go about the
-normal template construction process with a two important additions. 
+If you are familiar with creating `cookiecutter` templates, you can go about the
+normal template construction process with a two important additions.
 
 First,
 after you create the remote repository on GitHub, change
@@ -135,12 +135,12 @@ Conduct](./code_of_conduct.md).
 
 ## Similar Projects
 
-These are other templates using `pdm` as their dependency manager:
+These are other `cookiecutter` templates using `pdm` as their dependency manager:
 
 * [cookiecutter-docker-python-pdm](https://github.com/mnako/cookiecutter-docker-python-pdm): uses Docker and `black`.
 * [cookie](https://github.com/chris-santiago/cookie): uses `mkdocs` and GitHub Actions, but also adds `conda`, Nox, `black`, and `pyright`.
 
-And, these are other general-purpose templates that are well-maintained, modern, and well-documented:
+And, these are other general-purpose `cookiecutter` templates that are well-maintained, modern, and well-documented:
 
 * [cookiecutter-hypermodern-python](https://github.com/cjolowicz/cookiecutter-hypermodern-python): uses, among other tools, `sphinx`, GitHub Actions, Nox, `mypy`, `flake8`, and `poetry`. If you do not mind those choices and wanted a modern, maintained template, this is the one to use.
 * [cookiecutter-pylibrary](https://github.com/ionelmc/cookiecutter-pylibrary): a newer template that is minimal compared to most and uses, among other tools, `sphinx`, GitHub Actions, Setuptools, Tox, and Travis-CI.

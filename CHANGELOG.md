@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 <!-- insertion marker -->
 
+## 0.1.7
+
+* Added Action (`release.yml`) to template and create repository which creates a
+  new GitHub release.
+
 ## 0.1.6
 
 * Added dependabot to both the template and the created repository
