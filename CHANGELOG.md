@@ -3,8 +3,11 @@
 All notable changes to this project will be documented in this file.
 
 <!-- insertion marker -->
+## v0.1.8
 
-## 0.1.7 (unreleased)
+* Fixed version detection regex in `release.yml`
+
+## 0.1.7
 
 * Added Action (`release.yml`) to template and create repository which creates a
   new GitHub release.
