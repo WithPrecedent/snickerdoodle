@@ -34,7 +34,6 @@ find another `cookiecutter` template meeting these criteria:
 * **Low-Maintenance**: every commit automatically deploys the documentation as
   well as
   lints, formats, and tests the repository
-  
 * **Well-Documented**: the
   [documentation](https://withprecedent.github.io/snickerdoodle) includes
   complete guides for basic and advanced users
@@ -51,6 +50,7 @@ find another `cookiecutter` template meeting these criteria:
 
 `snickerdoodle` includes modern, stable tools for package construction and
 management that do not require any external services or costs:
+
 * Dependency Management: [![Dependency Manager](https://img.shields.io/badge/PDM-mediumpurple?style=flat-square&logo=affinity&labelColor=gray)](https://PDM.fming.dev) and [![Dependency Maintainer](https://img.shields.io/badge/dependabot-navy?style=flat-square&logo=dependabot&logoColor=white&labelColor=gray)](https://github.com/dependabot)
 * Documentation:
   [![Documentation Tool](https://img.shields.io/badge/MkDocs-magenta?style=flat-square&color=deepskyblue&logo=markdown&labelColor=gray)](https://www.mkdocs.org/)
@@ -69,6 +69,7 @@ management that do not require any external services or costs:
 In addition to the included tools above, `snickerdoodle` includes several
 options in the `cookiecutter` questionnaire that can be automatically applied
 as part of the templating process:
+
 * Badge Style: [![flat
   style](https://img.shields.io/badge/flat-crimson?style=flat)](https://www.shields.io/),
   [![flat-square
