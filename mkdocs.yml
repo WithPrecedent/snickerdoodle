@@ -25,7 +25,7 @@ nav:
   - License: license.md
 - User Guide:
   - Tutorial: tutorial.md
-  - Advanced Usage: advanced.md
+  - Advanced User Guide: advanced.md
 - Development:
   - Contributing: contributing.md
   - Code of Conduct: code_of_conduct.md

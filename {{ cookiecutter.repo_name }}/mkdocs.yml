@@ -25,7 +25,8 @@ nav:
   - Credits: credits.md
   - License: license.md
 - User Guide:
-  - Design: design.md
+  - Tutorial: tutorial.md
+  - Advanced User Guide: advanced.md
   - Recipes: recipes.md
 - API: reference/
 - Development:

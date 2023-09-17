@@ -8,6 +8,7 @@ All notable changes to this project will be documented in this file.
 
 * Added Action (`release.yml`) to template and create repository which creates a
   new GitHub release.
+* Updated and reorganized documentation
 
 ## 0.1.6
 

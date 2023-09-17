@@ -1,4 +1,4 @@
-# Advanced Usage
+# Advanced User Guide
 
 ## Configuration File
 
@@ -12,13 +12,14 @@ You can then use the configuration file (which you should probably put in the
 parent folder for your code repositories) when you call `cookiecutter` as
 follows:
 
-```sh
+``` sh
 cookiecutter gh:WithPrecedent/snickerdoodle --config-file cc_config.yaml
 ```
 
 ## Core Components
 
-These are the tools that `snickerdoodle` incorporates:
+These are the tools that `snickerdoodle` incorporates and a brief explanation as
+to why they were chosen:
 
 * [`pdm`](https://pdm.fming.dev/latest/): although
   [`poetry`](https://python-poetry.org/) is more popular, its syntax [is not
@@ -31,7 +32,7 @@ These are the tools that `snickerdoodle` incorporates:
   it.
 * [`mkdocs`](https://www.mkdocs.org/): similarly,
   [`sphinx`](https://www.sphinx-doc.org/en/master/) is the dominant
-  documentation package, but it is not nearly as easy to use as `mkdocs`, which allows
+  documentation package, but it is not nearly as [easy to use as `mkdocs`](https://squidfunk.github.io/mkdocs-material/alternatives/), which allows
   all of your documentation to be created in Markdown and is beautiful
   out-of-the-box when using the [Material
   Theme](https://squidfunk.github.io/mkdocs-material/). I chose to prioritize
@@ -41,9 +42,41 @@ These are the tools that `snickerdoodle` incorporates:
 * [Github Actions](https://github.com/features/actions): if you store your package on Github, which `snickerdoodle` assumes, [there are strong reasons](https://resources.github.com/devops/tools/automation/actions/) to prefer Github Actions as your CI/CD tool. `snickerdoodle` includes workflows for updating, releasing, and publishing your package while also deploying the accompanying documentation.
 * [GitHub Pages](https://pages.github.com/): There is a lot to be said for [Read the Docs](https://readthedocs.com) as a documentation host site. However, `mkdocs` works better on GitHub Pages and once you start using GitHub Actions, the automatic updating advantage of Read the Docs disappears. I also like that GitHub Pages is not dependent on ads placed on documentation pages for its survival. This was a close call and I might consider adding a Read the Docs option in a future version of `snickerdoodle`.
 
-## Versioning
+## File Structure
 
-When you publish a new version, you should first manually adjust the version in the created repository's `__init__.py` file. It will then be automatically adjusted in `pyproject.toml` as well. I decided not to use automatic semantic versioning because the process thinks so many minor updates are "major" and you will [find yourself on version 12.0.0](https://hynek.me/articles/semver-will-not-save-you/) and still in alpha or beta. And, while [calendar versioning](https://calver.org/) makes sense, it is alien and confusing to users unfamiliar with it.
+Your new repository will have the following structure. The files and folders
+that you will ordinarily modify are highlighted and commented.
+
+``` sh hl_lines=" 1 5 15 19 21 22 23 25 26 27 28"
+├── CHANGELOG.md              # Main changelog to record changes
+├── CODE_OF_CONDUCT.md
+├── CONTRIBUTING.md
+├── docs
+│   ├── advanced.md           # Add core documentation beyond the tutorial
+│   ├── changelog.md
+│   ├── code_of_conduct.md
+│   ├── contributing.md
+│   ├── credits.md
+│   ├── css
+│   │   ├── material.css
+│   │   └── mkdocstrings.css
+│   ├── index.md
+│   ├── license.md
+│   ├── recipes.md            # Add examples and recipes
+│   ├── scripts
+│   │   ├── gen_credits.py
+│   │   └── gen_ref_nav.py
+│   └── tutorial.md           # Add basic tutorial
+├── LICENSE
+├── mkdocs.yml                # Change documentation structure
+├── pyproject.toml            # Add dependencies or project metadata
+├── README.md                 # This will also be the docs landing page
+├── src
+│   └── {repository name}     # Add Python modules
+│       └── __init__.py       # Update import info and version 
+└── tests                     # Add other test files
+    └── test_main.py          # Follow the 'test_NAME' convention
+```
 
 ## Formatting and Linting
 
@@ -60,7 +93,8 @@ guide](https://pre-commit.com/#usage). If you activate `pre-commit`, it will the
 
 ## GitHub Actions
 
-These are the available actions for a repository created by `snickerdoodle`:
+These are the available actions for a repository created by `snickerdoodle` that
+are located in the ".github" folder and on the GitHub repository page under "Actions":
 
 | GitHub Action | Trigger | Jobs |
 | --- | --- | --- |
@@ -74,3 +108,7 @@ These are the available actions for a repository created by `snickerdoodle`:
 To run an Action on GitHub, go to your repository, click "Actions" and select
 one of the Actions listed on the left side of the screen. Only those Actions
 listed in the chart above with manual triggers can be activated via GitHub.
+
+## Versioning
+
+When you publish a new version, you should first manually adjust the version in the created repository's `__init__.py` file. It will then be automatically adjusted in `pyproject.toml` as well. I decided not to use automatic semantic versioning because the process thinks so many minor updates are "major" and you will [find yourself on version 12.0.0](https://hynek.me/articles/semver-will-not-save-you/) and still in alpha or beta. And, while [calendar versioning](https://calver.org/) makes sense, it is alien and confusing to users unfamiliar with it.
