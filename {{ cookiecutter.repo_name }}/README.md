@@ -52,4 +52,4 @@ Contributors are always welcome. Feel free to grab an [issue](https://www.github
 
 ## License
 
-Use of this repository is authorized under the [![License](https://img.shields.io/badge/License-{{cookiecutter.license}}-blue.svg?style={{ cookiecutter.badge_style }}&color=firebrick&logo=apache)](https://www.github.com/{{cookiecutter.github_user}}/{{cookiecutter.repo_name}}/blog/main/LICENSE).
+Use of this repository is authorized under the [{{cookiecutter.license}}](https://www.github.com/{{cookiecutter.github_user}}/{{cookiecutter.repo_name}}/blog/main/LICENSE).
