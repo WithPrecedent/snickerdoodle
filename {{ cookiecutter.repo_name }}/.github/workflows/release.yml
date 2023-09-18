@@ -24,10 +24,12 @@ jobs:
 
     steps:
 
-    - name: Checkout Repository
-      uses: actions/checkout@v3
-
-    - name: Generate GitHub Release
-      uses: lsegal/github-release-from-changelog-action@latest
+    - name: Create GitHub Release
+      uses: CupOfTea696/gh-action-auto-release@v1.0.2
+      with:
+        title: "Release: $version"
+        tag: "v$semver"
+        draft: false
+        regex: "v[0-9]+.[0-9]+.[0-9]+"
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
