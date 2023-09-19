@@ -1,0 +1,58 @@
+# This Action is currently not able to create coverage badges in different styles
+
+# Creates a code coverage badge for the README.md file
+
+# name: Coverage
+
+# on: [push, pull_request, workflow_call]
+
+# permissions:
+#     contents: write
+#     pull-requests: write
+  
+# jobs:
+
+#   build:
+#     runs-on: ubuntu-latest
+#     steps:
+
+#     - name: Checkout Repository
+#       uses: actions/checkout@v3
+#       with: 
+#         fetch-depth: 0
+
+#     - name: Set up Python
+#       uses: actions/setup-python@v4
+#       with:
+#         python-version: 3.x
+
+#     - name: Setup PDM
+#       uses: pdm-project/setup-pdm@v3
+#       with:
+#         python-version: 3.x
+
+#     - name: Install dependencies
+#       shell: bash
+#       run: pdm install -v && pdm info
+
+#     - name: Run coverage
+#       run: |
+#         pdm run coverage run -m pytest
+#         pdm run coverage report -m
+
+#     - name: Coverage Badge
+#       uses: tj-actions/coverage-badge-py@v1.8
+#       with:
+#         output: docs/coverage/coverage.svg
+  
+#     - name: Verify Changed files
+#       uses: tj-actions/verify-changed-files@v16
+#       id: verify-changed-files
+#       with:
+#         files: docs/coverage/coverage.svg
+
+#     - name: Publish coverage report to coverage-badge branch
+#       uses: JamesIves/github-pages-deploy-action@v4
+#       with:
+#         branch: coverage-badge
+#         folder: docs/coverage
