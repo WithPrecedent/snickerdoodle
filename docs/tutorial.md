@@ -1,32 +1,49 @@
 # Tutorial
 
-Follow these steps to ensure there are no problems with your created repository. You can try to mirror these steps using your IDE, but I cannot guarantee you will not run into problems later.
+Follow these steps to ensure there are no problems with your created repository.
+
+## Requirements
+
+To use `snickerdoodle` and the repository that it creates, you just need:
+* [`python`](https://www.python.org/) 3.8 or later
+* [`git`](https://git-scm.com/)
+* [`cookiecutter`](https://www.cookiecutter.io/),
+  [`cruft`](https://github.com/cruft/cruft), or
+  [`cookieninja`](https://github.com/cookieninja-generator/cookieninja)
+* [`pdm`](https://pdm.fming.dev/latest/)
+* A [GitHub](https://github.com/) account
+  
+To take advantage of the automatic initial commit to GitHub,
+you should also [store your credentials](https://docs.github.com/en/get-started/quickstart/set-up-git) on
+your computer.
 
 ## Create Remote Repository
 
-Go to your GitHub Repositories page and click "+". Name the new repository that
-you are creating the same as the "repo_name" you will use in answering the
-questionnaire. In the repository, change Settings/Actions/General/Workflow Permissions to "Read and Write Permissions." This is necessary for the repository documentation to be properly deployed.
+Go to your GitHub Repositories page and click "+". The name of the new
+repository must be the same as the "repo_name" you will use in answering the `cookiecutter`
+questionnaire.
 
 ## Create Local Repository
 
 In the parent folder of where you want your new repository, you can use `cookiecutter` (or
 [`cruft`](https://github.com/cruft/cruft) or
 [`cookieninja`](https://github.com/cookieninja-generator/cookieninja)) to access
-the `snickerdoodle` template directly from GitHub:
+the `snickerdoodle` template either directly from GitHub or by cloning it on your computer.
 
-```sh
-cookiecutter gh:WithPrecedent/snickerdoodle
-```
+=== from GitHub
 
-Or, you can clone the repository and then apply the template:
+    ```sh
+    cookiecutter gh:WithPrecedent/snickerdoodle
+    ```
 
-```sh
-# Go to folder where your cookiecutter templates are stored locally.
-git clone git@github.com:WithPrecedent/snickerdoodle.git
-# Go to folder where your code repostiories are stored locally.
-cookiecutter snickerdoodle
-```
+=== from local source
+
+    ```sh
+    # Go to folder where your cookiecutter templates are stored locally.
+    git clone git@github.com:WithPrecedent/snickerdoodle.git
+    # Go to folder where your code repostiories are stored locally.
+    cookiecutter snickerdoodle
+    ```
 
 ## Answer Questionnaire
 

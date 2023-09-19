@@ -6,9 +6,6 @@ on:
   push:
     branches:
       - main
-    # tags-ignore:
-    #   - v[0-9]+.[0-9]+.[0-9]+
-  # Allows this Action to be called by other Actions or through GitHub
   workflow_call:
   workflow_dispatch:
 
@@ -47,3 +44,18 @@ jobs:
       run: pdm run mkdocs gh-deploy --force --clean --verbose
       env:
         GITHUB_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
+
+  # Only triggered if the commit message matches the semantic version format 
+  # (e.g. "v0.1.2").
+  create_github_release:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Create GitHub Release
+      uses: CupOfTea696/gh-action-auto-release@v1.0.2
+      with:
+        title: "Release: $version"
+        tag: "v$semver"
+        regex: "/^v#{semver}$/i"
+      env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}   

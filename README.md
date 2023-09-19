@@ -86,34 +86,12 @@ as part of the templating process:
 
 ## Getting started
 
-### Requirements
-
-To use `snickerdoodle` and the repository that it creates, you just need:
-* [`python`](https://www.python.org/) 3.8 or later
-* [`git`](https://git-scm.com/)
-* [`cookiecutter`](https://www.cookiecutter.io/),
-  [`cruft`](https://github.com/cruft/cruft), or
-  [`cookieninja`](https://github.com/cookieninja-generator/cookieninja)
-* [`pdm`](https://pdm.fming.dev/latest/)
-* A [GitHub](https://github.com/) account
-  
-To take advantage of the automatic initial commit to GitHub,
-you should also [store your credentials](https://docs.github.com/en/get-started/quickstart/set-up-git) on
-your computer.
-
 ### Setup
 
 If you are new to `cookiecutter` or simply want to guarantee that the created repository works as intended, follow the instructions in the [`snickerdoodle` tutorial](https://withprecedent.github.io/snickerdoodle/tutorial/).
 
 If you are familiar with creating `cookiecutter` templates, you can go about the
-normal template construction process with a two important additions.
-
-First,
-after you create the remote repository on GitHub, change
-"Settings/Actions/General/Workflow Permissions" to "Read and Write Permissions."
-This is necessary for the repository documentation to be properly deployed.  
-
-Second, if you do not select the optional
+normal template construction process. However, if you do not select the optional
 automatic setup features, you should follow the instructions
 for manually setting up your [virtual
 environment](https://withprecedent.github.io/snickerdoodle/tutorial/#Create-Virtual-Environment)

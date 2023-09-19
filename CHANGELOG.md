@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 
 <!-- insertion marker -->
+
+## 0.1.9 (unreleased)
+
+* Streamlined GitHub Actions in the template and created repository
+* Updated documentation to incorporate changes to Actions
+* Changed extensions in `mkdocs.yml` to better reflect anticipated usage
+* Added definition lists and admonitions to the template documentation to better
+  convey usage instructions
+
 ## v0.1.8
 
 * Fixed version detection regex in `release.yml`
@@ -10,7 +19,7 @@ All notable changes to this project will be documented in this file.
 ## 0.1.7
 
 * Added Action (`release.yml`) to template and create repository which creates a
-  new GitHub release.
+  new GitHub release
 * Updated and reorganized documentation
 
 ## 0.1.6
