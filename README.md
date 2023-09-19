@@ -36,7 +36,7 @@ find another `cookiecutter` template meeting these criteria:
   lints, formats, and tests the repository
 * **Well-Documented**: the
   [documentation](https://withprecedent.github.io/snickerdoodle) includes
-  complete guides for basic and advanced users
+  complete guides for [new](https://withprecedent.github.io/snickerdoodle/tutorial/) and [advanced](https://withprecedent.github.io/snickerdoodle/advanced/) users
 * **PEP-Compliant**: all included tools follow accepted
   [PEPs](https://peps.python.org/pep-0001/) (unfortunately, that ruled out using
   `poetry`, which is [still not](https://github.com/python-poetry/roadmap/issues/3) [PEP 621](https://peps.python.org/pep-0621/) or
@@ -44,17 +44,17 @@ find another `cookiecutter` template meeting these criteria:
   compliant, three years after they were accepted,
   [resulting in compatibility](https://github.com/python-poetry/poetry/issues/496)
   [problems because of its](https://github.com/python-poetry/poetry/issues/3332)
-  [non-standard `pyproject.toml` format](https://github.com/python-poetry/poetry/issues/8415)).
+  [non-standard `pyproject.toml` format](https://github.com/python-poetry/poetry/issues/8415))
 
 ### Tools
 
-`snickerdoodle` includes modern, stable tools for package construction and
+To accomplish those goals, `snickerdoodle` includes modern, stable tools for package construction and
 management that do not require any external services or costs:
 
 * Dependency Management: [![Dependency Manager](https://img.shields.io/badge/PDM-mediumpurple?style=flat-square&logo=affinity&labelColor=gray)](https://PDM.fming.dev) and [![Dependency Maintainer](https://img.shields.io/badge/dependabot-navy?style=flat-square&logo=dependabot&logoColor=white&labelColor=gray)](https://github.com/dependabot)
 * Documentation:
   [![Documentation Tool](https://img.shields.io/badge/MkDocs-magenta?style=flat-square&color=deepskyblue&logo=markdown&labelColor=gray)](https://www.mkdocs.org/)
-  with [![Documentation Theme](https://img.shields.io/badge/Material-magenta?style=flat-square&color=deepskyblue&logo=material-design&logoColor=white&labelColor=gray)](https://squidfunk.github.io/mkdocs-material/) theme
+  with the [![Documentation Theme](https://img.shields.io/badge/Material-magenta?style=flat-square&color=deepskyblue&logo=material-design&logoColor=white&labelColor=gray)](https://squidfunk.github.io/mkdocs-material/) theme
   on [![Documentation Host](https://img.shields.io/badge/GitHub_Pages-blue?style=flat-square&color=navy&logo=github&labelColor=gray)](https://withprecedent.github.io/snickerdoodle)
 * Testing: [![Testing](https://img.shields.io/badge/pytest-steelblue?style=flat-square&logo=pytest&logoolor=white&labelColor=gray)](https://github.com/TezRomacH/python-package-template/blob/master/.pre-commit-config.yaml)
 * CI/CD: [![CI](https://img.shields.io/badge/GitHub_Actions-navy?style=flat-square&logo=githubactions&labelColor=gray&logoColor=white)](https://github.com/features/actions)
@@ -90,9 +90,9 @@ as part of the templating process:
 
 If you are new to `cookiecutter` or simply want to guarantee that the created repository works as intended, follow the instructions in the [`snickerdoodle` tutorial](https://withprecedent.github.io/snickerdoodle/tutorial/).
 
-If you are familiar with creating `cookiecutter` templates, you can go about the
-normal template construction process. However, if you do not select the optional
-automatic setup features, you should follow the instructions
+If you are familiar with `cookiecutter` templates, you can go about the
+normal construction process. However, if you do not select the optional
+automatic setup features in the questionnaire, you should follow the instructions
 for manually setting up your [virtual
 environment](https://withprecedent.github.io/snickerdoodle/tutorial/#Create-Virtual-Environment)
 and [deploying your
@@ -102,20 +102,18 @@ tutorial](https://withprecedent.github.io/snickerdoodle/tutorial/). It is
 especially important to follow the document deployment process for your initial deployment - after that GitHub Actions will automatically update and redeploy the
 documentation (and you need not use the manual process again).
 
-## Usage
+### Usage
 
 After your repository is created, you can start coding right away. Every push to GitHub will run any tests in the "tests" folder,
-deploy documentation to GitHub Pages, and apply `ruff` for linting and formatting. If you wish to publish your repository
-to [PyPI](https://pypi.org), I recommend using the [`pdm publish`
-command](https://pdm.fming.dev/latest/usage/publish/) or the `publish` GitHub
-Action (with can be activated directly from your GitHub repository's Actions
-page), if you set up PyPI to recognize the Action as a [trusted
-publisher](https://docs.pypi.org/trusted-publishers/adding-a-publisher/).
+deploy documentation to GitHub Pages, and apply `ruff` for linting and
+formatting. For more information about the following topics, just click on the
+corresponding hyperlink.
 
-For
-other questions or issues, consult the [Advanced User
-  Guide](https://withprecedent.github.io/snickerdoodle/advanced/) in the
-  `snickerdoodle` documentation.
+* [Formatting and Linting](https://withprecedent.github.io/snickerdoodle/advanced/#formatting-and-linting)
+* [GitHub Actions](https://withprecedent.github.io/snickerdoodle/advanced/#github-actions)
+* [Publishing](https://withprecedent.github.io/snickerdoodle/advanced/#publishing)
+* [Repository Layout](https://withprecedent.github.io/snickerdoodle/advanced/#repository-layout)
+* [Versioning](https://withprecedent.github.io/snickerdoodle/advanced/#versioning)
 
 ## Contributing
 

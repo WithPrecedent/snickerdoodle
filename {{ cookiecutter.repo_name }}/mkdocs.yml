@@ -47,6 +47,7 @@ theme:
   - content.action.view
   - content.code.annotate
   - content.code.copy
+  - content.tabs.link
   - content.tooltips
   - navigation.footer
   - navigation.indexes
@@ -89,12 +90,16 @@ markdown_extensions:
 - attr_list
 - admonition
 - callouts
-- codehilite
 - footnotes
 - md_in_html
+- pymdownx.details
 - pymdownx.emoji:
     emoji_index: !!python/name:materialx.emoji.twemoji
     emoji_generator: !!python/name:materialx.emoji.to_svg
+- pymdownx.highlight:
+    anchor_linenums: true
+    line_spans: __span
+- pymdownx.inlinehilite
 - pymdownx.magiclink
 - pymdownx.mark
 - pymdownx.smartsymbols
@@ -102,12 +107,15 @@ markdown_extensions:
     check_paths: true
 - pymdownx.superfences:
     custom_fences:
-      - name: mermaid
-        class: mermaid
-        format: !!python/name:pymdownx.superfences.fence_code_format
+    - name: mermaid
+      class: mermaid
+      format: !!python/name:pymdownx.superfences.fence_code_format
+- pymdownx.tabbed:
+    alternate_style: true
 - pymdownx.tasklist:
     custom_checkbox: true
 - sane_lists
+- tables
 - toc:
     permalink: true
 

@@ -1,10 +1,9 @@
 # Tutorial
 
-Follow these steps to ensure there are no problems with your created repository.
-
 ## Requirements
 
 To use `snickerdoodle` and the repository that it creates, you just need:
+
 * [`python`](https://www.python.org/) 3.8 or later
 * [`git`](https://git-scm.com/)
 * [`cookiecutter`](https://www.cookiecutter.io/),
@@ -12,10 +11,10 @@ To use `snickerdoodle` and the repository that it creates, you just need:
   [`cookieninja`](https://github.com/cookieninja-generator/cookieninja)
 * [`pdm`](https://pdm.fming.dev/latest/)
 * A [GitHub](https://github.com/) account
-  
-To take advantage of the automatic initial commit to GitHub,
-you should also [store your credentials](https://docs.github.com/en/get-started/quickstart/set-up-git) on
-your computer.
+
+!!! tip
+    To take advantage of the automatic initial commit to GitHub, you should also
+    [store your Git credentials](https://docs.github.com/en/get-started/quickstart/set-up-git) on your computer.
 
 ## Create Remote Repository
 
@@ -30,13 +29,13 @@ In the parent folder of where you want your new repository, you can use `cookiec
 [`cookieninja`](https://github.com/cookieninja-generator/cookieninja)) to access
 the `snickerdoodle` template either directly from GitHub or by cloning it on your computer.
 
-=== from GitHub
+=== "from GitHub"
 
     ```sh
     cookiecutter gh:WithPrecedent/snickerdoodle
     ```
 
-=== from local source
+=== "from local source"
 
     ```sh
     # Go to folder where your cookiecutter templates are stored locally.
@@ -76,10 +75,12 @@ any limitations on your answer:
 
 ## Connect Remote and Local Repositories
 
-*This step is unnecessary if you opted to `commit_to_github` in the
-questionnaire.*
+!!! Warning
 
-Enter the folder that you just created (which should be the "repo_name") and
+    *You do not need to complete this step if you opted to `commit_to_github` in the
+    questionnaire.*
+
+Enter the folder that you just created (which should be the `repo_name`) and
 initialize git as followa:
 
 ```sh
@@ -102,8 +103,10 @@ Your first commit with the new repository should now be visible on GitHub.
 
 ## Create Virtual Environment
 
-*This step is unnecessary if you opted to `create_virtual_environment` in the
-questionnaire.*
+!!! Warning
+
+    *You do not need to complete this step if you opted to `create_virtual_environment` in the
+    questionnaire.*
 
 To create an environment with all of your dependencies (including development dependencies), enter the following in the repository folder.
 
@@ -116,9 +119,11 @@ Any time you update your dependencies, you should rerun `pdm install`. But, you 
 
 ## Deploy Documentation
 
-*This step is unnecessary if you opted to `commit_to_github` and
-`create_virtual_environment` in the
-questionnaire.*
+!!! Warning
+
+    *You do not need to complete this step if you opted to `commit_to_github` and
+    `create_virtual_environment` in the
+    questionnaire.*
 
 Unlike `poetry`, `pdm` does not use a shell. Instead, after you have created a virtual environment, enter the following commands to deploy your documentation.
 

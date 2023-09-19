@@ -21,50 +21,34 @@ cookiecutter gh:WithPrecedent/snickerdoodle --config-file cc_config.yaml
 These are the tools that `snickerdoodle` incorporates and a brief explanation as
 to why they were chosen:
 
-[`pdm`](https://pdm.fming.dev/latest/)
-
-: Although [`poetry`](https://python-poetry.org/) is more popular, its syntax
-  [is not
-  compliant](https://github.com/python-poetry/roadmap/issues/3) with [PEP
-  621](https://peps.python.org/pep-0621/) and  [PEP 631](https://peps.python.org/pep-0631/). I was a long-time `poetry` user, but
-  eventually ran into some packages and libraries (particularly `mkdocs`
-  extensions) that would not properly install because of `poetry`'s non-standard
-  `pyproject.toml` formatting. `pdm` is not yet as polished as `poetry`, but it
-  is rock-solid and I have never run into dependency installation issues with
-  it.
-
-[`mkdocs`](https://www.mkdocs.org/)
-
-: Similarly,
-  [`sphinx`](https://www.sphinx-doc.org/en/master/) is the dominant
-  documentation package, but it is not nearly as [easy to use as `mkdocs`](https://squidfunk.github.io/mkdocs-material/alternatives/), which allows
-  all of your documentation to be created in Markdown and is beautiful
-  out-of-the-box when using the [Material
-  Theme](https://squidfunk.github.io/mkdocs-material/). I chose to prioritize
-  accessibility so that you do not waste time trying to properly format and
-  design your documentation.
-
-[`ruff`](https://github.com/astral-sh/ruff)
-
-: A relatively new player in formatting, it aims to serve as a one-stop,
+* [`pdm`](https://pdm.fming.dev/latest/): Although [`poetry`](https://python-poetry.org/) is more popular, its syntax
+[is not
+compliant](https://github.com/python-poetry/roadmap/issues/3) with [PEP
+621](https://peps.python.org/pep-0621/) and  [PEP 631](https://peps.python.org/pep-0631/). I was a long-time `poetry` user, but
+eventually ran into some packages and libraries (particularly `mkdocs`
+extensions) that would not properly install because of `poetry`'s non-standard
+`pyproject.toml` formatting. `pdm` is not yet as polished as `poetry`, but it
+is rock-solid and I have never run into dependency installation issues with
+it.
+* [`mkdocs`](https://www.mkdocs.org/): Similarly,
+[`sphinx`](https://www.sphinx-doc.org/en/master/) is the dominant
+documentation package, but it is not nearly as [easy to use as `mkdocs`](https://squidfunk.github.io/mkdocs-material/alternatives/), which allows
+all of your documentation to be created in Markdown and is beautiful
+out-of-the-box when using the [Material
+Theme](https://squidfunk.github.io/mkdocs-material/). I chose to prioritize
+accessibility so that you do not waste time trying to properly format and
+design your documentation.
+* [`ruff`](https://github.com/astral-sh/ruff): A relatively new player in formatting, it aims to serve as a one-stop,
 extremely fast (it's written in `Rust`) formatting and linting package.
 `snickerdoodle` implements some reasonable defaults while still allowing user
-flexibility (e.g., it does not implement [`black`](https://github.com/psf/black)
-- although you can do that through `ruff`, if you would prefer). By default, the
-template activates the parts of `ruff` that incorporate, among other packages:
-`Flake8`, `Bandit`, `pydocstyle`, and `pylint`.
-
-[Github Actions](https://github.com/features/actions)
-
-: If you store your package on Github, which `snickerdoodle` assumes, [there are
+flexibility (i.e., it does not implement [`black`](https://github.com/psf/black)). By default, the template activates the parts of
+`ruff` that incorporate, among other packages: `Flake8`, `Bandit`, `pydocstyle`, and `pylint`.
+* [Github Actions](https://github.com/features/actions): If you store your package on Github, which `snickerdoodle` assumes, [there are
 strong reasons](https://resources.github.com/devops/tools/automation/actions/)
 to prefer Github Actions as your CI/CD tool. `snickerdoodle` includes workflows
 for updating, releasing, and publishing your package while also deploying the
 accompanying documentation.
-
-[GitHub Pages](https://pages.github.com/) 
-
-: There is a lot to be said for [Read the Docs](https://readthedocs.com) as a
+* [GitHub Pages](https://pages.github.com/): There is a lot to be said for [Read the Docs](https://readthedocs.com) as a
 documentation host site. However, `mkdocs` works better on GitHub Pages and once
 you start using GitHub Actions, the automatic updating advantage of Read the
 Docs disappears. I also like that GitHub Pages is not dependent on ads placed on
@@ -82,14 +66,13 @@ so that you know which rules are enforced. `ruff` is automatically run with
 each GitHub push.
 
 !!! tip
-
-To automatically fix problems identified by `ruff`, you should use `pre-commit`. A
-`pre-commit` configuration file (`.pre-commit-config.yaml`) is included in the
-created repository.  By default, the `pre-commit` command will run `ruff` with
-the `fix` option invoked, which will try to correct all of the problems that it
-can. To use `pre-commit`, follow its [user
-guide](https://pre-commit.com/#usage). If you activate `pre-commit`, it will
-then be automatically run on every push to GitHub.
+    To automatically fix problems identified by `ruff`, you should use `pre-commit`. A
+    `pre-commit` configuration file (`.pre-commit-config.yaml`) is included in the
+    created repository.  By default, the `pre-commit` command will run `ruff` with
+    the `fix` option invoked, which will try to correct all of the problems that it
+    can. To use `pre-commit`, follow its [user
+    guide](https://pre-commit.com/#usage). If you activate `pre-commit`, it will
+    then be automatically run on every push to GitHub.
 
 ## GitHub Actions
 
@@ -107,32 +90,32 @@ are located in the ".github" folder and on the GitHub repository page under "Act
 
 !!! tip
 
-To run an Action (other than `ci.yml`) on GitHub, go to your repository, click "Actions" and select
-one of the Actions listed on the left side of the screen.
+    To run an Action (other than `ci.yml`) on GitHub, go to your repository, click
+    "Actions" and select one of the Actions listed on the left side of the screen.
 
 ## Publishing
 
-'snickerdoodle` tries to make publishing your repository as simple as possible.
+`snickerdoodle` tries to make publishing your repository as simple as possible.
 Out-of-the-box, it provides tools to publish a release on GitHub and PyPI.
 
-=== on GitHub
+=== "on GitHub"
 
-To post a release on GitHub, you just need to push a commit with a message that
-begins with the letter "v" followed by the version in [semantic
-form](https://semver.org/) (e.g. "v0.1.2"). That will trigger a job in the
-`ci.yml` Action which automatically publishes a release, using the CHANGELOG.md
-for any changes made since the last release.
+    To post a release on GitHub, you just need to push a commit with a message that
+    begins with the letter "v" followed by the version in [semantic
+    form](https://semver.org/) (e.g. "v0.1.2"). That will trigger a job in the
+    `ci.yml` Action which automatically publishes a release, using the CHANGELOG.md
+    for any changes made since the last release.
 
-=== on PyPI
+=== "on PyPI"
 
-The best way to publish a release on PyPI is to make the `ci.yml` Action a
-[trusted
-publisher](https://docs.pypi.org/trusted-publishers/adding-a-publisher/). If you
-do that, you can just run the `publish` GitHub
-Action (which can be activated directly from your GitHub repository's Actions
-page). Otherwise, you should use the [`pdm publish`
-command](https://pdm.fming.dev/latest/usage/publish/) from the command line
-while in the repository's root folder.
+    The best way to publish a release on PyPI is to make the `ci.yml` Action a
+    [trusted
+    publisher](https://docs.pypi.org/trusted-publishers/adding-a-publisher/). If you
+    do that, you can just run the `publish` GitHub
+    Action (which can be activated directly from your GitHub repository's Actions
+    page). Otherwise, you should use the [`pdm publish`
+    command](https://pdm.fming.dev/latest/usage/publish/) from the command line
+    while in the repository's root folder.
 
 ## Repository Layout
 
@@ -140,9 +123,9 @@ while in the repository's root folder.
 practices](https://packaging.python.org/en/latest/discussions/src-layout-vs-flat-layout/),
 `snickerdoodle` uses the "src layout" structure for the created repository. In
 the diagram below, the files and folders
-that you will ordinarily modify are highlighted and commented.
+that you will ordinarily modify are commented.
 
-```sh hl_lines=" 1 5 15 19 21 22 23 25 26 27 28"
+```sh
 ├── CHANGELOG.md              # Main changelog to record changes
 ├── CODE_OF_CONDUCT.md
 ├── CONTRIBUTING.md
