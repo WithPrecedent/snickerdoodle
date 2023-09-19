@@ -32,7 +32,7 @@ jobs:
       run: pdm install -v && pdm info
 
     - name: Test with pytest
-      run: pdm run -v pytest tests --cov --cov-report=html:coverage_re
+      run: pdm run -v pytest tests --cov
 
     - name: Coverage Bagdge
       uses: tj-actions/coverage-badge-py@v1.8
