@@ -65,7 +65,8 @@ rules](https://beta.ruff.rs/docs/rules/) there. I have included comments in the
 so that you know which rules are enforced. `ruff` is automatically run with
 each GitHub push.
 
-!!! tip
+!!! Tip
+
     To automatically fix problems identified by `ruff`, you should use `pre-commit`. A
     `pre-commit` configuration file (`.pre-commit-config.yaml`) is included in the
     created repository.  By default, the `pre-commit` command will run `ruff` with
@@ -88,7 +89,7 @@ are located in the ".github" folder and on the GitHub repository page under "Act
 | `merge` | another Action or manually on GitHub | merges `development` branch into `main` (currently untested Action) |
 | `publish` | another Action or manually on GitHub | publishes repository on PyPI (must configure PyPI to accept as [trusted publisher](https://docs.pypi.org/trusted-publishers/adding-a-publisher/)) |
 
-!!! tip
+!!! Tip
 
     To run an Action (other than `ci.yml`) on GitHub, go to your repository, click
     "Actions" and select one of the Actions listed on the left side of the screen.

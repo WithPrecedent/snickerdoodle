@@ -11,6 +11,7 @@ All notable changes to this project will be documented in this file.
 * Changed extensions in `mkdocs.yml` to better reflect anticipated usage
 * Added definition lists and admonitions to the template documentation to better
   convey usage instructions
+* Changed "Stability" badge to pull status directly from PyPI
 
 ## v0.1.8
 
