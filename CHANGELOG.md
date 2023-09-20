@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 <!-- insertion marker -->
 
-## 0.1.9 (unreleased)
+## 0.1.9
 
 * Streamlined GitHub Actions in the template and created repository
 * Updated documentation to incorporate changes to Actions
