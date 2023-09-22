@@ -6,7 +6,7 @@ description = "{{cookiecutter.description}}"
 authors = [{name = "{{cookiecutter.author_name}}", email = "{{cookiecutter.author_email}}"}]
 license = {text = "{{cookiecutter.license}}"}
 readme = "README.md"
-requires-python = ">=3.8"
+requires-python = ">=3.9"
 dynamic = ["version"]
 classifiers = [
     "Development Status :: 4 - Beta",
