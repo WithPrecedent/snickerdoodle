@@ -146,6 +146,7 @@ plugins:
           merge_init_into_class: true
           separate_signature: false
           show_signature_annotations: false
+        paths: [src]
 - search:
 
 extra:

@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 <!-- insertion marker -->
 
+## 0.1.11
+
+* fixed intermittent bug with mkdocs finding the created module
+
 ## 0.1.10
 
 * Added more `ruff` rules and exclusions
