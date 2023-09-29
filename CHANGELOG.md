@@ -4,9 +4,10 @@ All notable changes to this project will be documented in this file.
 
 <!-- insertion marker -->
 
-## 0.1.10 (unreleased)
+## 0.1.10
 
 * Added more `ruff` rules and exclusions
+* Fixed broken type annotation bug in `post_gen_project`
 
 ## 0.1.9
 
