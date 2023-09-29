@@ -8,7 +8,7 @@ _TRUES: tuple[bool | str] = ('y', True, 'true')
 
 
 def execute_commands(
-    commands: tuple(list[str]),
+    commands: list[str],
     folder: str | pathlib.Path) -> None:
     """Executes all 'commands' using `subprocess.run`.
 

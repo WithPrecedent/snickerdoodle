@@ -1,7 +1,10 @@
 # Builds and deploys documentation for the package
 
-name: document
+# If the commit message matches a semantic version, a GitHub release will be 
+# created by the `create_github_release` job.
 
+
+name: ci
 on:
   push:
     branches:
