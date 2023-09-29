@@ -73,6 +73,7 @@ filterwarnings = ["ignore::DeprecationWarning"]
 pythonpath = ["src"]
 
 [tool.ruff]
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
 extend-exclude = ["docs", "scripts", "site", "tests", ".*.*"]
 fix = true
 fixable = ["ALL"]
@@ -103,6 +104,7 @@ ignore = [
     "PLR0915",  # Too many statements
     "PLR1711", # Useless 'return' at the end of function
     "Q000",  # Single quotes found but double quotes preferred
+    "RET505",  # Unnecessary `else` after `return` statement
     # "S0001",  # Use of assert detected
     "SLF001", # Private member accessed
     "TID252",  # Relative imports are banned
@@ -161,9 +163,28 @@ select = [
     "UP",  # pyupgrade
     "W",  # pydocstyle warnings
     "YTT",]  # flake8-2020
+task-tags = ["To Do:"]
+
+[tool.ruff.flake8-annotations]
+suppress-none-returning = true
 
 [tool.ruff.flake8-quotes]
 docstring-quotes = "double"
+inline-quotes = "single"
+multiline-quotes = "single"
+
+[tool.ruff.flake8-type-checking]
+exempt-modules = ["typing", "typing_extensions"]
+
+[tool.ruff.flake8-unused-arguments]
+ignore-variadic-names = true
 
 [tool.ruff.isort]
+case-sensitive = true
 known-first-party = ["{{cookiecutter.repo_name}}"]
+required-imports = ["from __future__ import annotations"]
+split-on-trailing-comma = false
+
+[tool.ruff.pydocstyle]
+convention = "google"
+ignore-decorators = ["typing.overload"]

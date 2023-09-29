@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 <!-- insertion marker -->
 
+## 0.1.10 (unreleased)
+
+* Added more `ruff` rules and exclusions
+
 ## 0.1.9
 
 * Streamlined GitHub Actions in the template and created repository
