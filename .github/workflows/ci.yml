@@ -1,15 +1,18 @@
-# Builds and deploys documentation for the package
+# Continuously and integrates updates to the repository
 
-# If the commit message matches a semantic version, a GitHub release will be 
-# created by the `create_github_release` job.
-
+# If the commit message matches a semantic version (e.g. "v0.1.2"), a GitHub
+# release will be created by the `create_github_release` job.
 
 name: ci
+
 on:
+  # Allows this Action to be called by a push to the `main` branch
   push:
     branches:
       - main
+  # Allows this Action to be called by other Actions
   workflow_call:
+  # Allows this Action to be called through GitHub
   workflow_dispatch:
 
 permissions:
@@ -19,7 +22,7 @@ permissions:
 jobs:
 
   build_and_deploy_documentation:
-    name: Build and deploy docs
+    name: Build and Deploy Docs
     runs-on: ubuntu-latest
 
     steps:
@@ -36,29 +39,30 @@ jobs:
       with:
         python-version: 3.x
 
-    - name: Install dependencies
+    - name: Install Dependencies
       shell: bash
       run: pdm install -v && pdm info
 
-    - name: Build documentation with MkDocs
+    - name: Build Documentation with MkDocs
       run: pdm run mkdocs build
 
-    - name: Deploy documentation to GitHub Pages
+    - name: Deploy Documentation to GitHub Pages
       run: pdm run mkdocs gh-deploy --force --clean --verbose
       env:
         GITHUB_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
 
-  # Only triggered if the commit message matches the semantic version format 
+  # Only triggered if the commit message matches the semantic version format
   # (e.g. "v0.1.2").
   create_github_release:
+    name: Create GitHub Release
     runs-on: ubuntu-latest
 
     steps:
-    - name: Create GitHub Release
+    - name: Initiate GitHub Release
       uses: CupOfTea696/gh-action-auto-release@v1.0.2
       with:
         title: "Release: $version"
         tag: "v$semver"
         regex: "/^v#{semver}$/i"
       env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}   
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,4 +1,4 @@
-# Builds package and creates environment
+# Builds package and creates a virtual environment
 
 name: build
 

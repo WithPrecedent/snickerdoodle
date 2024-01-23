@@ -6,7 +6,7 @@ updates:
 # Maintains dependencies for Python via `pip`
 - package-ecosystem: pip
   directory: "/"
-  # Always updates to a newer version. If you want a less aggressive strategy, 
+  # Always updates to a newer version. If you want a less aggressive strategy,
   # change the value to "increase-if-necessary"
   versioning-strategy: increase
   schedule:

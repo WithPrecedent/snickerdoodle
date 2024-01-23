@@ -7,7 +7,7 @@
 # guide: https://docs.pypi.org/trusted-publishers/adding-a-publisher/
 
 # This Action does not build the project - it simply publishes the contents of
-# the contents of the ".pdm-build" folder.
+# the ".pdm-build" folder.
 
 name: publish
 
