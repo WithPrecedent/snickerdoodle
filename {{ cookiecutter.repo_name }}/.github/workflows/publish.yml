@@ -7,7 +7,7 @@
 # guide: https://docs.pypi.org/trusted-publishers/adding-a-publisher/
 
 # This Action does not build the project - it simply publishes the contents of
-# the contents of the ".pdm-build" folder.
+# the ".pdm-build" folder.
 
 name: publish
 
@@ -15,19 +15,20 @@ name: publish
 on: [workflow_call, workflow_dispatch]
 
 jobs:
-  pypi-publish:
-    name: Publish to PyPI
+
+  pypi_publish:
+    name: publish to pypi
     runs-on: ubuntu-latest
     permissions:
-    # IMPORTANT: this permission is mandatory for trusted publishing
+      # IMPORTANT: this permission is mandatory for trusted publishing
       id-token: write
 
     steps:
-    - name: Checkout Repository
+    - name: get repository
       uses: actions/checkout@v3
 
-    - name: Setup PDM
+    - name: install pdm
       uses: pdm-project/setup-pdm@v3
 
-    - name: Publish to PyPI
+    - name: push to pypi
       run: pdm publish

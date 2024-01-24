@@ -1,10 +1,14 @@
-# Automatic jobs upon a commit or pull-request
+# Automatically performs jobs upon a commit push or pull-request
 
 # This Action builds, tests, and lints the package. Then, it builds the
 # documentation and deploys it on GitHub Pages.
 
+# If the commit message matches a semantic version (e.g. "v0.1.2"), a GitHub
+# release will be created by the `create_github_release` job.
+
 name: continuous integration
 
+# Allows this Action to be called by a push or pull request
 on: [push, pull_request]
 
 permissions:
@@ -22,21 +26,21 @@ jobs:
         os: [ubuntu-latest, macOS-latest, windows-latest]
 
     steps:
-    - name: Checkout Repository
+    - name: get repository
       uses: actions/checkout@v3
 
-    - name: Set up Python
+    - name: install python
       uses: actions/setup-python@v4
       with:
         python-version: ${{"{{"}} matrix.python-version {{"}}"}}
 
-    - name: Setup PDM
+    - name: install pdm
       uses: pdm-project/setup-pdm@v3
       id: setup-pdm
       with:
         python-version: ${{"{{"}} matrix.python-version {{"}}"}}
 
-    - name: Check output
+    - name: output status
       shell: bash
       run: |
         echo ${{"{{"}} steps.setup-pdm.outputs.pdm-bin {{"}}"}}
@@ -44,78 +48,79 @@ jobs:
         echo ${{"{{"}} steps.setup-pdm.outputs.python-path {{"}}"}}
         echo ${{"{{"}} steps.setup-pdm.outputs.python-version {{"}}"}}
 
-    - name: Install dependencies
+    - name: install dependencies
       shell: bash
       run: pdm install -v && pdm info
 
-    - name: Run Tests
+    - name: run tests
       run: pdm run -v pytest tests
 
-    - name: Run Ruff
+    - name: run ruff
       run: pdm run ruff check --format=github .
 
   lint_and_format:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout Repository
+    - name: get repository
       uses: actions/checkout@v3
 
-    - name: Set up Python
+    - name: install python
       uses: actions/setup-python@v4
       with:
         python-version: 3.x
 
-    - name: Setup PDM
+    - name: install pdm
       uses: pdm-project/setup-pdm@v3
       with:
         python-version: 3.x
 
-    - name: Install dependencies
+    - name: install dependencies
       shell: bash
       run: pdm install -v && pdm info
 
-    - name: Run Ruff
+    - name: run ruff
       run: pdm run ruff check --format=github .
 
   document_and_deploy:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout Repository
+    - name: get repository
       uses: actions/checkout@v3
 
-    - name: Set up Python
+    - name: install python
       uses: actions/setup-python@v4
       with:
         python-version: 3.x
 
-    - name: Setup PDM
+    - name: install pdm
       uses: pdm-project/setup-pdm@v3
       with:
         python-version: 3.x
 
-    - name: Install dependencies
+    - name: install dependencies
       shell: bash
       run: pdm install -v && pdm info
 
-    - name: Build documentation with MkDocs
+    - name: build documentation with mkdocs
       run: pdm run mkdocs build
 
-    - name: Deploy documentation to GitHub Pages
+    - name: deploy documentation to github pages
       run: pdm run mkdocs gh-deploy --force --clean --verbose
 
-  # Only triggered if the commit message matches the semantic version format 
+  # Only triggered if the commit message matches the semantic version format
   # (e.g. "v0.1.2").
   create_github_release:
+    name: create github release
     runs-on: ubuntu-latest
 
     steps:
-    - name: Create GitHub Release
+    - name: initiate github release
       uses: CupOfTea696/gh-action-auto-release@v1.0.2
       with:
         title: "Release: $version"
         tag: "v$semver"
         regex: "/^v#{semver}$/i"
       env:
-          GITHUB_TOKEN: ${{"{{"}} secrets.GITHUB_TOKEN {{"}}"}}   
+          GITHUB_TOKEN: ${{"{{"}} secrets.GITHUB_TOKEN {{"}}"}}

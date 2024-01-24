@@ -12,29 +12,29 @@ permissions:
 jobs:
 
   build_and_deploy_documentation:
-    name: Build and deploy docs
+    name: build and deploy docs
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout Repository
+    - name: get repository
       uses: actions/checkout@v3
 
-    - name: Set up Python
+    - name: install python
       uses: actions/setup-python@v4
       with:
         python-version: 3.x
 
-    - name: Setup PDM
+    - name: install pdm
       uses: pdm-project/setup-pdm@v3
       with:
         python-version: 3.x
 
-    - name: Install dependencies
+    - name: install dependencies
       shell: bash
       run: pdm install -v && pdm info
 
-    - name: Build documentation with MkDocs
+    - name: build documentation with mkdocs
       run: pdm run mkdocs build
 
-    - name: Deploy documentation to GitHub Pages
+    - name: deploy documentation to github pages
       run: pdm run mkdocs gh-deploy --force --clean --verbose

@@ -1,4 +1,4 @@
-# Continuously and integrates updates to the repository
+# Automatically performs jobs on a commit push
 
 # If the commit message matches a semantic version (e.g. "v0.1.2"), a GitHub
 # release will be created by the `create_github_release` job.
