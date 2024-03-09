@@ -4,9 +4,15 @@ All notable changes to this project will be documented in this file.
 
 <!-- insertion marker -->
 
+## 0.1.12
+
+* Removed merge.yml Actions (it was creating a `cookiecutter` error and is not
+  used by the package)
+* Added Python 3.12 to pyproject.toml
+
 ## 0.1.11
 
-* fixed intermittent bug with mkdocs finding the created module
+* Fixed intermittent bug with mkdocs finding the created module
 
 ## 0.1.10
 

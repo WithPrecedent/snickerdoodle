@@ -86,7 +86,6 @@ are located in the ".github" folder and on the GitHub repository page under "Act
 | `build` | another Action | builds repo |
 | `document` | another Action or manually on GitHub| builds and deploys docs |
 | `lint` | another Action or manually on GitHub | lints repository with `ruff` |
-| `merge` | another Action or manually on GitHub | merges `development` branch into `main` (currently untested Action) |
 | `publish` | another Action or manually on GitHub | publishes repository on PyPI (must configure PyPI to accept as [trusted publisher](https://docs.pypi.org/trusted-publishers/adding-a-publisher/)) |
 
 !!! Tip
@@ -152,7 +151,7 @@ that you will ordinarily modify are commented.
 ├── README.md                 # This will also be the docs landing page
 ├── src
 │   └── {repository name}     # Add Python modules
-│       └── __init__.py       # Update import info and version 
+│       └── __init__.py       # Update import info and version
 └── tests                     # Add other test files
     └── test_main.py          # Follow the 'test_NAME' convention
 ```

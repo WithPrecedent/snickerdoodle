@@ -15,11 +15,11 @@
 
 ## What is snickerdoodle?
 
-`snickerdoodle`is an easy-to-use, general-purpose cookiecutter template for
+`snickerdoodle` is an easy-to-use, general-purpose cookiecutter template for
 Python projects utilizing modern tools and best practices. To see an example repository using this template,
 check out
 [`snickerdoodle_demo`](https://github.com/withprecedent/snickerdoodle_demo).
-  
+
 ## Why use snickerdoodle?
 
 There are a lot of cookiecutter templates. However, many are difficult to use,
@@ -119,9 +119,8 @@ corresponding hyperlink.
 
 Contributors are always welcome and should find `snickerdoodle` easy to work
 with. The template is highly documented so that users and developers can adapt
-or extend`snickerdoodle` to work with their projects. So, forking and creating
-different template spins is encouraged. If you want to contribute directly to
-the project, feel free to grab an [issue](https://github.com/WithPrecedent/snickerdoodle/issues) to work on
+or extend `snickerdoodle` to work with their projects. So, forking and creating
+different template spins is encouraged. If you want to contribute directly, feel free to grab an [issue](https://github.com/WithPrecedent/snickerdoodle/issues) to work on
 or make a suggested improvement. If you wish to contribute, please read the
 [Contribution Guide](./contributing.md) and [Code of
 Conduct](./code_of_conduct.md).
