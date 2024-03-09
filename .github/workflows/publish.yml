@@ -25,10 +25,10 @@ jobs:
 
     steps:
     - name: get repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4.1.1
 
     - name: install pdm
-      uses: pdm-project/setup-pdm@v3
+      uses: pdm-project/setup-pdm@v4
 
     - name: push to pypi
       run: pdm publish

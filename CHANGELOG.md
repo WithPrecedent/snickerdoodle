@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 <!-- insertion marker -->
 
+## 0.1.13
+
+* Updated GitHub Actions to newer versions
+
 ## 0.1.12
 
 * Removed merge.yml Actions (it was creating a `cookiecutter` error and is not
