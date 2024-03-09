@@ -6,6 +6,10 @@ All notable changes to this project will be documented in this file.
 
 ## 0.1.13
 
+* Corrected misnumbered previous version
+
+## 0.1.13
+
 * Updated GitHub Actions to newer versions
 
 ## 0.1.12
