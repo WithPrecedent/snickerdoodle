@@ -27,16 +27,16 @@ overly opinionated, or underdocumented. I created `snickerdoodle` because I
 couldn't
 find another `cookiecutter` template meeting these criteria:
 
-* **Modern**: follows best practices, using modern, actively developed tools
-* **Batteries Included**: allows you to start coding immediately
-* **Flexible**: no required usage of any external services
-  (SonarCloud, Travis, CircleCI, Tox, etc.)
+* **Modern**: follows best practices, using modern, actively developed tools.
+* **Batteries Included**: allows you to start coding immediately.
+* **Flexible**: no required usage of any external services.
+  (SonarCloud, Travis, CircleCI, Tox, etc.).
 * **Low-Maintenance**: every commit automatically deploys the documentation as
   well as
-  lints, formats, and tests the repository
+  lints, formats, and tests the repository.
 * **Well-Documented**: the
   [documentation](https://withprecedent.github.io/snickerdoodle) includes
-  complete guides for [new](https://withprecedent.github.io/snickerdoodle/tutorial/) and [advanced](https://withprecedent.github.io/snickerdoodle/advanced/) users
+  complete guides for [new](https://withprecedent.github.io/snickerdoodle/tutorial/) and [advanced](https://withprecedent.github.io/snickerdoodle/advanced/) users.
 * **PEP-Compliant**: all included tools follow accepted
   [PEPs](https://peps.python.org/pep-0001/) (unfortunately, that ruled out using
   `poetry`, which is [still not](https://github.com/python-poetry/roadmap/issues/3) [PEP 621](https://peps.python.org/pep-0621/) or
@@ -44,7 +44,7 @@ find another `cookiecutter` template meeting these criteria:
   compliant, three years after they were accepted,
   [resulting in compatibility](https://github.com/python-poetry/poetry/issues/496)
   [problems because of its](https://github.com/python-poetry/poetry/issues/3332)
-  [non-standard `pyproject.toml` format](https://github.com/python-poetry/poetry/issues/8415))
+  [non-standard `pyproject.toml` format](https://github.com/python-poetry/poetry/issues/8415)).
 
 ### Tools
 
