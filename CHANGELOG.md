@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 <!-- insertion marker -->
 
+## 0.1.15
+
+* Fixed issues with publish Action
+* Changed required Python version to 3.10 (in preparation for other changes)
+
 ## 0.1.14
 
 * Corrected misnumbered previous version

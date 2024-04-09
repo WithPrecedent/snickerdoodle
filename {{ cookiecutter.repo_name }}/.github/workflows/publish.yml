@@ -6,9 +6,6 @@
 # To make this action work, you need to configure PyPI properly, using this
 # guide: https://docs.pypi.org/trusted-publishers/adding-a-publisher/
 
-# This Action does not build the project - it simply publishes the contents of
-# the ".pdm-build" folder.
-
 name: publish
 
 # Allows this Action to be called by other Actions or through GitHub
