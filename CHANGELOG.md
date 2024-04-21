@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 
 <!-- insertion marker -->
+## 0.2.0
+
+  * Removed extra actions
+  * Updated `ruff` options to reflect newer version options
+  * Fixed `ruff` bug in `ci.yaml` due to newer versions of `ruff`
 
 ## 0.1.15
 

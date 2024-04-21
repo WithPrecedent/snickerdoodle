@@ -83,9 +83,6 @@ are located in the ".github" folder and on the GitHub repository page under "Act
 | GitHub Action | Trigger | Jobs |
 | --- | --- | --- |
 | `ci` | automatically on push | builds repo, runs tests, lints, formats, builds docs, and deploys docs |
-| `build` | another Action | builds repo |
-| `document` | another Action or manually on GitHub| builds and deploys docs |
-| `lint` | another Action or manually on GitHub | lints repository with `ruff` |
 | `publish` | another Action or manually on GitHub | publishes repository on PyPI (must configure PyPI to accept as [trusted publisher](https://docs.pypi.org/trusted-publishers/adding-a-publisher/)) |
 
 !!! Tip

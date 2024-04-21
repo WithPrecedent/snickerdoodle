@@ -56,7 +56,7 @@ jobs:
       run: pdm run -v pytest tests
 
     - name: run ruff
-      run: pdm run ruff check --format=github .
+      run: pdm run ruff check
 
   lint_and_format:
     runs-on: ubuntu-latest

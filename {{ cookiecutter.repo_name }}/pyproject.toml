@@ -74,9 +74,12 @@ filterwarnings = ["ignore::DeprecationWarning"]
 pythonpath = ["src"]
 
 [tool.ruff]
-dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
 extend-exclude = ["docs", "scripts", "site", "tests", ".*.*"]
 fix = true
+line-length = 80
+
+[tool.ruff.lint]
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
 fixable = ["ALL"]
 ignore = [
     "A001",  # Variable is shadowing a Python builtin
@@ -113,7 +116,6 @@ ignore = [
     # "W0105",  # String statement has no effect
     # "W0221",  # Arguments differ
     # "W0222",]  # Access to a protected member
-line-length = 80
 select = [
     "A",  # flake8-buttons
     "ANN",  # flake8-annotations
@@ -166,26 +168,25 @@ select = [
     "YTT",]  # flake8-2020
 task-tags = ["To Do:"]
 
-[tool.ruff.flake8-annotations]
+[tool.ruff.lint.flake8-annotations]
 suppress-none-returning = true
 
-[tool.ruff.flake8-quotes]
+[tool.ruff.lint.flake8-quotes]
 docstring-quotes = "double"
-inline-quotes = "single"
-multiline-quotes = "single"
+inline-quotes = "double"
+multiline-quotes = "double"
 
-[tool.ruff.flake8-type-checking]
+[tool.ruff.lint.flake8-type-checking]
 exempt-modules = ["typing", "typing_extensions"]
 
-[tool.ruff.flake8-unused-arguments]
+[tool.ruff.lint.flake8-unused-arguments]
 ignore-variadic-names = true
 
-[tool.ruff.isort]
+[tool.ruff.lint.isort]
 case-sensitive = true
-known-first-party = ["{{cookiecutter.repo_name}}"]
 required-imports = ["from __future__ import annotations"]
 split-on-trailing-comma = false
 
-[tool.ruff.pydocstyle]
+[tool.ruff.lint.pydocstyle]
 convention = "google"
 ignore-decorators = ["typing.overload"]
