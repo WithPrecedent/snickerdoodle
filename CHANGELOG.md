@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 
 <!-- insertion marker -->
+
+## 0.2.1 
+
+  * Updated badge logos to incorporate changes at Simple Badges
+  
 ## 0.2.0
 
   * Removed extra actions
