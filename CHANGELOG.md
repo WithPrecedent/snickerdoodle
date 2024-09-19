@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 <!-- insertion marker -->
 
+## 0.2.2
+
+  * Fixed mkdocs extension bug in GitHub Actions
+
 ## 0.2.1 
 
   * Updated badge logos to incorporate changes at Simple Badges
