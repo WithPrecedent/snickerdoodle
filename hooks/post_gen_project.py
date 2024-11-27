@@ -46,8 +46,9 @@ def commit_to_git_subprocess(url: str, folder: str | pathlib.Path) -> None:
     """
     git_commands = (
         ['git', 'init'],
+        ['git', 'checkout', '-b', 'main'],
         ['git', 'add', '.'],
-        ['git', 'commit', '-m', 'Initial commit'],
+        ['git', 'commit', '-m', '"Initial commit"'],
         ['git', 'remote', 'add', 'origin', url],
         ['git', 'push', '-u', 'origin', 'main'])
     execute_commands(commands = git_commands, folder = folder)
