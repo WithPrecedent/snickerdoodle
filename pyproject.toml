@@ -41,50 +41,50 @@ plugins = [
     "pdm-multirun"]
 
 [tool.pdm.build]
-package-dir = "."
+package-dir = "src"
 editable-backend = "editables"
 
 [tool.pdm.dev-dependencies]
 docs = [
-    "markdown-callouts >= 0.3",
-    "markdown-exec >= 1.6.0",
-    "mkdocs >= 1.5.2",
-    "mkdocs-coverage >= 1.0.0",
-    "mkdocs-gen-files >= 0.5.0",
-    "mkdocs-git-committers-plugin-2 >= 1.1.2",
-    "mkdocs-literate-nav >= 0.6.0",
-    "mkdocs-material >= 9.1.2",
-    "mkdocs-minify-plugin >= 0.7.1",
-    "mkdocstrings[python] >= 0.22.0",
-    "toml >= 0.10.2"]
+    "markdown-callouts",
+    "markdown-exec",
+    "mkdocs",
+    "mkdocs-coverage",
+    "mkdocs-gen-files",
+    "mkdocs-git-committers-plugin-2",
+    "mkdocs-literate-nav",
+    "mkdocs-material",
+    "mkdocs-minify-plugin",
+    "mkdocstrings[python]",
+    "toml"]
 quality = [
-    "pre-commit >= 3.3.3",
-    "ruff >= 0.0.286"]
+    "pre-commit",
+    "ruff"]
 tests = [
-    "coverage >= 7.2.7",
-    "pytest >= 7.4.0",
-    "pytest-cov >= 4.1.0",
-    "pytest-randomly >= 3.13.0",
-    "pytest-xdist >= 3.3.1"]
+    "coverage",
+    "pytest",
+    "pytest-cov",
+    "pytest-randomly",
+    "pytest-xdist"]
+
+[tool.pdm.version]
+source = "file"
+path = "src/chrisjen/__init__.py"
 
 [tool.pytest.ini_options]
 addopts = "--showlocals"
 asyncio_mode = "auto"
 filterwarnings = ["ignore::DeprecationWarning"]
-pythonpath = ["."]
+pythonpath = ["src"]
 
 [tool.ruff]
 extend-exclude = ["docs", "scripts", "site", "tests", ".*.*"]
 fix = true
 line-length = 80
-
-[tool.ruff.lint]
 dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
 fixable = ["ALL"]
 ignore = [
     "A001",  # Variable is shadowing a Python builtin
-    "ANN101",  # Missing type annotation for self
-    "ANN102",  # Missing type annotation for cls
     "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed
     "ARG003",  # Unused class method argument: `parameters`
     "ARG005",  # Unused lambda argument
@@ -160,7 +160,6 @@ select = [
     "T",  #
     "T10",  # flake8-debugger
     "T20",  # flake8-print
-    "TCH",  # flake8-type-checking
     "TID",  # flake8-tidy-imports
     "TRY",  # tryceratops
     "UP",  # pyupgrade
