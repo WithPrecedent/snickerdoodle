@@ -1,7 +1,7 @@
 """Cookiecutter hook for pre project generation."""
 
 import re
-from typing import Pattern
+from re import Pattern
 
 # import requests
 

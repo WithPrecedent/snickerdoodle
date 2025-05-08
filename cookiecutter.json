@@ -17,10 +17,11 @@
     "Other"],
   "badge_style": [
     "for-the-badge",
-    "flat", 
-    "flat-square", 
-    "plastic", 
+    "flat",
+    "flat-square",
+    "plastic",
     "social"],
   "commit_to_github": false,
+  "make_github_repo_public": true,
   "create_virtual_environment": false
 }
