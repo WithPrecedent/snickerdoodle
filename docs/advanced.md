@@ -21,16 +21,10 @@ cookiecutter gh:WithPrecedent/snickerdoodle --config-file cc_config.yaml
 These are the tools that `snickerdoodle` incorporates and a brief explanation as
 to why they were chosen:
 
-* [`pdm`](https://pdm.fming.dev/latest/): Although [`poetry`](https://python-poetry.org/) is more popular, its syntax
-[is not
-compliant](https://github.com/python-poetry/roadmap/issues/3) with [PEP
-621](https://peps.python.org/pep-0621/) and  [PEP 631](https://peps.python.org/pep-0631/). I was a long-time `poetry` user, but
-eventually ran into some packages and libraries (particularly `mkdocs`
-extensions) that would not properly install because of `poetry`'s non-standard
-`pyproject.toml` formatting. `pdm` is not yet as polished as `poetry`, but it
-is rock-solid and I have never run into dependency installation issues with
-it.
-* [`mkdocs`](https://www.mkdocs.org/): Similarly,
+* [`uv`](https://docs.astral.sh/uv/): `uv` is PEP-compliant, incredibly fast,
+  and is quickly becoming
+  the leading Python dependency manager.
+* [`mkdocs`](https://www.mkdocs.org/):
 [`sphinx`](https://www.sphinx-doc.org/en/master/) is the dominant
 documentation package, but it is not nearly as [easy to use as `mkdocs`](https://squidfunk.github.io/mkdocs-material/alternatives/), which allows
 all of your documentation to be created in Markdown and is beautiful
@@ -110,8 +104,8 @@ Out-of-the-box, it provides tools to publish a release on GitHub and PyPI.
     publisher](https://docs.pypi.org/trusted-publishers/adding-a-publisher/). If you
     do that, you can just run the `publish` GitHub
     Action (which can be activated directly from your GitHub repository's Actions
-    page). Otherwise, you should use the [`pdm publish`
-    command](https://pdm.fming.dev/latest/usage/publish/) from the command line
+    page). Otherwise, you should use the [`uv publish`
+    command](https://docs.astral.sh/uv/usage/publish/) from the command line
     while in the repository's root folder.
 
 ## Repository Layout
@@ -155,9 +149,7 @@ that you will ordinarily modify are commented.
 
 ## Versioning
 
-When you publish a new version, you should first manually adjust the version in
-the created repository's `__init__.py` file. It will then be automatically
-adjusted in `pyproject.toml` as well. `snickerdoodle` does not use automatic semantic
+`snickerdoodle` does not use automatic semantic
 versioning because the process thinks so many minor updates are "major" and you
 will [find yourself on version
 12.0.0](https://hynek.me/articles/semver-will-not-save-you/) and still in alpha

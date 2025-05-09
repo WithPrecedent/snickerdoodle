@@ -9,7 +9,7 @@ To use `snickerdoodle` and the repository that it creates, you just need:
 * [`cookiecutter`](https://www.cookiecutter.io/),
   [`cruft`](https://github.com/cruft/cruft), or
   [`cookieninja`](https://github.com/cookieninja-generator/cookieninja)
-* [`pdm`](https://pdm.fming.dev/latest/)
+* [`uv`](https://docs.astral.sh/uv/)
 * A [GitHub](https://github.com/) account
 
 !!! tip
@@ -71,7 +71,7 @@ any limitations on your answer:
 | `license` | content of the constructed LICENSE file and in `pyproject.toml` | Apache 2.0 | Apache 2.0, BSD, ISC, GNU General Public v3, MIT, Other |
 | `badge_style` | badges in README and docs |  [![for-the-badge style](https://img.shields.io/badge/style-for--the--badge-blue?style=for-the-badge)](https://www.shields.io/) | [![for-the-badge style](https://img.shields.io/badge/style-for--the--badge-blue?style=for-the-badge)](https://www.shields.io/), [![flat style](https://img.shields.io/badge/style-flat-green?style=flat)](https://www.shields.io/), [![flat-square style](https://img.shields.io/badge/style-flat--square-orange?style=flat-square)](https://www.shields.io/), [![plastic style](https://img.shields.io/badge/style-plastic-purple?style=plastic)](https://www.shields.io/), [![social style](https://img.shields.io/badge/style-social-red?style=social)](https://www.shields.io/) |
 | `commit_to_github` | whether to make an initial commit to GitHub | "n" (no commit) | Must have [GitHub credentials stored](https://docs.github.com/en/get-started/quickstart/set-up-git) |
-| `create_virtual_environment` | whether to create a virtual environment in ".venv" folder | "n" (no environment created) | Must have `pdm` installed |
+| `create_virtual_environment` | whether to create a virtual environment in ".venv" folder | "n" (no environment created) | Must have `uv` installed |
 
 ## Connect Remote and Local Repositories
 
@@ -111,11 +111,18 @@ Your first commit with the new repository should now be visible on GitHub.
 To create an environment with all of your dependencies (including development dependencies), enter the following in the repository folder.
 
 ```sh
-pdm install
-pdm use -f .venv
+uv venv
+uv sync
 ```
 
-Any time you update your dependencies, you should rerun `pdm install`. But, you do not need to enter `pdm use`, unless you have a particular need within the environment.
+Any time you update your dependencies, you should rerun `uv sync`.
+
+If you need to activate your environment outside of an IDE, use these commands:
+
+```sh
+source .venv/bin/activate  # For Linux and MacOS
+.venv\Scripts\activate     # For Windows
+```
 
 ## Deploy Documentation
 
@@ -125,14 +132,14 @@ Any time you update your dependencies, you should rerun `pdm install`. But, you 
     `create_virtual_environment` in the
     questionnaire.*
 
-Unlike `poetry`, `pdm` does not use a shell. Instead, after you have created a virtual environment, enter the following commands to deploy your documentation.
+Unlike `poetry`, `uv` does not use a shell. Instead, after you have created a virtual environment, enter the following commands to deploy your documentation.
 
 ```sh
-pdm run mkdocs build
+uv run mkdocs build
 # If you use an IDE that has stored your GitHub credentials, you might find
 # it easier to use the IDE for deploying your docs instead of the command
 # line.
-pdm run mkdocs gh-deploy --force --clean
+uv run mkdocs gh-deploy --force --clean
 ```
 
 It's essential to run these commands once so that the documentation branch is created. Afterwards, the documentation for the repository will be automatically updated with every push to GitHub.

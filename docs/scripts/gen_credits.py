@@ -21,8 +21,8 @@ from jinja2.sandbox import SandboxedEnvironment
 project_dir = Path(".")
 pyproject = toml.load(project_dir / "pyproject.toml")
 project = pyproject["project"]
-pdm = pyproject["tool"]["pdm"]
-lock_data = toml.load(project_dir / "pdm.lock")
+uv = pyproject["tool"]["uv"]
+lock_data = toml.load(project_dir / "uv.lock")
 lock_pkgs = {pkg["name"].lower(): pkg for pkg in lock_data["package"]}
 project_name = project["name"]
 regex = re.compile(r"(?P<dist>[\w.-]+)(?P<spec>.*)$")
@@ -76,11 +76,11 @@ def _get_deps(
 
 def _render_credits() -> str:
     dev_dependencies = _get_deps(
-        chain(*pdm.get("dev-dependencies", {}).values()))  # type: ignore[arg-type]
+        chain(*uv.get("dev-dependencies", {}).values()))  # type: ignore[arg-type]
     prod_dependencies = _get_deps(
         chain(  # type: ignore[arg-type]
             project.get("dependencies", []),
-            chain(*project.get("optional-dependencies", {}).values()),),)
+            chain(*project.get("dependency-groups", {}).values()),),)
 
     template_data = {
         "project_name": project_name,
@@ -94,7 +94,7 @@ def _render_credits() -> str:
         These projects were used to build *{{ project_name }}*. **Thank you!**
 
         [`python`](https://www.python.org/) |
-        [`pdm`](https://pdm.fming.dev/)
+        [`uv`](https://docs.astral.sh/uv/)
 
         {% macro dep_line(dep) -%}
         [`{{ dep.name }}`](https://pypi.org/project/{{ dep.name }}/) | {{ dep.summary }} | {{ ("`" ~ dep.spec ~ "`") if dep.spec else "" }} | `{{ dep.version }}` | {{ dep.license }}

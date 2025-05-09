@@ -54,14 +54,6 @@ jobs:
     - name: run pre-commit
       run: uv run pre-commit run -a --show-diff-on-failure
 
-    - name: output status
-      shell: bash
-      run: |
-        echo ${{"{{"}} steps.setup-pdm.outputs.pdm-bin {{"}}"}}
-        echo ${{"{{"}} steps.setup-pdm.outputs.pdm-version {{"}}"}}
-        echo ${{"{{"}} steps.setup-pdm.outputs.python-path {{"}}"}}
-        echo ${{"{{"}} steps.setup-pdm.outputs.python-version {{"}}"}}
-
     - name: run tests
       run: uv run -v pytest tests
 
