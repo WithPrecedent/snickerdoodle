@@ -1,21 +1,57 @@
 # Automatically updates dependency versions using dependabot.
 
-version: 2
-updates:
+# version: 2
+# updates:
 
 # Maintains dependencies for Python via `pip`
-- package-ecosystem: pip
-  directory: "/"
-  # Always updates to a newer version. If you want a less aggressive strategy, 
-  # change the value to "increase-if-necessary"
-  versioning-strategy: increase
-  schedule:
-    interval: weekly
-    time: "5:00"
+# - package-ecosystem: pip
+#   directory: "/"
+#   # Always updates to a newer version. If you want a less aggressive strategy,
+#   # change the value to "increase-if-necessary"
+#   versioning-strategy: increase
+#   schedule:
+#     interval: weekly
+#     time: "5:00"
 
-# Maintains dependencies for GitHub Actions
-- package-ecosystem: github-actions
-  directory: "/"
-  schedule:
-    interval: "weekly"
-    time: "6:00"
+# # Maintains dependencies for GitHub Actions
+# - package-ecosystem: github-actions
+#   directory: "/"
+#   schedule:
+#     interval: "weekly"
+#     time: "6:00"
+
+version: 2
+updates:
+  - package-ecosystem: pip
+    directory: "/docs"
+    schedule:
+      interval: daily
+      time: "04:00"
+      timezone: "Europe/Berlin"
+    labels:
+      - "cookiecutter"
+      - "dependencies"
+      - "python"
+    open-pull-requests-limit: 99
+  - package-ecosystem: pip
+    directory: "/.github/workflows"
+    schedule:
+      interval: daily
+      time: "04:00"
+      timezone: "Europe/Berlin"
+    labels:
+      - "cookiecutter"
+      - "dependencies"
+      - "python"
+    open-pull-requests-limit: 99
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: daily
+      time: "04:00"
+      timezone: "Europe/Berlin"
+    labels:
+      - "cookiecutter"
+      - "dependencies"
+      - "github_actions"
+    open-pull-requests-limit: 99

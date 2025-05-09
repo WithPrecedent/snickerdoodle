@@ -24,8 +24,11 @@ jobs:
     - name: get repository
       uses: actions/checkout@v4.1.1
 
-    - name: install pdm
-      uses: pdm-project/setup-pdm@v4
+    - name: install uv
+      uses: astral-sh/setup-uv@v4
+
+    - name: build package
+      run: uv build
 
     - name: push to pypi
-      run: pdm publish
+      run: uv publish

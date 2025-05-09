@@ -27,27 +27,27 @@ jobs:
 
     steps:
     - name: checkout repository
-      uses: actions/checkout@v4.1.1
+      uses: actions/checkout@v4
 
     - name: install python
       uses: actions/setup-python@v5
       with:
-        python-version: 3.x
+        python-version: ${{"{{"}} matrix.python-version {{"}}"}}
 
-    - name: install pdm
-      uses: pdm-project/setup-pdm@v4
-      with:
-        python-version: 3.x
+    - name: install uv
+      uses: astral-sh/setup-uv@v4
 
-    - name: Install Dependencies
-      shell: bash
-      run: pdm install -v && pdm info
+    - name: create uv environment
+      run: uv venv
 
-    - name: Build Documentation with MkDocs
-      run: pdm run mkdocs build
+    - name: install dependencies
+      run: uv pip install
 
-    - name: Deploy Documentation to GitHub Pages
-      run: pdm run mkdocs gh-deploy --force --clean --verbose
+    - name: build documentation with mkdocs
+      run: uv run mkdocs build
+
+    - name: deploy documentation to GitHub Pages
+      run: uv run mkdocs gh-deploy --force --clean --verbose
       env:
         GITHUB_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
 
