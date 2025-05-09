@@ -11,7 +11,6 @@ indent_size = 4
 indent_style = space
 trim_trailing_whitespace = true
 
-
 # Docstrings and comments use max_line_length = 79
 [*.py]
 max_line_length = 80

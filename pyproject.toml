@@ -28,9 +28,10 @@ keywords = [
     "template",
     "uv",
     "mkdocs",
+    "mypy",
+    "pre-commit",
     "ruff",
-    "github actions",
-    "pre-commit"]
+    "github actions"]
 dependencies = [
     "cookiecutter",
     "uv"]

@@ -128,13 +128,6 @@ dmypy.json
 # PyCharm
 .idea/
 
-# PDM
-.copier-answers.yml
-.idea/
-.pdm-plugins/
-.pdm-python
-__pypackages__/
-
 # Cython
 cython_debug/
 
