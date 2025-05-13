@@ -30,7 +30,9 @@ Issues = "https://github.com/{{cookiecutter.github_user}}/{{cookiecutter.repo_na
 Changelog = "https://{{cookiecutter.github_user}}.github.io/{{cookiecutter.repo_name}}/changelog"
 
 [dependency-groups]
-docs = [
+dev = [
+    "cookiecutter",
+    "uv",
     "markdown-callouts",
     "markdown-exec",
     "mkdocs",
@@ -43,6 +45,7 @@ docs = [
     "mkdocstrings[python]",
     "toml"]
 quality = [
+    "mypy",
     "pre-commit",
     "ruff"]
 tests = [
@@ -128,9 +131,6 @@ ignore = [
     "SLF001", # Private member accessed
     "TID252",  # Relative imports are banned
     "TRY003",]  # Avoid specifying long messages outside the exception class
-    # "W0105",  # String statement has no effect
-    # "W0221",  # Arguments differ
-    # "W0222",]  # Access to a protected member
 select = [
     "A",  # flake8-buttons
     "ANN",  # flake8-annotations
