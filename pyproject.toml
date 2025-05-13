@@ -32,13 +32,7 @@ keywords = [
     "pre-commit",
     "ruff",
     "github actions"]
-dependencies = [
-    "cookiecutter",
-    "uv",
-    "mkdocs",
-    "mypy",
-    "pre-commit",
-    "ruff"]
+dependencies = []
 
 [project.urls]
 Documentation = "https://WithPrecedent.github.io/snickerdoodle"
@@ -49,8 +43,7 @@ Changelog = "https://WithPrecedent.github.io/snickerdoodle/changelog"
 [dependency-groups]
 dev = [
     "cookiecutter",
-    "uv"]
-docs = [
+    "uv",
     "markdown-callouts",
     "markdown-exec",
     "mkdocs",
