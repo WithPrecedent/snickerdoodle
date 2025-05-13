@@ -2,7 +2,7 @@
 
 [project]
 name = "snickerdoodle"
-description = "Easy-to-use, general-purpose, modern cookiecutter template for Python"
+description = "Easy-to-use, general-purpose, modern cookiecutter template for Python projects."
 authors = [{name = "coreyrayburnyung", email = "coreyrayburnyung@gmail.com"}]
 version = "0.2.2"
 license = {text = "Apache 2.0"}
@@ -32,9 +32,7 @@ keywords = [
     "pre-commit",
     "ruff",
     "github actions"]
-dependencies = [
-    "cookiecutter",
-    "uv"]
+dependencies = []
 
 [project.urls]
 Documentation = "https://WithPrecedent.github.io/snickerdoodle"
@@ -43,6 +41,9 @@ Issues = "https://github.com/WithPrecedent/snickerdoodle/issues"
 Changelog = "https://WithPrecedent.github.io/snickerdoodle/changelog"
 
 [dependency-groups]
+dev = [
+    "cookiecutter",
+    "uv"]
 docs = [
     "markdown-callouts",
     "markdown-exec",
@@ -56,6 +57,7 @@ docs = [
     "mkdocstrings[python]",
     "toml"]
 quality = [
+    "mypy",
     "pre-commit",
     "ruff"]
 tests = [
@@ -99,7 +101,12 @@ filterwarnings = ["ignore::DeprecationWarning"]
 pythonpath = ["src"]
 
 [tool.ruff]
-extend-exclude = ["docs", "scripts", "site", "tests", ".*.*"]
+extend-exclude = [
+    "docs",
+    "scripts",
+    "site",
+    "tests",
+    ".*.*"]
 fix = true
 line-length = 80
 dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
@@ -134,9 +141,6 @@ ignore = [
     "SLF001", # Private member accessed
     "TID252",  # Relative imports are banned
     "TRY003",]  # Avoid specifying long messages outside the exception class
-    # "W0105",  # String statement has no effect
-    # "W0221",  # Arguments differ
-    # "W0222",]  # Access to a protected member
 select = [
     "A",  # flake8-buttons
     "ANN",  # flake8-annotations
@@ -197,7 +201,9 @@ inline-quotes = "double"
 multiline-quotes = "double"
 
 [tool.ruff.lint.flake8-type-checking]
-exempt-modules = ["typing", "typing_extensions"]
+exempt-modules = [
+    "typing",
+    "typing_extensions"]
 
 [tool.ruff.lint.flake8-unused-arguments]
 ignore-variadic-names = true

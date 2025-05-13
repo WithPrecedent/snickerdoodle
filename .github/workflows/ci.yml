@@ -36,9 +36,9 @@ jobs:
 
     - name: install uv
       uses: astral-sh/setup-uv@v6
-
-    - name: create uv environment
-      run: uv venv
+      with:
+        version: "latest"
+        activate-environment: true
 
     - name: install dependencies
       run: uv sync
