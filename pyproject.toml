@@ -32,7 +32,13 @@ keywords = [
     "pre-commit",
     "ruff",
     "github actions"]
-dependencies = []
+dependencies = [
+    "cookiecutter",
+    "uv",
+    "mkdocs",
+    "mypy",
+    "pre-commit",
+    "ruff"]
 
 [project.urls]
 Documentation = "https://WithPrecedent.github.io/snickerdoodle"
