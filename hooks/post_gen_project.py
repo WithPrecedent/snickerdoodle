@@ -16,7 +16,6 @@ _PATHS_TO_REMOVE: list[str] = [
     '{% if cookiecutter.code_coverage not in _TRUES %}codecov.yaml{% endif %}',
     '{% if cookiecutter.code_coverage not in _TRUES %}.github/workflows/validate-codecov.yml{% endif %}']
 
-
 def delete_file(path: str | pathlib.Path) -> None:
     """Deletes file from disk.
 
@@ -192,17 +191,18 @@ def reindent_cookiecutter_json():
 def main() -> None:
     """Executes post repository generation scripts."""
     folder = pathlib.Path.cwd()
-    if "{{ cookiecutter.create_virtual_environment }}".lower() in _TRUES:
+    if "{{ cookiecutter.virtual_environment }}".lower() in _TRUES:
         create_virtual_environment(folder = folder)
     if "{{ cookiecutter.commit_to_github }}".lower() in _TRUES:
         git_url = ''.join(['{{ cookiecutter.url }}', '.git'])
         commit_to_git(url = git_url, folder = folder)
-        if "{{ cookiecutter.create_virtual_environment }}".lower() in _TRUES:
-            build_and_deploy_docs(folder = folder)
-        else:
-            print(  # noqa: T201
-                'Cannot deploy documentation without creating a virtual '
-                'environment')
+        if "{{ cookiecutter.mkdocs }}".lower() in _TRUES:
+            if "{{ cookiecutter.virtual_environment }}".lower() in _TRUES:
+                build_and_deploy_docs(folder = folder)
+            else:
+                print(  # noqa: T201
+                    'Cannot deploy documentation without creating a virtual '
+                    'environment')
     cleanup_files()
     reindent_cookiecutter_json()
 
