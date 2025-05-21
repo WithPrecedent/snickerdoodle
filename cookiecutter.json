@@ -1,13 +1,13 @@
 {
   "project_name": "",
   "package_name": "{{cookiecutter.project_name.lower().replace(' ', '-').replace('_', '-')}}",
-  "repo_name": "{{cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_')}}",
+  "repository_name": "{{cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_')}}",
   "author_name": "",
   "author_email": "",
   "github_user": "",
   "description": "",
   "version": "0.0.1",
-  "url": "{{'https://github.com/' + cookiecutter.github_user + '/' + cookiecutter.repo_name}}",
+  "url": "{{'https://github.com/' + cookiecutter.github_user + '/' + cookiecutter.repository_name}}",
   "development_status": [
     "Development Status :: 1 - Planning",
     "Development Status :: 2 - Pre-Alpha",
@@ -29,7 +29,13 @@
     "flat-square",
     "plastic",
     "social"],
+  "github_actions": true,
+  "pre_commit": true,
+  "dependeabot": true,
+  "mkdocs": true,
+  "pypi": true,
+  "code_coverage": true,
   "commit_to_github": false,
-  "make_github_repo_public": true,
-  "create_virtual_environment": false
+  "public_repository": true,
+  "virtual_environment": false
 }

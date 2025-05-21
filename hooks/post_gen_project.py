@@ -2,13 +2,58 @@
 
 import json
 import pathlib
+import shutil
 import subprocess
 
-_TRUES: tuple[bool | str] = ('y', True, 'true')
+_TRUES: tuple[bool | str, ...] = ('y', 'Y', True, 'true', 'True')
+_PATHS_TO_REMOVE: list[str] = [
+    '{% if cookiecutter.github_actions not in _TRUES %}.github/workflows{% endif %}',
+    '{% if cookiecutter.dependabot not in _TRUES %}.github/dependabot.yml{% endif %}',
+    '{% if cookiecutter.pre_commit not in _TRUES %}pre-commit-config.yaml{% endif %}',
+    '{% if cookiecutter.mkdocs not in _TRUES %}docs{% endif %}',
+    '{% if cookiecutter.mkdocs not in _TRUES %}mkdocs.yml{% endif %}',
+    '{% if cookiecutter.pypi not in _TRUES %}.github/workflows/publish.yml{% endif %}',
+    '{% if cookiecutter.code_coverage not in _TRUES %}codecov.yaml{% endif %}',
+    '{% if cookiecutter.code_coverage not in _TRUES %}.github/workflows/validate-codecov.yml{% endif %}']
 
+
+def delete_file(path: str | pathlib.Path) -> None:
+    """Deletes file from disk.
+
+    Args:
+        path: path to file.
+
+    """
+    path = pathlib.Path(path) if isinstance(path, str) else path
+    path.unlink(missing_ok = True)
+    return
+
+def delete_folder(path: str | pathlib.Path) -> None:
+    """Deletes folder from disk.
+
+    Args:
+        path: path to folder.
+
+    """
+    shutil.rmtree(path, ignore_errors = True)
+    return
+
+def delete_path(path: str | pathlib.Path) -> None:
+    """Deletes path to file or folder.
+
+    Args:
+        path: path to folder or file to delete.
+
+    """
+    path = pathlib.Path(path) if isinstance(path, str) else path
+    if path.is_dir():
+        delete_folder(path)
+    else:
+        delete_file(path)
+    return
 
 def execute_commands(
-    commands: list[str],
+    commands: list[list[str]],
     folder: str | pathlib.Path) -> None:
     """Executes all 'commands' using `subprocess.run`.
 
@@ -25,6 +70,7 @@ def execute_commands(
             cwd = folder,
             check = False,
             shell = False)
+    return
 
 def execute_command_with_output(command: list[str]) -> str:
     """Returns text output from `command`.
@@ -58,15 +104,15 @@ def create_virtual_environment(folder: str | pathlib.Path) -> None:
         folder: path of repository folder.
 
     """
-    environment_commands = (
-        ['uv', 'sync'])
+    environment_commands = [['uv', 'sync']]
     execute_commands(commands = environment_commands, folder = folder)
+    return
 
 def get_github_login() -> tuple[str, str]:
-    """get_github_login _summary_
+    """Gets the name and token needed to log in to GitHub.
 
     Returns:
-        Returns user_name and token for GitHub login
+        Returns user name and token for GitHub login.
 
     """
     command = ['echo', 'url=https://github.com', '|', 'git', 'credential', 'fill']
@@ -77,12 +123,12 @@ def get_github_login() -> tuple[str, str]:
         if "password=" in line:
             password = line.split("=")[-1].strip()
             break
-    if not password or not user_name:
-        print('Could not obtain GitHub username and token from Credential Manager')
-    return user_name, password
+    if not password or not user_name: # type: ignore
+        print('Could not obtain GitHub username and token from Credential Manager')  # noqa: T201
+    return user_name, password # type: ignore
 
 def commit_to_git(url: str, folder: str | pathlib.Path) -> None:
-    """Initializes and commits repository using `subprocess`.
+    """Initializes and commits repository.
 
     Args:
         url: url for GitHub repository with '.git' extension.
@@ -90,9 +136,9 @@ def commit_to_git(url: str, folder: str | pathlib.Path) -> None:
 
     """
     name, password = get_github_login()
-    repo = "{{ cookiecutter.repo_name }}"
-    public = 'public' if "{{ cookiecutter.repo_name }}".lower() in _TRUES else "private"
-    git_commands = (
+    repo = "{{ cookiecutter.repository_name }}"
+    public = 'public' if "{{ cookiecutter.public_repository }}".lower() in _TRUES else "private"
+    git_commands = [
         ['echo', password, '|', 'gh', 'auth', 'login', '--with-token'],
         ['git', 'ls-remote', '-h', url, '&>', '/dev/null'],
         ['git', 'init'],
@@ -100,7 +146,7 @@ def commit_to_git(url: str, folder: str | pathlib.Path) -> None:
         ['git', 'add', '.'],
         ['git', 'commit', '-m', '"Initial commit"'],
         ['git', 'branch', '-M', 'main'],
-        ['gh', 'repo', 'create', repo, f'--{public}', '--push', '--source=.'])
+        ['gh', 'repo', 'create', repo, f'--{public}', '--push', '--source=.']]
         # ['git', 'remote', 'add', 'origin', url],
         # ['git', 'push', '-u', 'origin', 'main'])
     execute_commands(commands = git_commands, folder = folder)
@@ -112,10 +158,16 @@ def build_and_deploy_docs(folder: str | pathlib.Path) -> None:
         folder: path of repository folder.
 
     """
-    docs_commands = (
+    docs_commands = [
         ['uv', 'run', 'mkdocs', 'build'],
-        ['uv', 'run', 'mkdocs', 'gh-deploy', '--force', '--clean'])
+        ['uv', 'run', 'mkdocs', 'gh-deploy', '--force', '--clean']]
     execute_commands(commands = docs_commands, folder = folder)
+
+def cleanup_files() -> None:
+    """Deletes files and paths for unselected options."""
+    for path in _PATHS_TO_REMOVE:
+        delete_path(path)
+    return
 
 def reindent_cookiecutter_json():
     """Indent .cookiecutter.json using two spaces.
@@ -148,9 +200,10 @@ def main() -> None:
         if "{{ cookiecutter.create_virtual_environment }}".lower() in _TRUES:
             build_and_deploy_docs(folder = folder)
         else:
-            print(
+            print(  # noqa: T201
                 'Cannot deploy documentation without creating a virtual '
                 'environment')
+    cleanup_files()
     reindent_cookiecutter_json()
 
 if __name__ == "__main__":

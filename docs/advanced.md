@@ -61,13 +61,7 @@ each GitHub push.
 
 !!! Tip
 
-    To automatically fix problems identified by `ruff`, you should use `pre-commit`. A
-    `pre-commit` configuration file (`.pre-commit-config.yaml`) is included in the
-    created repository.  By default, the `pre-commit` command will run `ruff` with
-    the `fix` option invoked, which will try to correct all of the problems that it
-    can. To use `pre-commit`, follow its [user
-    guide](https://pre-commit.com/#usage). If you activate `pre-commit`, it will
-    then be automatically run on every push to GitHub.
+    To automatically fix problems identified by `ruff`, you should use `pre-commit`. A `pre-commit` configuration file (`.pre-commit-config.yaml`) is included in the created repository.  By default, the `pre-commit` command will run `ruff` with the `fix` option invoked, which will try to correct all of the problems that it can. To use `pre-commit`, follow its [user guide](https://pre-commit.com/#usage). If you activate `pre-commit`, it will then be automatically run on every push to GitHub.
 
 ## GitHub Actions
 
@@ -149,8 +143,8 @@ that you will ordinarily modify are commented.
 
 ## Versioning
 
-`snickerdoodle` does not use automatic semantic
-versioning because the process thinks so many minor updates are "major" and you
+At present, `snickerdoodle` does not support automatic semantic
+versioning because the tools think so many minor updates are "major" and you
 will [find yourself on version
 12.0.0](https://hynek.me/articles/semver-will-not-save-you/) and still in alpha
 or beta. And, while [calendar versioning](https://calver.org/) has a lot in its favor, it

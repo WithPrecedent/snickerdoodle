@@ -82,7 +82,7 @@ All notable changes to this project will be documented in this file.
 * Fixed capitalization in badges for consistency with different badge styles and
   associated tool or brand's normal capitalization
 * Fixed remaining bugs due to differences in `project_name`, `package_name`, and
-  `repo_name` in `cookiecutter` templating
+  `repository_name` in `cookiecutter` templating
 
 ## 0.1.4
 

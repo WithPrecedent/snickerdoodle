@@ -25,7 +25,7 @@ VALID_REPO: Pattern[str] = re.compile(
 # Checks repository url, assuming it is at GitHub.
 VALID_REPO_URL: Pattern[str] = re.compile(
     'https:\/\/github\.com\/[A-Za-z0-9]([A-Za-z0-9_]|-(?!-))*[A-Za-z0-9_]' \
-    '\/[A-Za-z0-9_]([A-Za-z0-9_]|-(?!-))*[A-Za-z0-9_]\/?$') # noqa
+    '\/[A-Za-z0-9_]([A-Za-z0-9_]|-(?!-))*[A-Za-z0-9_]\/?$')
 
 
 def validate_text(text: str, regex: Pattern, error_label: str) -> None:
@@ -37,13 +37,12 @@ def validate_text(text: str, regex: Pattern, error_label: str) -> None:
         error_label: text to add to error message if the check fails.
 
     Raises:
-        ValueError: if "text" does not match "regex".
+        ValueError: if `text` does not match `regex`.
 
     """
     if regex.fullmatch(text) is None:
         message = f'The project name {text} is not a valid {error_label}'
         raise ValueError(message)
-
 
 def main() -> None:
     """Calls validation functions."""
@@ -56,7 +55,7 @@ def main() -> None:
         regex = VALID_PACKAGE,
         error_label = "package name")
     validate_text(
-        text = "{{ cookiecutter.repo_name }}",
+        text = "{{ cookiecutter.repository_name }}",
         regex = VALID_REPO,
         error_label = "repo name")
     validate_text(

@@ -1,86 +1,56 @@
 # snickerdoodle
 
 <p align="center">
-<img src="https://github.com/WithPrecedent/snickerdoodle/blob/main/docs/img/snickerdoodle.png?raw=true" alt="snickerdoodle cookie logo" style="width:250px;"/>
+<img src="https://github.com/WithPrecedent/snickerdoodle/blob/main/docs/img/snickerdoodle.png?raw=true" alt="snickerdoodle cookie logo" style="width:200px;"/>
 </p>
 
 | | |
 | --- | --- |
-| Version | [![PyPI Latest Release](https://img.shields.io/pypi/v/snickerdoodle.svg?style=for-the-badge&color=steelblue&label=PyPI&logo=PyPI&logoColor=yellow)](https://pypi.org/project/snickerdoodle/) [![GitHub Latest Release](https://img.shields.io/github/v/tag/WithPrecedent/snickerdoodle?style=for-the-badge&color=navy&label=GitHub&logo=github)](https://github.com/WithPrecedent/snickerdoodle/releases) |
-| Status | [![Development Status](https://img.shields.io/badge/Development-Active-seagreen?style=for-the-badge&logo=git)](https://www.repostatus.org/#active) [![Project Stability](https://img.shields.io/pypi/status/snickerdoodle?style=for-the-badge&logo=pypi&label=Stability&logoColor=yellow)](https://pypi.org/project/snickerdoodle/) |
-| Documentation | [![Hosted By](https://img.shields.io/badge/hosted_by-GitHub_Pages-blue?style=for-the-badge&color=navy&logo=github)](https://withprecedent.github.io/snickerdoodle) |
-| Compatibility | [![Compatible Python Versions](https://img.shields.io/pypi/pyversions/snickerdoodle?style=for-the-badge&color=steelblue&label=Python&logo=python&logoColor=yellow)](https://pypi.python.org/pypi/snickerdoodle/) [![Linux](https://img.shields.io/badge/Linux-lightseagreen?style=for-the-badge&logo=linux&labelColor=gray&logoColor=white)](https://www.linux.org/) [![MacOS](https://img.shields.io/badge/MacOS-snow?style=for-the-badge&logo=apple&labelColor=gray)](https://www.apple.com/macos/)  [![Windows](https://img.shields.io/badge/Windows-blue?style=for-the-badge)](https://www.microsoft.com/en-us/windows?r=1) |
-| Stats | [![PyPI Download Rate (per month)](https://img.shields.io/pypi/dm/snickerdoodle?style=for-the-badge&color=steelblue&label=Downloads%20💾&logo=pypi&logoColor=yellow)](https://pypi.org/project/snickerdoodle) [![GitHub Stars](https://img.shields.io/github/stars/withprecedent/snickerdoodle?style=for-the-badge&color=navy&label=Stars%20⭐&logo=github)](https://github.com/withprecedent/snickerdoodle/stargazers) [![GitHub Contributors](https://img.shields.io/github/contributors/withprecedent/snickerdoodle?style=for-the-badge&color=navy&label=Contributors%20🙋&logo=github)](https://github.com/withprecedent/snickerdoodle/graphs/contributors) [![GitHub Issues](https://img.shields.io/github/issues/withprecedent/snickerdoodle?style=for-the-badge&color=navy&label=Issues%20📘&logo=github)](https://github.com/withprecedent/snickerdoodle/graphs/contributors) [![GitHub Forks](https://img.shields.io/github/forks/withprecedent/snickerdoodle?style=for-the-badge&color=navy&label=Forks%20🍴&logo=github)](https://github.com/withprecedent/snickerdoodle/forks) |
+| Status| [![PyPI Latest Release](https://img.shields.io/pypi/v/snickerdoodle.svg?style=for-the-badge&color=cornflowerblue&label=PyPI&logo=PyPI&logoColor=yellow)](https://pypi.org/project/snickerdoodle/) [![GitHub Latest Release](https://img.shields.io/github/v/tag/WithPrecedent/snickerdoodle?style=for-the-badge&color=forestgreen&label=GitHub&logo=github)](https://github.com/WithPrecedent/snickerdoodle/releases) [![Project Stability](https://img.shields.io/pypi/status/snickerdoodle?style=for-the-badge&logo=pypi&label=Stability&logoColor=yellow)](https://pypi.org/project/snickerdoodle/) |
+| Documentation | [![Hosted By](https://img.shields.io/badge/hosted_by-GitHub_Pages-blue?style=for-the-badge&color=forestgreen&logo=github)](https://withprecedent.github.io/snickerdoodle) |
+| Compatibility | [![Compatible Python Versions](https://img.shields.io/pypi/pyversions/snickerdoodle?style=for-the-badge&color=cornflowerblue&label=Python&logo=python&logoColor=yellow)](https://pypi.python.org/pypi/snickerdoodle/) |
 | | |
 
 ## What is snickerdoodle?
 
-`snickerdoodle` is an easy-to-use, general-purpose cookiecutter template for
-Python projects utilizing modern tools and best practices. To see an example repository using this template,
+`snickerdoodle` is an easy-to-use, general-purpose `cookiecutter` template for
+Python projects utilizing modern tools and best practices. To see an demo repository using this template,
 check out
 [`snickerdoodle_demo`](https://github.com/withprecedent/snickerdoodle_demo).
 
 ## Why use snickerdoodle?
 
-There are a lot of cookiecutter templates. However, many are difficult to use,
-overly opinionated, or underdocumented. I created `snickerdoodle` because I
-couldn't find another `cookiecutter` template meeting these criteria:
+In contrast to highly-opinated templates, `snickerdoodle` has limited requirements with powerful options that users can opt into in the `cookiecutter` questionnaire.
+If you want `snickerdoodle` to support other options, please make a [feature request or contribute](#contributing).
 
-* **Modern**: follows best practices, using modern, actively developed tools.
-* **Batteries Included**: allows you to start coding immediately.
-* **Flexible**: no required usage of any external services.
-  (SonarCloud, Travis, CircleCI, Tox, etc.).
-* **Low-Maintenance**: every commit automatically deploys the documentation as
-  well as lints, formats, and tests the repository.
-* **Powerful**: supports easy publication to GitHub and PyPI.
-* **Well-Documented**: the
-  [documentation](https://withprecedent.github.io/snickerdoodle) includes
-  complete guides for [new](https://withprecedent.github.io/snickerdoodle/tutorial/) and [advanced](https://withprecedent.github.io/snickerdoodle/advanced/) users.
-* **PEP-Compliant**: all included tools follow accepted
-  [PEPs](https://peps.python.org/pep-0001/), particularly [PEP 621](https://peps.python.org/pep-0621/) and
-  [PEP 631](https://peps.python.org/pep-0631/).
-
-### Tools
-
-To accomplish those goals, `snickerdoodle` includes modern, stable tools for package construction and
-management that do not require any external services or costs:
-
-* Dependency Management: [![Dependency Manager](https://img.shields.io/badge/uv-mediumpurple?style=flat-square&logo=uv&labelColor=gray)](https://docs.astral.sh/uv/)
-* Documentation:
-  [![Documentation Tool](https://img.shields.io/badge/MkDocs-magenta?style=flat-square&color=deepskyblue&logo=markdown&labelColor=gray)](https://www.mkdocs.org/)
-  on [![Documentation Host](https://img.shields.io/badge/GitHub_Pages-blue?style=flat-square&color=navy&logo=github&labelColor=gray)](https://withprecedent.github.io/snickerdoodle)
-* Testing:
-  [![Testing](https://img.shields.io/badge/pytest-steelblue?style=flat-square&logo=pytest&logoolor=white&labelColor=gray)](https://docs.pytest.org/en/stable/)
-  and
-  [![Coverage](https://img.shields.io/badge/codecov-pink?style=flat-square&logo=codecov&logoolor=white&labelColor=gray)](https://about.codecov.io/) (optional)
-* CI/CD: [![CI](https://img.shields.io/badge/GitHub_Actions-navy?style=flat-square&logo=githubactions&labelColor=gray&logoColor=white)](https://github.com/features/actions)
-* Code Style and Linting:
-  [![Linter](https://img.shields.io/endpoint?style=flat-square&url=https://raw.githubusercontent.com/charliermarsh/Ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/Ruff) and
-  [![Pre-commit](https://img.shields.io/badge/pre--commit-darkolivegreen?style=flat-square&logo=pre-commit&logoColor=white&labelColor=gray)](https://pre-commit.com/)
-
-* Type-Checking: [![Type-Checker](https://img.shields.io/badge/mypy-blue?style=flat-square)](https://mypy-lang.org/)
-
-* Templating: [![Template Manager](https://img.shields.io/badge/Cookiecutter-bisque?style=flat-square&logo=cookiecutter&labelColor=gray)](https://www.cookiecutter.io/)
-
-### Options
-
-In addition to the included tools above, `snickerdoodle` includes several
-options in the `cookiecutter` questionnaire that can be automatically applied
-as part of the templating process:
-
-* Badge style: [![flat
-  style](https://img.shields.io/badge/flat-crimson?style=flat)](https://www.shields.io/),
-  [![flat-square
-  style](https://img.shields.io/badge/flat--square-orange?style=flat-square)](https://www.shields.io/),
-  [![for-the-badge
-  style](https://img.shields.io/badge/For--the--badge-blue?style=for-the-badge)](https://www.shields.io/),
-  [![plastic
-  style](https://img.shields.io/badge/plastic-purple?style=plastic)](https://www.shields.io/),
- or [![social
-  style](https://img.shields.io/badge/social-red?style=social)](https://www.shields.io/)
-* A repo and [initial commit](https://github.com/WithPrecedent/snickerdoodle_demo) to GitHub
-* Build and deploy [documentation](https://withprecedent.github.io/snickerdoodle_demo/) to GitHub Pages
-* Create a virtual environment using `uv`.
+* **Requirements**:
+  * Dependency Management: [![Dependency Manager](https://img.shields.io/badge/uv-mediumpurple?style=flat-square&logo=uv&labelColor=gray)](https://docs.astral.sh/uv/)
+  * Linting: [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
+  * Testing:
+  [![Testing](https://img.shields.io/badge/pytest-cornflowerblue?style=flat-square&logo=pytest&logoolor=white&labelColor=gray)](https://docs.pytest.org/en/stable/)
+  * Templater: [![cookiecutter](https://img.shields.io/badge/cookiecutter-antiquewhite?style=flat-square&logo=cookiecutter&labelColor=gray)](https://cookiecutter.readthedocs.io/en/stable/)
+* **Options Supported**:
+  * Automated Hooks: [![Pre-commit](https://img.shields.io/badge/pre--commit-darkolivegreen?style=flat-square&logo=pre-commit&logoColor=white&labelColor=gray)](https://pre-commit.com/)
+  * Badge Styles:
+    * [![flat style](https://img.shields.io/badge/flat-crimson?style=flat)](https://www.shields.io/)
+    * [![flat-square style](https://img.shields.io/badge/flat--square-orange?style=flat-square)](https://www.shields.io/)
+    * [![for-the-badge style](https://img.shields.io/badge/For--the--badge-blue?style=for-the-badge)](https://www.shields.io/)
+    * [![plastic style](https://img.shields.io/badge/plastic-purple?style=plastic)](https://www.shields.io/)
+    * [![social style](https://img.shields.io/badge/social-red?style=social)](https://www.shields.io/)
+  * CI/CD: [![CI](https://img.shields.io/badge/GitHub_Actions-forestgreen?style=flat-square&logo=githubactions&labelColor=gray&logoColor=white)](https://github.com/features/actions)
+  * Code Coverage: [![Coverage](https://img.shields.io/badge/codecov-pink?style=flat-square&logo=codecov&logoolor=white&labelColor=gray)](https://about.codecov.io/)
+  * Dependency Updater: [![Dependency Maintainer](https://img.shields.io/badge/dependabot-forestgreen?style=flat-square&logo=dependabot&logoColor=white&labelColor=gray)](https://github.com/dependabot)
+  * Documentation: [![Documentation Tool](https://img.shields.io/badge/MkDocs-magenta?style=flat-square&color=deepskyblue&logo=markdown&labelColor=gray)](https://www.mkdocs.org/)   on [![Documentation Host](https://img.shields.io/badge/GitHub_Pages-blue?style=flat-square&color=forestgreen&logo=github&labelColor=gray)](https://withprecedent.github.io/snickerdoodle)
+  automatically built and deployed with every commit
+  * Publishing:
+    * [![PyPI](https://img.shields.io/badge/PyPI-yellow?style=flat-square&logo=pypi&labelColor=gray&logoColor=white)](https://github.com/features/actions)
+      with [![GitHub
+      Actions](https://img.shields.io/badge/GitHub_Actions-forestgreen?style=flat-square&logo=github&labelColor=gray&logoColor=white)](https://github.com/features/actions)
+      using `publish.yml`
+    * [![Repo Host](https://img.shields.io/badge/GitHub-blue?style=flat-square&color=forestgreen&logo=github&labelColor=gray)](https://github.com) automatically with any commit beginning with a version number (e.g., "0.2.3")
+  * Repository Initialization: [![Repo Host](https://img.shields.io/badge/GitHub-blue?style=flat-square&color=forestgreen&logo=github&labelColor=gray)](https://github.com)
+    with an [initial commit](https://github.com/WithPrecedent/snickerdoodle_demo)
+  * Virtual Environment Creation: [![Virtural Environment Manager](https://img.shields.io/badge/uv-mediumpurple?style=flat-square&logo=uv&labelColor=gray)](https://docs.astral.sh/uv/)
 
 ## Getting started
 

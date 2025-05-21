@@ -2,17 +2,17 @@
 
 # Project Information
 
-site_name: {{cookiecutter.repo_name}}
+site_name: {{cookiecutter.repository_name}}
 site_description: {{cookiecutter.description}}
-site_url: https://{{cookiecutter.github_user}}.github.io/{{cookiecutter.repo_name}}
-repo_name: {{cookiecutter.github_user}}/{{cookiecutter.repo_name}}
-repo_url: https://github.com/{{cookiecutter.github_user}}/{{cookiecutter.repo_name}}
+site_url: https://{{cookiecutter.github_user}}.github.io/{{cookiecutter.repository_name}}
+repository_name: {{cookiecutter.github_user}}/{{cookiecutter.repository_name}}
+repo_url: https://github.com/{{cookiecutter.github_user}}/{{cookiecutter.repository_name}}
 watch: [
   mkdocs.yml,
   README.md,
   CONTRIBUTING.md,
   CHANGELOG.md,
-  src/{{cookiecutter.repo_name}}]
+  src/{{cookiecutter.repository_name}}]
 copyright: Copyright, {% now 'local', '%Y' %} {{cookiecutter.author_name}}
 docs_dir: docs
 
@@ -22,7 +22,6 @@ nav:
 - Home:
   - Overview: index.md
   - Changelog: changelog.md
-  - Credits: credits.md
   - License: license.md
 - User Guide:
   - Tutorial: tutorial.md
@@ -154,4 +153,4 @@ extra:
   - icon: fontawesome/brands/github
     link: https://github.com/{{cookiecutter.github_user}}
   - icon: fontawesome/brands/python
-    link: https://pypi.org/project/{{cookiecutter.repo_name}}/
+    link: https://pypi.org/project/{{cookiecutter.repository_name}}/
