@@ -38,7 +38,7 @@ If you want `snickerdoodle` to support other options, please make a [feature req
     * [![plastic style](https://img.shields.io/badge/plastic-purple?style=plastic)](https://www.shields.io/)
     * [![social style](https://img.shields.io/badge/social-red?style=social)](https://www.shields.io/)
   * CI/CD: [![CI](https://img.shields.io/badge/GitHub_Actions-forestgreen?style=flat-square&logo=githubactions&labelColor=gray&logoColor=white)](https://github.com/features/actions)
-  * Code Coverage: [![Coverage](https://img.shields.io/badge/codecov-pink?style=flat-square&logo=codecov&logoolor=white&labelColor=gray)](https://about.codecov.io/)
+  * Code Coverage: [![Coverage](https://img.shields.io/badge/codecov-pink?style=flat-square&logo=codecov&logoolor=white&labelColor=gray)](https://about.codecov.io/) (must have `codecov` installed on the named GitHub account)
   * Dependency Updater: [![Dependency Maintainer](https://img.shields.io/badge/dependabot-forestgreen?style=flat-square&logo=dependabot&logoColor=white&labelColor=gray)](https://github.com/dependabot)
   * Documentation: [![Documentation Tool](https://img.shields.io/badge/MkDocs-magenta?style=flat-square&color=deepskyblue&logo=markdown&labelColor=gray)](https://www.mkdocs.org/)   on [![Documentation Host](https://img.shields.io/badge/GitHub_Pages-blue?style=flat-square&color=forestgreen&logo=github&labelColor=gray)](https://withprecedent.github.io/snickerdoodle)
   automatically built and deployed with every commit
@@ -49,7 +49,7 @@ If you want `snickerdoodle` to support other options, please make a [feature req
       using `publish.yml`
     * [![Repo Host](https://img.shields.io/badge/GitHub-blue?style=flat-square&color=forestgreen&logo=github&labelColor=gray)](https://github.com) automatically with any commit beginning with a version number (e.g., "0.2.3")
   * Repository Initialization: [![Repo Host](https://img.shields.io/badge/GitHub-blue?style=flat-square&color=forestgreen&logo=github&labelColor=gray)](https://github.com)
-    with an [initial commit](https://github.com/WithPrecedent/snickerdoodle_demo)
+    with an [initial commit](https://github.com/WithPrecedent/snickerdoodle_demo) (must have GitHub Credential Manager installed with token access)
   * Virtual Environment Creation: [![Virtural Environment Manager](https://img.shields.io/badge/uv-mediumpurple?style=flat-square&logo=uv&labelColor=gray)](https://docs.astral.sh/uv/)
 
 ## Getting started

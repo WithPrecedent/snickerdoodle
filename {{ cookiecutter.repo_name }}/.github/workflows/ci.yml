@@ -45,12 +45,6 @@ jobs:
     - name: install dependencies
       run: uv pip install
 
-    - name: setup pre-commit
-      uses: actions/cache@v4
-      with:
-        path: ~/.cache/pre-commit
-        key: pre-commit-${{ hashFiles('.pre-commit-config.yaml') }}
-
     - name: run pre-commit
       run: uv run pre-commit run -a --show-diff-on-failure
 

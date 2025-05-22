@@ -7,14 +7,14 @@ import subprocess
 
 _TRUES: tuple[bool | str, ...] = ('y', 'Y', True, 'true', 'True')
 _PATHS_TO_REMOVE: list[str] = [
-    '{% if cookiecutter.github_actions not in _TRUES %}.github/workflows{% endif %}',
-    '{% if cookiecutter.dependabot not in _TRUES %}.github/dependabot.yml{% endif %}',
-    '{% if cookiecutter.pre_commit not in _TRUES %}pre-commit-config.yaml{% endif %}',
-    '{% if cookiecutter.mkdocs not in _TRUES %}docs{% endif %}',
-    '{% if cookiecutter.mkdocs not in _TRUES %}mkdocs.yml{% endif %}',
-    '{% if cookiecutter.pypi not in _TRUES %}.github/workflows/publish.yml{% endif %}',
-    '{% if cookiecutter.code_coverage not in _TRUES %}codecov.yaml{% endif %}',
-    '{% if cookiecutter.code_coverage not in _TRUES %}.github/workflows/validate-codecov.yml{% endif %}']
+    '{% if cookiecutter.github_actions not in ("y", "Y", True, "true", "True") %}.github/workflows{% endif %}',
+    '{% if cookiecutter.dependabot not in ("y", "Y", True, "true", "True") %}.github/dependabot.yml{% endif %}',
+    '{% if cookiecutter.pre_commit not in ("y", "Y", True, "true", "True") %}.pre-commit-config.yaml{% endif %}',
+    '{% if cookiecutter.mkdocs not in ("y", "Y", True, "true", "True") %}docs{% endif %}',
+    '{% if cookiecutter.mkdocs not in ("y", "Y", True, "true", "True") %}mkdocs.yml{% endif %}',
+    '{% if cookiecutter.pypi not in ("y", "Y", True, "true", "True") %}.github/workflows/publish.yml{% endif %}',
+    '{% if cookiecutter.code_coverage not in ("y", "Y", True, "true", "True") %}codecov.yaml{% endif %}',
+    '{% if cookiecutter.code_coverage not in ("y", "Y", True, "true", "True") %}.github/workflows/validate-codecov.yml{% endif %}']
 
 def delete_file(path: str | pathlib.Path) -> None:
     """Deletes file from disk.
@@ -165,28 +165,29 @@ def build_and_deploy_docs(folder: str | pathlib.Path) -> None:
 def cleanup_files() -> None:
     """Deletes files and paths for unselected options."""
     for path in _PATHS_TO_REMOVE:
-        delete_path(path)
+        if path != '':
+            delete_path(path)
     return
 
-def reindent_cookiecutter_json():
-    """Indent .cookiecutter.json using two spaces.
+# def reindent_cookiecutter_json():
+#     """Indent .cookiecutter.json using two spaces.
 
-    The jsonify extension distributed with Cookiecutter uses an indentation
-    width of four spaces. This conflicts with the default indentation width of
-    Prettier for JSON files. Prettier is run as a pre-commit hook in CI.
+#     The jsonify extension distributed with Cookiecutter uses an indentation
+#     width of four spaces. This conflicts with the default indentation width of
+#     Prettier for JSON files. Prettier is run as a pre-commit hook in CI.
 
-    Thanks to cookiecutter-uv-hypermodern-python for this code and suggestion.
-    https://github.com/bosd/cookiecutter-uv-hypermodern-python/
+#     Thanks to cookiecutter-uv-hypermodern-python for this code and suggestion.
+#     https://github.com/bosd/cookiecutter-uv-hypermodern-python/
 
-    """
-    path = pathlib.Path(".cookiecutter.json")
+#     """
+#     path = pathlib.Path('cookiecutter.json')
 
-    with path.open() as io:
-        data = json.load(io)
+#     with path.open() as io:
+#         data = json.load(io)
 
-    with path.open(mode="w") as io:
-        json.dump(data, io, sort_keys= True, indent = 2)
-        io.write("\n")
+#     with path.open(mode = 'w') as io:
+#         json.dump(data, io, sort_keys= True, indent = 2)
+#         io.write('\n')
 
 def main() -> None:
     """Executes post repository generation scripts."""
@@ -204,7 +205,7 @@ def main() -> None:
                     'Cannot deploy documentation without creating a virtual '
                     'environment')
     cleanup_files()
-    reindent_cookiecutter_json()
+    # reindent_cookiecutter_json()
 
 if __name__ == "__main__":
     main()
