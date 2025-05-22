@@ -73,7 +73,7 @@
       "flat": "Flat",
       "flat-square": "Flat Square",
       "plastic": "Plastic",
-      "social": "Social",
+      "social": "Social"
     },
     "github_actions": "Do you wish to use GitHub Actions with your project?",
     "pre_commit": "Do you want to use pre-commit hooks?",
@@ -83,6 +83,6 @@
     "code_coverage": "Do you want to use Codecov to compute testing coverage?",
     "commit_to_github": "Do you want to automatically create a GitHub repository for the project?",
     "public_repository": "If so, should the repository be public?",
-    "virtual_environment": "Do you want to create a local virtual environment with uv?",
+    "virtual_environment": "Do you want to create a local virtual environment with uv?"
   }
 }

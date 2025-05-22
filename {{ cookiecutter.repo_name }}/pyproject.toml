@@ -65,8 +65,9 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/{{cookiecutter.package+_name}}"]
+packages = ["src/{{ cookiecutter.package_name }}"]
 
+'{% if cookiecutter.code_coverage in ("y", "Y", True, "true", "True")%}
 [tool.coverage.report]
 skip_empty = true
 show_missing = true
@@ -80,6 +81,7 @@ tests = ["tests", "*/tests"]
 [tool.coverage.run]
 branch = true
 source = ["{{cookiecutter.package_name}}", "tests"]
+{% endif %}'
 
 [tool.mypy]
 files = ['src']
