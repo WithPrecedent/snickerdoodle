@@ -5,7 +5,7 @@
 site_name: snickerdoodle
 site_description: "Easy-to-use, general-purpose, modern cookiecutter template for Python"
 site_url: https://WithPrecedent.github.io/snickerdoodle
-repository_name: WithPrecedent/snickerdoodle
+repo_name: WithPrecedent/snickerdoodle
 repo_url: https://github.com/WithPrecedent/snickerdoodle
 watch: [
   mkdocs.yml,

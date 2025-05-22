@@ -18,7 +18,7 @@ To use `snickerdoodle` and the repository that it creates, you just need:
 ## Create Remote Repository
 
 Go to your GitHub Repositories page and click "+". The name of the new
-repository must be the same as the "repository_name" you will use in answering the `cookiecutter`
+repository must be the same as the "repo_name" you will use in answering the `cookiecutter`
 questionnaire.
 
 ## Create Local Repository
@@ -60,13 +60,13 @@ any limitations on your answer:
 | --- | --- | --- | --- |
 | `project_name` | project title on README and docs | None | alphanumeric |
 | `package_name` | project title on PyPI.org | `project_name` with spaces and underscores changed to dashes | alphanumeric with no spaces or underscores |
-| `repository_name` | project title on GitHub | `project_name` with spaces and dashes changed to underscores | alphanumeric with no spaces or dashes |
+| `repo_name` | project title on GitHub | `project_name` with spaces and dashes changed to underscores | alphanumeric with no spaces or dashes |
 | `author_name` | in `pyproject.toml` and docs | None | alphanumeric |
 | `author_email` | in `pyproject.toml` | None | alphanumeric |
 | `github_user`  | to infer URL and in `pyproject.toml` | None | alphanumeric |
 | `description`  | to infer URL and in `pyproject.toml` | None | alphanumeric |
 | `version` | in `__init__.py` for project | "0.1.0" | any valid version format |
-| `url` | in `pyproject.toml` | formed from `github_user` and `repository_name` | any valid GitHub url |
+| `url` | in `pyproject.toml` | formed from `github_user` and `repo_name` | any valid GitHub url |
 | `license` | content of the constructed LICENSE file and in `pyproject.toml` | Apache 2.0 | Apache 2.0, BSD, ISC, GNU General Public v3, MIT, Other |
 | `badge_style` | badges in README and docs |  [![for-the-badge style](https://img.shields.io/badge/style-for--the--badge-blue?style=for-the-badge)](https://www.shields.io/) | [![for-the-badge style](https://img.shields.io/badge/style-for--the--badge-blue?style=for-the-badge)](https://www.shields.io/), [![flat style](https://img.shields.io/badge/style-flat-green?style=flat)](https://www.shields.io/), [![flat-square style](https://img.shields.io/badge/style-flat--square-orange?style=flat-square)](https://www.shields.io/), [![plastic style](https://img.shields.io/badge/style-plastic-purple?style=plastic)](https://www.shields.io/), [![social style](https://img.shields.io/badge/style-social-red?style=social)](https://www.shields.io/) |
 | `commit_to_github` | whether to make an initial commit to GitHub | "n" (no commit) | Must have [GitHub credentials stored](https://docs.github.com/en/get-started/quickstart/set-up-git) |
@@ -79,13 +79,13 @@ any limitations on your answer:
     *You do not need to complete this step if you opted to `commit_to_github` in the
     questionnaire.*
 
-Enter the folder that you just created (which should be the `repository_name`) and
+Enter the folder that you just created (which should be the `repo_name`) and
 initialize git as followa:
 
 ```sh
 # If your shell does not use "cd" to change directory, substitute the
 # appropriate command.
-cd {repository_name}
+cd {repo_name}
 git init
 git add .
 # You can change the message in the last command to whatever you like

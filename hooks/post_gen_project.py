@@ -135,7 +135,7 @@ def commit_to_git(url: str, folder: str | pathlib.Path) -> None:
 
     """
     name, password = get_github_login()
-    repo = "{{ cookiecutter.repository_name }}"
+    repo = "{{ cookiecutter.repo_name }}"
     public = 'public' if "{{ cookiecutter.public_repository }}".lower() in _TRUES else "private"
     git_commands = [
         ['echo', password, '|', 'gh', 'auth', 'login', '--with-token'],

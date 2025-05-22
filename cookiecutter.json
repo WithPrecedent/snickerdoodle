@@ -1,13 +1,13 @@
 {
   "project_name": "",
   "package_name": "{{cookiecutter.project_name.lower().replace(' ', '-').replace('_', '-')}}",
-  "repository_name": "{{cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_')}}",
+  "repo_name": "{{cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_')}}",
   "author_name": "",
   "author_email": "",
   "github_user": "",
   "description": "",
   "version": "0.0.1",
-  "url": "{{'https://github.com/' + cookiecutter.github_user + '/' + cookiecutter.repository_name}}",
+  "url": "{{'https://github.com/' + cookiecutter.github_user + '/' + cookiecutter.repo_name}}",
   "development_status": [
     "Development Status :: 1 - Planning",
     "Development Status :: 2 - Pre-Alpha",
@@ -41,7 +41,7 @@
   "__prompts__": {
     "project_name": "What is the name of your project?",
     "package_name": "What is the name of your package?",
-    "repository_name": "What is the name of your repository?",
+    "repo_name": "What is the name of your repository?",
     "author_name": "What is the author's name?",
     "author_email": "What is the author's email address?",
     "github_user": "What GitHub account host this repository?",

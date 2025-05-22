@@ -55,7 +55,7 @@ def main() -> None:
         regex = VALID_PACKAGE,
         error_label = "package name")
     validate_text(
-        text = "{{ cookiecutter.repository_name }}",
+        text = "{{ cookiecutter.repo_name }}",
         regex = VALID_REPO,
         error_label = "repo name")
     validate_text(
