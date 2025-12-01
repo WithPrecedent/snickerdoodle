@@ -4,9 +4,10 @@ All notable changes to this project will be documented in this file.
 
 <!-- insertion marker -->
 
-## 0.3.0 (forthcoming)
+## 0.2.3
 
   * Replaced `pdm` with `uv` for dependency management
+  * Added support for Python 3.13 and 3.14
 
 ## 0.2.2
 
