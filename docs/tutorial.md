@@ -24,8 +24,7 @@ questionnaire.
 ## Create Local Repository
 
 In the parent folder of where you want your new repository, you can use `cookiecutter` (or
-[`cruft`](https://github.com/cruft/cruft) or
-[`cookieninja`](https://github.com/cookieninja-generator/cookieninja)) to access
+[`cruft`](https://github.com/cruft/cruft)) to access
 the `snickerdoodle` template either directly from GitHub or by cloning it on your computer.
 
 === "from GitHub"

@@ -23,34 +23,35 @@ check out
 In contrast to highly-opinated templates, `snickerdoodle` has limited requirements with powerful options that users can opt into in the `cookiecutter` questionnaire.
 If you want `snickerdoodle` to support other options, please make a [feature request or contribute](#contributing).
 
-* **Requirements**:
-  * Dependency Management: [![Dependency Manager](https://img.shields.io/badge/uv-mediumpurple?style=flat-square&logo=uv&labelColor=gray)](https://docs.astral.sh/uv/)
-  * Linting: [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
+* **Built-in**:
+  * Dependency Management: [![Dependency Manager](https://img.shields.io/badge/uv-mediumpurple?style=plastic&logo=uv&labelColor=gray)](https://docs.astral.sh/uv/)
+  * Linting:
+  [![Ruff](https://img.shields.io/badge/Ruff-indigo?style=plastic&logo=ruff&labelColor=gray)](https://github.com/astral-sh/ruff)
   * Testing:
-  [![Testing](https://img.shields.io/badge/pytest-cornflowerblue?style=flat-square&logo=pytest&logoolor=white&labelColor=gray)](https://docs.pytest.org/en/stable/)
-  * Templater: [![cookiecutter](https://img.shields.io/badge/cookiecutter-antiquewhite?style=flat-square&logo=cookiecutter&labelColor=gray)](https://cookiecutter.readthedocs.io/en/stable/)
+  [![Testing](https://img.shields.io/badge/pytest-cornflowerblue?style=plastic&logo=pytest&logoolor=white&labelColor=gray)](https://docs.pytest.org/en/stable/)
+  * Templater: [![cookiecutter](https://img.shields.io/badge/cookiecutter-antiquewhite?style=plastic&logo=cookiecutter&labelColor=gray)](https://cookiecutter.readthedocs.io/en/stable/)
 * **Options Supported**:
-  * Automated Hooks: [![Pre-commit](https://img.shields.io/badge/pre--commit-darkolivegreen?style=flat-square&logo=pre-commit&logoColor=white&labelColor=gray)](https://pre-commit.com/)
-  * Badge Styles:
+  * Automated Hooks: [![Pre-commit](https://img.shields.io/badge/pre--commit-darkolivegreen?style=plastic&logo=pre-commit&logoColor=white&labelColor=gray)](https://pre-commit.com/)
+  * CI/CD: [![CI](https://img.shields.io/badge/GitHub_Actions-forestgreen?style=plastic&logo=githubactions&labelColor=gray&logoColor=white)](https://github.com/features/actions)
+  * Code Coverage: [![Coverage](https://img.shields.io/badge/Codecov-pink?style=plastic&logo=codecov&logoolor=white&labelColor=gray)](https://about.codecov.io/) (must have [![Coverage](https://img.shields.io/badge/Codecov-pink?style=plastic&logo=codecov&logoolor=white&labelColor=gray)](https://about.codecov.io/) installed on the named GitHub account)
+  * Dependency Updater: [![Dependency Maintainer](https://img.shields.io/badge/Dependabot-forestgreen?style=plastic&logo=dependabot&logoColor=white&labelColor=gray)](https://github.com/dependabot)
+  * Different Badge Styles:
     * [![flat style](https://img.shields.io/badge/flat-crimson?style=flat)](https://www.shields.io/)
-    * [![flat-square style](https://img.shields.io/badge/flat--square-orange?style=flat-square)](https://www.shields.io/)
+    * [![flat square](https://img.shields.io/badge/flat--square-orange?style=flat-square)](https://www.shields.io/)
     * [![for-the-badge style](https://img.shields.io/badge/For--the--badge-blue?style=for-the-badge)](https://www.shields.io/)
     * [![plastic style](https://img.shields.io/badge/plastic-purple?style=plastic)](https://www.shields.io/)
     * [![social style](https://img.shields.io/badge/social-red?style=social)](https://www.shields.io/)
-  * CI/CD: [![CI](https://img.shields.io/badge/GitHub_Actions-forestgreen?style=flat-square&logo=githubactions&labelColor=gray&logoColor=white)](https://github.com/features/actions)
-  * Code Coverage: [![Coverage](https://img.shields.io/badge/codecov-pink?style=flat-square&logo=codecov&logoolor=white&labelColor=gray)](https://about.codecov.io/) (must have `codecov` installed on the named GitHub account)
-  * Dependency Updater: [![Dependency Maintainer](https://img.shields.io/badge/dependabot-forestgreen?style=flat-square&logo=dependabot&logoColor=white&labelColor=gray)](https://github.com/dependabot)
-  * Documentation: [![Documentation Tool](https://img.shields.io/badge/MkDocs-magenta?style=flat-square&color=deepskyblue&logo=markdown&labelColor=gray)](https://www.mkdocs.org/)   on [![Documentation Host](https://img.shields.io/badge/GitHub_Pages-blue?style=flat-square&color=forestgreen&logo=github&labelColor=gray)](https://withprecedent.github.io/snickerdoodle)
+  * Documentation: [![Documentation Tool](https://img.shields.io/badge/MkDocs-magenta?style=plastic&color=deepskyblue&logo=markdown&labelColor=gray)](https://www.mkdocs.org/)   on [![Documentation Host](https://img.shields.io/badge/GitHub_Pages-blue?style=plastic&color=forestgreen&logo=github&labelColor=gray)](https://withprecedent.github.io/snickerdoodle)
   automatically built and deployed with every commit
   * Publishing:
-    * [![PyPI](https://img.shields.io/badge/PyPI-yellow?style=flat-square&logo=pypi&labelColor=gray&logoColor=white)](https://github.com/features/actions)
+    * [![PyPI](https://img.shields.io/badge/PyPI-yellow?style=plastic&logo=pypi&labelColor=gray&logoColor=white)](https://github.com/features/actions)
       with [![GitHub
-      Actions](https://img.shields.io/badge/GitHub_Actions-forestgreen?style=flat-square&logo=github&labelColor=gray&logoColor=white)](https://github.com/features/actions)
+      Actions](https://img.shields.io/badge/GitHub_Actions-forestgreen?style=plastic&logo=github&labelColor=gray&logoColor=white)](https://github.com/features/actions)
       using `publish.yml`
-    * [![Repo Host](https://img.shields.io/badge/GitHub-blue?style=flat-square&color=forestgreen&logo=github&labelColor=gray)](https://github.com) automatically with any commit beginning with a version number (e.g., "0.2.3")
-  * Repository Initialization: [![Repo Host](https://img.shields.io/badge/GitHub-blue?style=flat-square&color=forestgreen&logo=github&labelColor=gray)](https://github.com)
-    with an [initial commit](https://github.com/WithPrecedent/snickerdoodle_demo) (must have GitHub Credential Manager installed with token access)
-  * Virtual Environment Creation: [![Virtural Environment Manager](https://img.shields.io/badge/uv-mediumpurple?style=flat-square&logo=uv&labelColor=gray)](https://docs.astral.sh/uv/)
+    * [![Repo Host](https://img.shields.io/badge/GitHub-blue?style=plastic&color=forestgreen&logo=github&labelColor=gray)](https://github.com) automatically with any commit beginning with a version number (e.g., "0.2.3")
+  * Repository Initialization: [![Repo Host](https://img.shields.io/badge/GitHub-blue?style=plastic&color=forestgreen&logo=github&labelColor=gray)](https://github.com)
+    with an [initial commit](https://github.com/WithPrecedent/snickerdoodle_demo) (must have [![Repo Host](https://img.shields.io/badge/GitHub_Credential_Manager-forestgreen?style=plastic&logo=github&labelColor=gray)](https://github.com) installed with token access)
+  * Virtual Environment Creation: [![Virtural Environment Manager](https://img.shields.io/badge/uv-mediumpurple?style=plastic&logo=uv&labelColor=gray)](https://docs.astral.sh/uv/)
 
 ## Getting started
 
