@@ -136,7 +136,6 @@ ignore = [
     "PLR1711", # Useless 'return' at the end of function
     "Q000",  # Single quotes found but double quotes preferred
     "RET505",  # Unnecessary `else` after `return` statement
-    # "S0001",  # Use of assert detected
     "SLF001", # Private member accessed
     "TID252",  # Relative imports are banned
     "TRY003",]  # Avoid specifying long messages outside the exception class
