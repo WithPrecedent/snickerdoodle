@@ -27,7 +27,7 @@ jobs:
 
     steps:
     - name: checkout repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
 
     - name: install python
       uses: actions/setup-python@v5
@@ -35,7 +35,7 @@ jobs:
         python-version: ${{"{{"}} matrix.python-version {{"}}"}}
 
     - name: install uv
-      uses: astral-sh/setup-uv@v4
+      uses: astral-sh/setup-uv@v8.1.0
       with:
         python-version: ${{"{{"}} matrix.python-version {{"}}"}}
 
@@ -59,13 +59,13 @@ jobs:
 
     steps:
     - name: checkout repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
 
     - name: install python
       uses: actions/setup-python@v5
 
     - name: install uv
-      uses: astral-sh/setup-uv@v4
+      uses: astral-sh/setup-uv@v8.1.0
 
     - name: create uv environment
       run: uv venv
@@ -81,13 +81,13 @@ jobs:
 
     steps:
     - name: checkout repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
 
     - name: install python
       uses: actions/setup-python@v5
 
     - name: install uv
-      uses: astral-sh/setup-uv@v4
+      uses: astral-sh/setup-uv@v8.1.0
 
     - name: create uv environment
       run: uv venv
