@@ -4,37 +4,41 @@ All notable changes to this project will be documented in this file.
 
 <!-- insertion marker -->
 
+## 0.3.1
+
+* Updated various developmental tools and GitHub Actions
+
 ## 0.3.0
 
-  * Updated project description
+* Updated project description
 
 ## 0.2.5
 
-  * Fixed Node 20 issue
+* Fixed Node 20 issue
 
 ## 0.2.4
 
-  * Updated Google Actions
-  * Failed build due to Node 20 error
+* Updated Google Actions
+* Failed build due to Node 20 error
 
 ## 0.2.3
 
-  * Replaced `pdm` with `uv` for dependency management
-  * Added support for Python 3.13 and 3.14
+* Replaced `pdm` with `uv` for dependency management
+* Added support for Python 3.13 and 3.14
 
 ## 0.2.2
 
-  * Fixed mkdocs extension bug in GitHub Actions
+* Fixed mkdocs extension bug in GitHub Actions
 
 ## 0.2.1
 
-  * Updated badge logos to incorporate changes at Simple Badges
+* Updated badge logos to incorporate changes at Simple Badges
 
 ## 0.2.0
 
-  * Removed extra actions
-  * Updated `ruff` options to reflect newer version options
-  * Fixed `ruff` bug in `ci.yaml` due to newer versions of `ruff`
+* Removed extra actions
+* Updated `ruff` options to reflect newer version options
+* Fixed `ruff` bug in `ci.yaml` due to newer versions of `ruff`
 
 ## 0.1.15
 
