@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 
 <!-- insertion marker -->
 
+## 0.2.5
+
+  * Fixed Node 20 issue
+
+## 0.2.4
+
+  * Updated Google Actions
+  * Failed build due to Node 20 error
+
 ## 0.2.3
 
   * Replaced `pdm` with `uv` for dependency management
