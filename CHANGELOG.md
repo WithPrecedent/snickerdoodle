@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 <!-- insertion marker -->
 
+## 0.3.0
+
+  * Updated project description
+
 ## 0.2.5
 
   * Fixed Node 20 issue
