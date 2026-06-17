@@ -109,25 +109,6 @@ def create_virtual_environment(folder: str | pathlib.Path) -> None:
     execute_commands(commands = environment_commands, folder = folder)
     return
 
-# def get_github_login() -> tuple[str, str]:
-#     """Gets the name and token needed to log in to GitHub.
-
-#     Returns:
-#         Returns user name and token for GitHub login.
-
-#     """
-#     command = ['echo', 'url=https://github.com', '|', 'git', 'credential', 'fill']
-#     output = execute_command_with_output(command)
-#     for line in output.splitlines():
-#         if "username=" in line:
-#             user_name = line.split("=")[-1].strip()
-#         if "password=" in line:
-#             password = line.split("=")[-1].strip()
-#             break
-#     if not password or not user_name: # type: ignore
-#         print('Could not obtain GitHub username and token from Credential Manager')  # noqa: T201
-#     return user_name, password # type: ignore
-
 def commit_to_git(url: str, folder: str | pathlib.Path) -> None:
     """Initializes and commits repository.
 
@@ -136,21 +117,7 @@ def commit_to_git(url: str, folder: str | pathlib.Path) -> None:
         folder: path of repository folder.
 
     """
-    # name, password = get_github_login()
     repo = "{{ cookiecutter.repo_name }}"
-    # public = 'public' if "{{ cookiecutter.public_repository }}".lower() in _TRUES else "private"
-    # git_commands = [
-    #     ['echo', password, '|', 'gh', 'auth', 'login', '--with-token'],
-    #     ['git', 'ls-remote', '-h', url, '&>', '/dev/null'],
-    #     ['git', 'init'],
-    #     # ['git', 'checkout', '-b', 'main'],
-    #     ['git', 'add', '.'],
-    #     ['git', 'commit', '-m', '"Initial commit"'],
-    #     ['git', 'branch', '-M', 'main'],
-    #     ['gh', 'repo', 'create', repo, f'--{public}', '--push', '--source=.']]
-    #     # ['git', 'remote', 'add', 'origin', url],
-    #     # ['git', 'push', '-u', 'origin', 'main'])
-    # execute_commands(commands = git_commands, folder = folder)
     git_commands = [
         ['git', 'init'],
         ['git', 'add', '.'],

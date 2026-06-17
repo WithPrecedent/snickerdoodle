@@ -46,11 +46,11 @@ dev = [
     "mkdocs-material",
     "mkdocs-minify-plugin",
     "mkdocstrings[python]",{% endif %}
-    "toml"]
-quality = [
+    "toml",
     {% if cookiecutter.mypy in ("y", "Y", True, "true", "True") %}"mypy",{% endif %}
     {% if cookiecutter.pre_commit in ("y", "Y", True, "true", "True") %}"pre-commit",{% endif %}
-    "ruff"]
+    "ruff",
+    {include-group = "tests"}]
 tests = [
     {% if cookiecutter.code_coverage in ("y", "Y", True, "true", "True") %}"coverage",{% endif %}
     "pytest",
