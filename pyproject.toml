@@ -55,6 +55,7 @@ dev = [
     "mkdocs-minify-plugin",
     "mkdocstrings[python]",
     "toml"]
+    
 quality = [
     "mypy",
     "pre-commit",
