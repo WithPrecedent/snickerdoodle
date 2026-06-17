@@ -105,13 +105,14 @@ pythonpath = ["src"]
 extend-exclude = ["docs", "scripts", "site", "tests", ".*.*"]
 fix = true
 line-length = 80
-dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
-fixable = ["ALL"]
-ignore = [
+lint.dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+lint.fixable = ["ALL"]
+lint.ignore = [
     "A001",  # Variable is shadowing a Python builtin
     "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed
     "ARG003",  # Unused class method argument: `parameters`
     "ARG005",  # Unused lambda argument
+    "COM812",  # Recommended disable by Ruff
     "C901",  # Too complex
     "D105",  # Missing docstring in magic method
     "D400",  # First line must end in a period
@@ -137,7 +138,7 @@ ignore = [
     "SLF001", # Private member accessed
     "TID252",  # Relative imports are banned
     "TRY003",]  # Avoid specifying long messages outside the exception class
-select = [
+lint.select = [
     "A",  # flake8-buttons
     "ANN",  # flake8-annotations
     "ARG",  # flake8-unused-arguments
@@ -186,7 +187,7 @@ select = [
     "UP",  # pyupgrade
     "W",  # pydocstyle warnings
     "YTT",]  # flake8-2020
-task-tags = ["To Do:"]
+lint.task-tags = ["To Do:"]
 
 [tool.ruff.lint.flake8-annotations]
 suppress-none-returning = true

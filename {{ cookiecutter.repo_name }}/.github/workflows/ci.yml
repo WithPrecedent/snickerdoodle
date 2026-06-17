@@ -22,7 +22,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version: ["3.10", "3.11", "3.12", "3.13"]
+        python-version: ["3.10", "3.11", "3.12", "3.13", "3.14"]
         os: [ubuntu-latest, macOS-latest, windows-latest]
 
     steps:
@@ -43,7 +43,7 @@ jobs:
       run: uv venv
 
     - name: install dependencies
-      run: uv pip install
+      run: uv pip install -r pyproject.toml --group dev
 
     - name: run pre-commit
       run: uv run pre-commit run -a --show-diff-on-failure
@@ -52,7 +52,7 @@ jobs:
       run: uv run -v pytest tests
 
     - name: run ruff
-      run: uv run ruff check
+      run: uv run ruff check --output-format=github
 
   lint_and_format:
     runs-on: ubuntu-latest
@@ -71,10 +71,10 @@ jobs:
       run: uv venv
 
     - name: install dependencies
-      run: uv pip install
+      run: uv pip install -r pyproject.toml --group dev
 
     - name: run ruff
-      run: uv run ruff check --format=github .
+      run: uv run ruff check  --output-format=github
 
   document_and_deploy:
     runs-on: ubuntu-latest
@@ -93,7 +93,7 @@ jobs:
       run: uv venv
 
     - name: install dependencies
-      run: uv pip install
+      run: uv pip install -r pyproject.toml --group dev
 
     - name: build documentation with mkdocs
       run: uv run mkdocs build
