@@ -84,7 +84,6 @@
     "pypi": "Do you want the ability to publish to PyPI?",
     "code_coverage": "Do you want to use Codecov to compute testing coverage?",
     "commit_to_github": "Do you want to automatically create a GitHub repository for the project?",
-    "public_repository": "If so, should the repository be public?",
     "virtual_environment": "Do you want to create a local virtual environment with uv?"
   }
 }
