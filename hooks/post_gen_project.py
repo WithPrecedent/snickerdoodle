@@ -1,6 +1,6 @@
 """Cookiecutter hook for post project generation."""
 
-import json
+import os
 import pathlib
 import shutil
 import subprocess
@@ -15,6 +15,8 @@ _PATHS_TO_REMOVE: list[str] = [
     '{% if cookiecutter.pypi not in ("y", "Y", True, "true", "True") %}.github/workflows/publish.yml{% endif %}',
     '{% if cookiecutter.code_coverage not in ("y", "Y", True, "true", "True") %}codecov.yaml{% endif %}',
     '{% if cookiecutter.code_coverage not in ("y", "Y", True, "true", "True") %}.github/workflows/validate-codecov.yml{% endif %}']
+
+os.environ['DISABLE_MKDOCS_2_WARNING=true']
 
 def delete_file(path: str | pathlib.Path) -> None:
     """Deletes file from disk.

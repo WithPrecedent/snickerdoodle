@@ -1,5 +1,6 @@
 """Cookiecutter hook for pre project generation."""
 
+import os
 import re
 from re import Pattern
 
@@ -26,6 +27,7 @@ VALID_REPO: Pattern[str] = re.compile(
 VALID_REPO_URL: Pattern[str] = re.compile(
     r'https://github.com/[A-Za-z0-9]([A-Za-z0-9_]|-(?!-))*[A-Za-z0-9_]/[A-Za-z0-9_]([A-Za-z0-9_]|-(?!-))*[A-Za-z0-9_]/?$')
 
+os.environ['DISABLE_MKDOCS_2_WARNING=true']
 
 def validate_text(text: str, regex: Pattern, error_label: str) -> None:
     """Ensures that `text` is valid.
