@@ -154,6 +154,7 @@ def commit_to_git(url: str, folder: str | pathlib.Path) -> None:
     git_commands = [
         ['git', 'init'],
         ['git', 'add', '.'],
+        ['git', 'remote', 'set-url', 'origin', 'https://github.com'],
         ['git', 'commit', '-m', '"Initial commit"'],
         ['git', 'remote', 'add', 'origin', repo],
         ['git', 'push', '--set-upstream', 'origin', 'main']]

@@ -37,7 +37,6 @@
   "pypi": true,
   "code_coverage": true,
   "commit_to_github": false,
-  "public_repository": true,
   "virtual_environment": false,
   "__prompts__": {
     "project_name": "What is the name of your project?",
