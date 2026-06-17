@@ -1,5 +1,5 @@
 version = 1
-revision = 2
+revision = 3
 requires-python = ">=3.9"
 
 [[package]]
@@ -1119,15 +1119,12 @@ wheels = [
 
 [[package]]
 name = "snickerdoodle"
-version = "0.2.2"
+version = "0.2.3"
 source = { editable = "." }
-dependencies = [
-    { name = "cookiecutter" },
-    { name = "uv" },
-]
 
 [package.dev-dependencies]
-docs = [
+dev = [
+    { name = "cookiecutter" },
     { name = "markdown-callouts" },
     { name = "markdown-exec" },
     { name = "mkdocs" },
@@ -1139,8 +1136,10 @@ docs = [
     { name = "mkdocs-minify-plugin" },
     { name = "mkdocstrings", extra = ["python"] },
     { name = "toml" },
+    { name = "uv" },
 ]
 quality = [
+    { name = "mypy" },
     { name = "pre-commit" },
     { name = "ruff" },
 ]
@@ -1155,13 +1154,10 @@ tests = [
 ]
 
 [package.metadata]
-requires-dist = [
-    { name = "cookiecutter" },
-    { name = "uv" },
-]
 
 [package.metadata.requires-dev]
-docs = [
+dev = [
+    { name = "cookiecutter" },
     { name = "markdown-callouts" },
     { name = "markdown-exec" },
     { name = "mkdocs" },
@@ -1173,8 +1169,10 @@ docs = [
     { name = "mkdocs-minify-plugin" },
     { name = "mkdocstrings", extras = ["python"] },
     { name = "toml" },
+    { name = "uv" },
 ]
 quality = [
+    { name = "mypy" },
     { name = "pre-commit" },
     { name = "ruff" },
 ]
