@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 <!-- insertion marker -->
 
+## 0.3.3
+
+* Updated GitHub Actions and fixed bugs in generated templates
+
 ## 0.3.2
 
 * Addressed old questions bug
