@@ -1,7 +1,7 @@
 # Automatically performs jobs upon a commit push or pull-request
 
-# This Action builds, tests, and lints the package. Then, it builds the
-# documentation and deploys it on GitHub Pages.
+# This Action builds, tests, and lints the package.{% if cookiecutter.mkdocs in ("y", "Y", True, "true", "True") %} Then, it builds the
+# documentation and deploys it on GitHub Pages.{% endif %}
 
 # If the commit message matches a semantic version (e.g. "v0.1.2"), a GitHub
 # release will be created by the `create_github_release` job.
@@ -15,96 +15,84 @@ permissions:
   contents: write
   pull-requests: write
 
+env:
+  DISABLE_MKDOCS_2_WARNING: "true"
+
 jobs:
 
   build_and_test:
-    runs-on: ubuntu-latest
+    runs-on: ${{"{{"}} matrix.os {{"}}"}}
     strategy:
       fail-fast: false
       matrix:
         python-version: ["3.10", "3.11", "3.12", "3.13", "3.14"]
-        os: [ubuntu-latest, macOS-latest, windows-latest]
+        os: [ubuntu-latest, macos-latest, windows-latest]
 
     steps:
     - name: checkout repository
-      uses: actions/checkout@v6
+      uses: actions/checkout@v7
 
     - name: install python
-      uses: actions/setup-python@v6
+      uses: actions/setup-python@v7
       with:
         python-version: ${{"{{"}} matrix.python-version {{"}}"}}
 
     - name: install uv
-      uses: astral-sh/setup-uv@v8.1.0
-      with:
-        python-version: ${{"{{"}} matrix.python-version {{"}}"}}
-
-    - name: create uv environment
-      run: uv venv
+      uses: astral-sh/setup-uv@v10.2.0
 
     - name: install dependencies
-      run: uv pip install -r pyproject.toml --group dev
-
+      run: uv sync --python ${{"{{"}} matrix.python-version {{"}}"}}
+{% if cookiecutter.pre_commit in ("y", "Y", True, "true", "True") %}
     - name: run pre-commit
       run: uv run pre-commit run -a --show-diff-on-failure
-
+{% endif %}
     - name: run tests
-      run: uv run -v pytest tests
-
-    - name: run ruff
-      run: uv run ruff check --output-format=github
+      run: uv run pytest tests
 
   lint_and_format:
     runs-on: ubuntu-latest
 
     steps:
     - name: checkout repository
-      uses: actions/checkout@v6
-
-    - name: install python
-      uses: actions/setup-python@v5
+      uses: actions/checkout@v7
 
     - name: install uv
-      uses: astral-sh/setup-uv@v8.1.0
-
-    - name: create uv environment
-      run: uv venv
+      uses: astral-sh/setup-uv@v10.2.0
 
     - name: install dependencies
-      run: uv pip install -r pyproject.toml --group dev
+      run: uv sync
 
     - name: run ruff
-      run: uv run ruff check  --output-format=github
-
+      run: uv run ruff check --no-fix --output-format=github
+{% if cookiecutter.mypy in ("y", "Y", True, "true", "True") %}
+    - name: run mypy
+      run: uv run mypy
+{% endif %}{% if cookiecutter.mkdocs in ("y", "Y", True, "true", "True") %}
   document_and_deploy:
     runs-on: ubuntu-latest
 
     steps:
     - name: checkout repository
-      uses: actions/checkout@v6
-
-    - name: install python
-      uses: actions/setup-python@v5
+      uses: actions/checkout@v7
 
     - name: install uv
-      uses: astral-sh/setup-uv@v8.1.0
-
-    - name: create uv environment
-      run: uv venv
+      uses: astral-sh/setup-uv@v10.2.0
 
     - name: install dependencies
-      run: uv pip install -r pyproject.toml --group dev
+      run: uv sync
 
     - name: build documentation with mkdocs
       run: uv run mkdocs build
 
     - name: deploy documentation to github pages
+      if: github.event_name == 'push' && github.ref == 'refs/heads/main'
       run: uv run mkdocs gh-deploy --force --clean --verbose
-
+{% endif %}
   # Only triggered if the commit message matches the semantic version format
   # (e.g. "v0.1.2").
   create_github_release:
     name: create github release
+    if: github.event_name == 'push'
     runs-on: ubuntu-latest
 
     steps:
@@ -115,4 +103,4 @@ jobs:
         tag: "v$semver"
         regex: "/^v#{semver}$/i"
       env:
-          GITHUB_TOKEN: ${{"{{"}} secrets.GITHUB_TOKEN {{"}}"}}
+        GITHUB_TOKEN: ${{"{{"}} secrets.GITHUB_TOKEN {{"}}"}}

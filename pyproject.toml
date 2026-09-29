@@ -96,7 +96,6 @@ show_error_codes = true
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = "--showlocals"
-asyncio_mode = "auto"
 filterwarnings = ["ignore::DeprecationWarning"]
 pythonpath = ["src"]
 
