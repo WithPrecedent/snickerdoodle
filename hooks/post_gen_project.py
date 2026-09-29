@@ -13,8 +13,8 @@ _PATHS_TO_REMOVE: list[str] = [
     '{% if cookiecutter.mkdocs not in ("y", "Y", True, "true", "True") %}docs{% endif %}',
     '{% if cookiecutter.mkdocs not in ("y", "Y", True, "true", "True") %}mkdocs.yml{% endif %}',
     '{% if cookiecutter.pypi not in ("y", "Y", True, "true", "True") %}.github/workflows/publish.yml{% endif %}',
-    '{% if cookiecutter.code_coverage not in ("y", "Y", True, "true", "True") %}codecov.yaml{% endif %}',
-    '{% if cookiecutter.code_coverage not in ("y", "Y", True, "true", "True") %}.github/workflows/validate-codecov.yml{% endif %}']
+    '{% if cookiecutter.code_coverage not in ("y", "Y", True, "true", "True") %}codecov.yml{% endif %}',
+    '{% if cookiecutter.code_coverage not in ("y", "Y", True, "true", "True") %}.github/workflows/validate_codecov.yml{% endif %}']
 
 os.environ['DISABLE_MKDOCS_2_WARNING'] = 'true'
 
@@ -117,13 +117,11 @@ def commit_to_git(url: str, folder: str | pathlib.Path) -> None:
         folder: path of repository folder.
 
     """
-    repo = "{{ cookiecutter.repo_name }}"
     git_commands = [
-        ['git', 'init'],
+        ['git', 'init', '-b', 'main'],
         ['git', 'add', '.'],
-        ['git', 'remote', 'set-url', 'origin', 'https://github.com'],
-        ['git', 'commit', '-m', '"Initial commit"'],
-        ['git', 'remote', 'add', 'origin', repo],
+        ['git', 'commit', '-m', 'Initial commit'],
+        ['git', 'remote', 'add', 'origin', url],
         ['git', 'push', '--set-upstream', 'origin', 'main']]
     execute_commands(commands = git_commands, folder = folder)
 
