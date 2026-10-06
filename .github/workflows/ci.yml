@@ -51,8 +51,9 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
 
-  # Only triggered if the commit message matches the semantic version format
-  # (e.g. "v0.1.2").
+  # Only triggered if a line of the commit message is a semantic version (e.g.
+  # "v0.1.2"). The `m` flag lets the version be followed by other lines, such
+  # as a "Co-Authored-By:" trailer.
   create_github_release:
     name: Create GitHub Release
     runs-on: ubuntu-latest
@@ -63,6 +64,6 @@ jobs:
       with:
         title: "Release: $version"
         tag: "v$semver"
-        regex: "/^v#{semver}$/i"
+        regex: "/^v#{semver}$/im"
       env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
