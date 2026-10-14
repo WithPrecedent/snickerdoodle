@@ -15,10 +15,10 @@ from re import Pattern
 # https://peps.python.org/pep-0503/#normalized-names.
 VALID_PACKAGE: Pattern[str] = re.compile(
     r'^([a-z0-9]|[a-z0-9][a-z0-9-]*[a-z0-9])$')
-# Project names must be letters, numbers, dashes, or spaces, but not start
-# with a space or dash.
+# Project names must be letters, numbers, dashes, underscores, or spaces, but
+# not start with a space, dash, or underscore.
 VALID_PROJECT: Pattern[str] = re.compile(
-    r'^([A-Z0-9]|[A-Z0-9][A-Z0-9- ]*[A-Z0-9])$', re.IGNORECASE)
+    r'^([A-Z0-9]|[A-Z0-9][A-Z0-9_ -]*[A-Z0-9])$', re.IGNORECASE)
 # Repository names must be lower-case letters, numbers, or underscores, but
 # not start with an underscore.
 VALID_REPO: Pattern[str] = re.compile(
@@ -42,7 +42,7 @@ def validate_text(text: str, regex: Pattern, error_label: str) -> None:
 
     """
     if regex.fullmatch(text) is None:
-        message = f'The project name {text} is not a valid {error_label}'
+        message = f'"{text}" is not a valid {error_label}'
         raise ValueError(message)
 
 def main() -> None:
