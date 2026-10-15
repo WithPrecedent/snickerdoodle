@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 <!-- insertion marker -->
 
+## Unreleased
+
+* Removed `ruff format` from the created project's `pre-commit` hooks to keep spaces around "=" in keyword arguments
+* Made `ruff` prefer single quotes and ignore boolean default positional arguments (`FBT002`) in the created project
+* Relaxed `pydoclint` checks of type hints, class attributes, and raised exceptions in the created project
+* Excluded `uv.lock` from the large file check in the created project
+
 ## 0.3.3
 
 * Updated GitHub Actions and fixed bugs in generated templates

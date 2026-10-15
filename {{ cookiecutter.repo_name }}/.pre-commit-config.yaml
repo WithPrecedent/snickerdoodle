@@ -4,6 +4,8 @@ repos:
   rev: "v6.0.0"
   hooks:
   - id: check-added-large-files
+    # The lock file lists every package and its hashes.
+    exclude: ^uv\.lock$
   - id: check-ast
   - id: check-json
   - id: check-toml
@@ -15,11 +17,11 @@ repos:
   # Ruff version.
   rev: v0.16.9
   hooks:
-    # Run the linter.
+    # Run the linter. The formatter is not used because it removes the spaces
+    # around "=" in keyword arguments and moves closing brackets onto their own
+    # lines (see CONTRIBUTING.md).
     - id: ruff
       args: [ --fix ]
-    # Run the formatter.
-    - id: ruff-format
 
 - repo: https://github.com/astral-sh/uv-pre-commit
   # uv version.
@@ -31,4 +33,9 @@ repos:
   rev: 0.10.1
   hooks:
     - id: pydoclint
-      args: [--style=google, --check-return-types=False]
+      args:
+        - --style=google
+        - --check-return-types=False
+        - --arg-type-hints-in-docstring=False
+        - --check-class-attributes=False
+        - --skip-checking-raises=True

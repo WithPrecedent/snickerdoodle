@@ -123,6 +123,7 @@ lint.ignore = [
     "ERA001",  # Commented out code
     "EXE002",  # No shebang is present in an executable file
     "FBT001",  # Boolean positional arg in function definition
+    "FBT002",  # Boolean default positional arg in function definition
     "G004",  # Logging statement uses f-string
     "PTH123",  # `open()` should be replaced by `Path.open()`
     "PLR0911",  # Too many return statements
@@ -192,7 +193,7 @@ suppress-none-returning = true
 
 [tool.ruff.lint.flake8-quotes]
 docstring-quotes = "double"
-inline-quotes = "double"
+inline-quotes = "single"
 multiline-quotes = "double"
 
 [tool.ruff.lint.flake8-type-checking]

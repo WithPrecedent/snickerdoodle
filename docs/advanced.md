@@ -59,6 +59,11 @@ rules](https://beta.ruff.rs/docs/rules/) there. I have included comments in the
 so that you know which rules are enforced. `ruff` is automatically run with
 each GitHub push.
 
+The created project does not use a code formatter (such as `ruff format`)
+because it would remove the spaces around "=" in keyword arguments and move
+closing brackets onto their own lines. See the "Style Guidelines" in the
+created project's `CONTRIBUTING.md` for why.
+
 !!! Tip
 
     To automatically fix problems identified by `ruff`, you should use `pre-commit`. A `pre-commit` configuration file (`.pre-commit-config.yaml`) is included in the created repository.  By default, the `pre-commit` command will run `ruff` with the `fix` option invoked, which will try to correct all of the problems that it can. To use `pre-commit`, follow its [user guide](https://pre-commit.com/#usage). If you activate `pre-commit`, it will then be automatically run on every push to GitHub.
@@ -70,7 +75,7 @@ are located in the ".github" folder and on the GitHub repository page under "Act
 
 | GitHub Action | Trigger | Jobs |
 | --- | --- | --- |
-| `ci` | automatically on push | builds repo, runs tests, lints, formats, builds docs, and deploys docs |
+| `ci` | automatically on push | builds repo, runs tests, lints, builds docs, and deploys docs |
 | `publish` | another Action or manually on GitHub | publishes repository on PyPI (must configure PyPI to accept as [trusted publisher](https://docs.pypi.org/trusted-publishers/adding-a-publisher/)) |
 
 !!! Tip

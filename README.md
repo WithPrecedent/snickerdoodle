@@ -74,8 +74,7 @@ documentation (and you need not use the manual process again).
 ### Usage
 
 After your repository is created, you can start coding right away. Every push to GitHub will run any tests in the "tests" folder,
-deploy documentation to GitHub Pages, and apply `ruff` for linting and
-formatting. For more information about the following topics, just click on the
+deploy documentation to GitHub Pages, and apply `ruff` for linting. For more information about the following topics, just click on the
 corresponding hyperlink.
 
 * [Formatting and Linting](https://withprecedent.github.io/snickerdoodle/advanced/#formatting-and-linting)
