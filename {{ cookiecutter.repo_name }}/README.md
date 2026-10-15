@@ -31,7 +31,7 @@
 To install `{{ cookiecutter.project_name }}`, use `pip`:
 
 ```sh
-pip install {{ cookiecutter.repo_name }}
+pip install {{ cookiecutter.package_name }}
 ```
 
 ### Usage
@@ -54,4 +54,4 @@ This project was generated from [@WithPrecedent](https://github.com/WithPreceden
 
 ## License
 
-Use of this repository is authorized under the [{{cookiecutter.license}}](https://www.github.com/{{cookiecutter.github_user}}/{{cookiecutter.repo_name}}/blog/main/LICENSE).
+Use of this repository is authorized under the [{{cookiecutter.license}}](https://www.github.com/{{cookiecutter.github_user}}/{{cookiecutter.repo_name}}/blob/main/LICENSE).

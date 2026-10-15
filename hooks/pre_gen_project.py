@@ -1,5 +1,6 @@
 """Cookiecutter hook for pre project generation."""
 
+import keyword
 import os
 import re
 from re import Pattern
@@ -19,10 +20,10 @@ VALID_PACKAGE: Pattern[str] = re.compile(
 # not start with a space, dash, or underscore.
 VALID_PROJECT: Pattern[str] = re.compile(
     r'^([A-Z0-9]|[A-Z0-9][A-Z0-9_ -]*[A-Z0-9])$', re.IGNORECASE)
-# Repository names must be lower-case letters, numbers, or underscores, but
-# not start with an underscore.
+# Repository names are also the names of the importable packages, so they must
+# be lower-case letters, numbers, or underscores, but start with a letter.
 VALID_REPO: Pattern[str] = re.compile(
-    r'^([a-z0-9]|[a-z0-9][a-z0-9_]*[a-z0-9])$')
+    r'^([a-z]|[a-z][a-z0-9_]*[a-z0-9])$')
 # Checks repository url, assuming it is at GitHub.
 VALID_REPO_URL: Pattern[str] = re.compile(
     r'https://github.com/[A-Za-z0-9]([A-Za-z0-9_]|-(?!-))*[A-Za-z0-9_]/[A-Za-z0-9_]([A-Za-z0-9_]|-(?!-))*[A-Za-z0-9_]/?$')
@@ -45,6 +46,21 @@ def validate_text(text: str, regex: Pattern, error_label: str) -> None:
         message = f'"{text}" is not a valid {error_label}'
         raise ValueError(message)
 
+def validate_identifier(text: str, error_label: str) -> None:
+    """Ensures that `text` is not a Python keyword.
+
+    Args:
+        text: value to check.
+        error_label: text to add to error message if the check fails.
+
+    Raises:
+        ValueError: if `text` is a Python keyword.
+
+    """
+    if keyword.iskeyword(text) or keyword.issoftkeyword(text):
+        message = f'"{text}" is a Python keyword and not a valid {error_label}'
+        raise ValueError(message)
+
 def main() -> None:
     """Calls validation functions."""
     validate_text(
@@ -58,6 +74,9 @@ def main() -> None:
     validate_text(
         text = "{{ cookiecutter.repo_name }}",
         regex = VALID_REPO,
+        error_label = "repo name")
+    validate_identifier(
+        text = "{{ cookiecutter.repo_name }}",
         error_label = "repo name")
     validate_text(
         text = "{{ cookiecutter.url }}",

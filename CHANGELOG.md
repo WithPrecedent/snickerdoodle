@@ -10,6 +10,11 @@ All notable changes to this project will be documented in this file.
 * Made `ruff` prefer single quotes and ignore boolean default positional arguments (`FBT002`) in the created project
 * Relaxed `pydoclint` checks of type hints, class attributes, and raised exceptions in the created project
 * Excluded `uv.lock` from the large file check in the created project
+* Added tests that generate projects with each questionnaire option
+* Fixed unselected optional files being committed to GitHub before they were removed
+* Rejected repository names that start with a number or are Python keywords
+* Fixed the `pip install` and PyPI links to use the package name
+* Fixed the LICENSE link in the created README and a blank first line in the BSD license
 
 ## 0.3.3
 

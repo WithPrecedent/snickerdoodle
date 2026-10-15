@@ -167,6 +167,9 @@ def cleanup_files() -> None:
 def main() -> None:
     """Executes post repository generation scripts."""
     folder = pathlib.Path.cwd()
+    # Files for unselected options are removed first so that they are not
+    # committed to GitHub.
+    cleanup_files()
     if "{{ cookiecutter.virtual_environment }}".lower() in _TRUES:
         create_virtual_environment(folder = folder)
     if "{{ cookiecutter.commit_to_github }}".lower() in _TRUES:
@@ -179,7 +182,6 @@ def main() -> None:
                 print(  # noqa: T201
                     'Cannot deploy documentation without creating a virtual '
                     'environment')
-    cleanup_files()
     # reindent_cookiecutter_json()
 
 if __name__ == "__main__":

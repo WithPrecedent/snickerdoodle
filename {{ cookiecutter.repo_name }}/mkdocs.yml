@@ -152,4 +152,4 @@ extra:
   - icon: fontawesome/brands/github
     link: https://github.com/{{cookiecutter.github_user}}
   - icon: fontawesome/brands/python
-    link: https://pypi.org/project/{{cookiecutter.repo_name}}/
+    link: https://pypi.org/project/{{cookiecutter.package_name}}/
