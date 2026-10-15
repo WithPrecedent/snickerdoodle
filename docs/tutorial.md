@@ -4,7 +4,7 @@
 
 To use `snickerdoodle` and the repository that it creates, you just need:
 
-* [`python`](https://www.python.org/) 3.9 or later
+* [`python`](https://www.python.org/) 3.11 or later
 * [`git`](https://git-scm.com/)
 * [`cookiecutter`](https://www.cookiecutter.io/) or
   [`cruft`](https://github.com/cruft/cruft)

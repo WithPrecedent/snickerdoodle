@@ -4,8 +4,10 @@ All notable changes to this project will be documented in this file.
 
 <!-- insertion marker -->
 
-## Unreleased
+## 0.4.0
 
+* Dropped support for Python 3.9 and 3.10 in `snickerdoodle` and Python 3.10 in the created project (Python 3.11 or later is now required)
+* Changed the development status of `snickerdoodle` to "Production/Stable"
 * Removed `ruff format` from the created project's `pre-commit` hooks to keep spaces around "=" in keyword arguments
 * Made `ruff` prefer single quotes and ignore boolean default positional arguments (`FBT002`) in the created project
 * Relaxed `pydoclint` checks of type hints, class attributes, and raised exceptions in the created project

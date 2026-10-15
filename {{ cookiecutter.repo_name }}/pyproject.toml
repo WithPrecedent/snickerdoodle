@@ -6,7 +6,7 @@ description = "{{cookiecutter.description}}"
 authors = [{name = "{{cookiecutter.author_name}}", email = "{{cookiecutter.author_email}}"}]
 license = {text = "{{cookiecutter.license}}"}
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 version = "{{cookiecutter.version}}"
 classifiers = [
     "{{cookiecutter.development_status}}",
@@ -14,7 +14,6 @@ classifiers = [
     "Programming Language :: Python",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3 :: Only",
-    "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",

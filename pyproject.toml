@@ -4,18 +4,16 @@
 name = "snickerdoodle"
 description = "Easy-to-use, general-purpose, modern cookiecutter template for Python projects using uv."
 authors = [{name = "coreyrayburnyung", email = "coreyrayburnyung@gmail.com"}]
-version = "0.3.3"
+version = "0.4.0"
 license = {text = "Apache 2.0"}
 readme = "README.md"
-requires-python = ">=3.9"
+requires-python = ">=3.11"
 classifiers = [
-    "Development Status :: 4 - Beta",
+    "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Developers",
     "Programming Language :: Python",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3 :: Only",
-    "Programming Language :: Python :: 3.9",
-    "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
@@ -55,7 +53,6 @@ dev = [
     "mkdocs-minify-plugin",
     "mkdocstrings[python]",
     "toml"]
-
 quality = [
     "mypy",
     "pre-commit",
