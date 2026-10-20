@@ -33,8 +33,7 @@ Changelog = "https://{{cookiecutter.github_user}}.github.io/{{cookiecutter.repo_
 
 [dependency-groups]
 dev = [
-    "uv",
-    {% if cookiecutter.mkdocs in ("y", "Y", True, "true", "True") %}
+    "uv",{% if cookiecutter.mkdocs in ("y", "Y", True, "true", "True") %}
     "markdown-callouts",
     "markdown-exec",
     "mkdocs",
@@ -45,13 +44,13 @@ dev = [
     "mkdocs-material",
     "mkdocs-minify-plugin",
     "mkdocstrings[python]",{% endif %}
-    "toml",
-    {% if cookiecutter.mypy in ("y", "Y", True, "true", "True") %}"mypy",{% endif %}
-    {% if cookiecutter.pre_commit in ("y", "Y", True, "true", "True") %}"pre-commit",{% endif %}
+    "toml",{% if cookiecutter.mypy in ("y", "Y", True, "true", "True") %}
+    "mypy",{% endif %}{% if cookiecutter.pre_commit in ("y", "Y", True, "true", "True") %}
+    "pre-commit",{% endif %}
     "ruff",
     {include-group = "tests"}]
-tests = [
-    {% if cookiecutter.code_coverage in ("y", "Y", True, "true", "True") %}"coverage",{% endif %}
+tests = [{% if cookiecutter.code_coverage in ("y", "Y", True, "true", "True") %}
+    "coverage",{% endif %}
     "pytest",
     "pytest-cov",
     "pytest-randomly",

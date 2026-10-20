@@ -200,6 +200,29 @@ def test_pre_commit_does_not_format(cookies: Cookies) -> None:
     assert 'ruff' in hooks
     assert 'ruff-format' not in hooks
 
+""" Whitespace """
+
+@pytest.mark.parametrize('enabled', [True, False])
+def test_files_end_with_newline(cookies: Cookies, enabled: bool) -> None:
+    options = dict.fromkeys(OPTIONS, enabled) | {'github_actions': True}
+    path = bake(cookies, **options).project_path
+    for file in path.rglob('*'):
+        if file.is_file() and file.suffix not in ('.png', '.ico'):
+            text = file.read_text(encoding = 'utf-8')
+            if text:
+                assert text.endswith('\n'), file
+                assert not text.endswith('\n\n'), file
+
+@pytest.mark.parametrize('enabled', [True, False])
+def test_no_trailing_whitespace(cookies: Cookies, enabled: bool) -> None:
+    options = dict.fromkeys(OPTIONS, enabled) | {'github_actions': True}
+    path = bake(cookies, **options).project_path
+    for file in path.rglob('*'):
+        if file.is_file() and file.suffix not in ('.png', '.ico'):
+            text = file.read_text(encoding = 'utf-8')
+            for number, line in enumerate(text.splitlines(), start = 1):
+                assert line == line.rstrip(), f'{file}:{number}'
+
 """ Optional Features """
 
 @pytest.mark.parametrize(('option', 'paths'), [
@@ -260,7 +283,13 @@ def test_licenses(cookies: Cookies, license_name: str, text: str) -> None:
     license_text = (path / 'LICENSE').read_text(encoding = 'utf-8')
     assert text in license_text
     assert not license_text[0].isspace()
+    assert license_text.endswith('\n')
+    assert not license_text.endswith('\n\n')
     assert 'Test Author' in license_text
+
+def test_other_license(cookies: Cookies) -> None:
+    path = bake(cookies, license = 'Other').project_path
+    assert (path / 'LICENSE').read_text(encoding = 'utf-8') == ''
 
 @pytest.mark.parametrize('style', [
     'for-the-badge',
