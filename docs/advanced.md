@@ -75,13 +75,43 @@ are located in the ".github" folder and on the GitHub repository page under "Act
 
 | GitHub Action | Trigger | Jobs |
 | --- | --- | --- |
-| `ci` | automatically on push | builds repo, runs tests, lints, builds docs, and deploys docs |
+| `ci` | automatically on push or pull request | builds repo, runs tests, uploads test coverage to Codecov, lints, builds docs, and deploys docs |
 | `publish` | another Action or manually on GitHub | publishes repository on PyPI (must configure PyPI to accept as [trusted publisher](https://docs.pypi.org/trusted-publishers/adding-a-publisher/)) |
+| `validate_codecov` | automatically on push to `main` or a pull request that changes `codecov.yml` | checks that `codecov.yml` is a valid Codecov configuration |
 
 !!! Tip
 
     To run an Action (other than `ci.yml`) on GitHub, go to your repository, click
     "Actions" and select one of the Actions listed on the left side of the screen.
+
+## Code Coverage
+
+If you select `code_coverage` (and `github_actions`) in the questionnaire, the
+`ci` Action runs the tests with
+[`pytest-cov`](https://pytest-cov.readthedocs.io/en/latest/) and uploads the
+coverage report to [Codecov](https://about.codecov.io/), which posts coverage
+results on pull requests. The created README also includes a Codecov coverage
+badge.
+
+To make uploads work, [install the Codecov GitHub
+App](https://github.com/apps/codecov) on the GitHub account that hosts the
+repository and give it access to the repository. No `CODECOV_TOKEN` secret is
+needed because the upload authenticates with GitHub's [OpenID
+Connect](https://docs.github.com/en/actions/security-for-github-actions/security-hardening-your-deployments/about-security-hardening-with-openid-connect)
+token. A failed upload (for example, from a pull request opened from a fork)
+does not fail the `ci` Action.
+
+The coverage settings are in two places in the created repository:
+
+* `pyproject.toml` (`[tool.coverage.*]`) controls what `coverage` measures.
+* `codecov.yml` sets the coverage target (90%) and the drop allowed before
+  Codecov marks a commit as failing (0.5%). Change these to suit your project.
+
+To check coverage locally, run:
+
+```sh
+uv run pytest --cov
+```
 
 ## Publishing
 
@@ -91,14 +121,14 @@ Out-of-the-box, it provides tools to publish a release on GitHub and PyPI.
 === "on GitHub"
 
     To post a release on GitHub, you just need to push a commit with a message that
-    begins with the letter "v" followed by the version in [semantic
+    has a line consisting of the letter "v" followed by the version in [semantic
     form](https://semver.org/) (e.g. "v0.1.2"). That will trigger a job in the
     `ci.yml` Action which automatically publishes a release, using the CHANGELOG.md
     for any changes made since the last release.
 
 === "on PyPI"
 
-    The best way to publish a release on PyPI is to make the `ci.yml` Action a
+    The best way to publish a release on PyPI is to make the `publish.yml` Action a
     [trusted
     publisher](https://docs.pypi.org/trusted-publishers/adding-a-publisher/). If you
     do that, you can just run the `publish` GitHub
@@ -124,7 +154,6 @@ that you will ordinarily modify are commented.
 │   ├── changelog.md
 │   ├── code_of_conduct.md
 │   ├── contributing.md
-│   ├── credits.md
 │   ├── css
 │   │   ├── material.css
 │   │   └── mkdocstrings.css
@@ -132,7 +161,6 @@ that you will ordinarily modify are commented.
 │   ├── license.md
 │   ├── recipes.md            # Add examples and recipes
 │   ├── scripts
-│   │   ├── gen_credits.py
 │   │   └── gen_ref_nav.py
 │   └── tutorial.md           # Add basic tutorial
 ├── LICENSE

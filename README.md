@@ -33,7 +33,7 @@ If you want `snickerdoodle` to support other options, please make a [feature req
 * **Options Supported**:
   * Automated Hooks: [![Pre-commit](https://img.shields.io/badge/pre--commit-darkolivegreen?style=plastic&logo=pre-commit&logoColor=white&labelColor=gray)](https://pre-commit.com/)
   * CI/CD: [![CI](https://img.shields.io/badge/GitHub_Actions-forestgreen?style=plastic&logo=githubactions&labelColor=gray&logoColor=white)](https://github.com/features/actions)
-  * Code Coverage: [![Coverage](https://img.shields.io/badge/Codecov-pink?style=plastic&logo=codecov&logoolor=white&labelColor=gray)](https://about.codecov.io/) (must have [![Coverage](https://img.shields.io/badge/Codecov-pink?style=plastic&logo=codecov&logoolor=white&labelColor=gray)](https://about.codecov.io/) installed on the named GitHub account)
+  * Code Coverage: [![Coverage](https://img.shields.io/badge/Codecov-pink?style=plastic&logo=codecov&logoolor=white&labelColor=gray)](https://about.codecov.io/) uploaded with every push and pull request (must have the [Codecov GitHub App](https://github.com/apps/codecov) installed on the named GitHub account)
   * Dependency Updater: [![Dependency Maintainer](https://img.shields.io/badge/Dependabot-forestgreen?style=plastic&logo=dependabot&logoColor=white&labelColor=gray)](https://github.com/dependabot)
   * Different Badge Styles:
     * [![flat style](https://img.shields.io/badge/flat-crimson?style=flat)](https://www.shields.io/)
@@ -48,7 +48,7 @@ If you want `snickerdoodle` to support other options, please make a [feature req
       with [![GitHub
       Actions](https://img.shields.io/badge/GitHub_Actions-forestgreen?style=plastic&logo=github&labelColor=gray&logoColor=white)](https://github.com/features/actions)
       using `publish.yml`
-    * [![Repo Host](https://img.shields.io/badge/GitHub-blue?style=plastic&color=forestgreen&logo=github&labelColor=gray)](https://github.com) automatically with any commit beginning with a version number (e.g., "0.2.3")
+    * [![Repo Host](https://img.shields.io/badge/GitHub-blue?style=plastic&color=forestgreen&logo=github&labelColor=gray)](https://github.com) automatically with any commit whose message has a line with "v" and a version number (e.g., "v0.2.3")
   * Repository Initialization: [![Repo Host](https://img.shields.io/badge/GitHub-blue?style=plastic&color=forestgreen&logo=github&labelColor=gray)](https://github.com)
     with an [initial commit](https://github.com/WithPrecedent/snickerdoodle_demo) (must have [![Repo Host](https://img.shields.io/badge/GitHub_Credential_Manager-forestgreen?style=plastic&logo=github&labelColor=gray)](https://github.com) installed with token access)
   * Virtual Environment Creation: [![Virtural Environment Manager](https://img.shields.io/badge/uv-mediumpurple?style=plastic&logo=uv&labelColor=gray)](https://docs.astral.sh/uv/)
@@ -74,9 +74,10 @@ documentation (and you need not use the manual process again).
 ### Usage
 
 After your repository is created, you can start coding right away. Every push to GitHub will run any tests in the "tests" folder,
-deploy documentation to GitHub Pages, and apply `ruff` for linting. For more information about the following topics, just click on the
+upload test coverage to Codecov, deploy documentation to GitHub Pages, and apply `ruff` for linting. For more information about the following topics, just click on the
 corresponding hyperlink.
 
+* [Code Coverage](https://withprecedent.github.io/snickerdoodle/advanced/#code-coverage)
 * [Formatting and Linting](https://withprecedent.github.io/snickerdoodle/advanced/#formatting-and-linting)
 * [GitHub Actions](https://withprecedent.github.io/snickerdoodle/advanced/#github-actions)
 * [Publishing](https://withprecedent.github.io/snickerdoodle/advanced/#publishing)
@@ -107,12 +108,6 @@ These are other `cookiecutter` templates using `uv` as their dependency manager:
   `mypy`, `tox`, `mkdocs`, and `deptry`.
 * [ultraviolet](https://github.com/chris-santiago/cookie): a basic
   template that requires Homebrew.
-
-## Acknowledgements
-
-I'd also like to extend a special thanks to [pawamoy](https://github.com/pawamoy) whose excellent `mkdocs` extensions and utlities are incorporated into `snickerdoodle`. Some of the scripts, documentation, configuration files, and other CI code were all adapted from pawamoy's repositories.
-
-I would also like to thank the University of Kansas School of Law for tolerating and supporting this law professor's coding efforts, an endeavor which is well outside the typical scholarly activities in the discipline.
 
 ## License
 

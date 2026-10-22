@@ -272,6 +272,36 @@ def test_code_coverage_option(cookies: Cookies) -> None:
     pyproject = tomllib.loads((path / 'pyproject.toml').read_text())
     assert 'coverage' not in pyproject['tool']
 
+def test_code_coverage_uploads_to_codecov(cookies: Cookies) -> None:
+    path = bake(cookies, code_coverage = True).project_path
+    ci = yaml.safe_load((path / '.github/workflows/ci.yml').read_text())
+    assert ci['permissions']['id-token'] == 'write'
+    steps = {
+        step['name']: step for step in ci['jobs']['build_and_test']['steps']}
+    assert '--cov-report=xml' in steps['run tests']['run']
+    upload = steps['upload coverage to codecov']
+    assert upload['uses'].startswith('codecov/codecov-action@')
+    assert upload['with'] == {'files': 'coverage.xml', 'use_oidc': True}
+    readme = (path / 'README.md').read_text(encoding = 'utf-8')
+    assert 'https://app.codecov.io/gh/WithPrecedent/cookie_jar' in readme
+    path = bake(cookies, code_coverage = False).project_path
+    ci = yaml.safe_load((path / '.github/workflows/ci.yml').read_text())
+    assert 'id-token' not in ci['permissions']
+    steps = {
+        step['name']: step for step in ci['jobs']['build_and_test']['steps']}
+    assert '--cov' not in steps['run tests']['run']
+    assert 'upload coverage to codecov' not in steps
+    readme = (path / 'README.md').read_text(encoding = 'utf-8')
+    assert 'codecov' not in readme
+
+def test_dependabot_updates_uv(cookies: Cookies) -> None:
+    path = bake(cookies).project_path
+    config = yaml.safe_load((path / '.github/dependabot.yml').read_text())
+    ecosystems = {
+        update['package-ecosystem']: update['directory']
+        for update in config['updates']}
+    assert ecosystems == {'uv': '/', 'github-actions': '/'}
+
 @pytest.mark.parametrize(('license_name', 'text'), [
     ('MIT License', 'MIT License'),
     ('BSD License', 'BSD License'),

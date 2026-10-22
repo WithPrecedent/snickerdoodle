@@ -1,6 +1,7 @@
 # Automatically performs jobs upon a commit push or pull-request
 
-# This Action builds, tests, and lints the package.{% if cookiecutter.mkdocs in ("y", "Y", True, "true", "True") %} Then, it builds the
+# This Action builds, tests, and lints the package.{% if cookiecutter.code_coverage in ("y", "Y", True, "true", "True") %} It uploads test
+# coverage to Codecov.{% endif %}{% if cookiecutter.mkdocs in ("y", "Y", True, "true", "True") %} Then, it builds the
 # documentation and deploys it on GitHub Pages.{% endif %}
 
 # If the commit message matches a semantic version (e.g. "v0.1.2"), a GitHub
@@ -13,7 +14,9 @@ on: [push, pull_request]
 
 permissions:
   contents: write
-  pull-requests: write
+  pull-requests: write{% if cookiecutter.code_coverage in ("y", "Y", True, "true", "True") %}
+  # Lets the Codecov upload authenticate with OIDC instead of a stored token.
+  id-token: write{% endif %}
 
 env:
   DISABLE_MKDOCS_2_WARNING: "true"
@@ -47,8 +50,16 @@ jobs:
       run: uv run pre-commit run -a --show-diff-on-failure
 {% endif %}
     - name: run tests
-      run: uv run pytest tests
-
+      run: uv run pytest tests{% if cookiecutter.code_coverage in ("y", "Y", True, "true", "True") %} --cov --cov-report=xml{% endif %}
+{% if cookiecutter.code_coverage in ("y", "Y", True, "true", "True") %}
+    # Requires the Codecov GitHub App to be installed on the repository's
+    # account. Codecov merges the uploads from every job in the matrix.
+    - name: upload coverage to codecov
+      uses: codecov/codecov-action@v7
+      with:
+        files: coverage.xml
+        use_oidc: true
+{% endif %}
   lint_and_format:
     runs-on: ubuntu-latest
 

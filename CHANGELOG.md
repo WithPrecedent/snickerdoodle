@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 
 <!-- insertion marker -->
 
+## 0.4.1
+
+* Added Codecov uploads to the created project's `ci.yml` (authenticated with OIDC, so no `CODECOV_TOKEN` secret is needed) and a Codecov coverage badge to the created README
+* Made the created project's starter test import the package so that its coverage is measured
+* Excluded `if __name__ == '__main__':` blocks from coverage in the created project and kept `coverage`'s default exclusions
+* Fixed the created project's `dependabot.yml` so that it updates the `uv` dependencies and GitHub Actions in the repository root
+* Fixed the misnamed `.python-version` file in the created project and stopped ignoring it
+* Fixed missing final newlines and whitespace-only lines in the created project
+* Added a "Code Coverage" section to the advanced guide and corrected the questionnaire table, trusted publisher, release commit, and repository layout documentation
+
 ## 0.4.0
 
 * Dropped support for Python 3.9 and 3.10 in `snickerdoodle` and Python 3.10 in the created project (Python 3.11 or later is now required)

@@ -64,12 +64,20 @@ any limitations on your answer:
 | `author_email` | in `pyproject.toml` | None | alphanumeric |
 | `github_user`  | to infer URL and in `pyproject.toml` | None | alphanumeric |
 | `description`  | to infer URL and in `pyproject.toml` | None | alphanumeric |
-| `version` | in `__init__.py` for project | "0.1.0" | any valid version format |
+| `version` | in `__init__.py` for project | "0.0.1" | any valid version format |
 | `url` | in `pyproject.toml` | formed from `github_user` and `repo_name` | any valid GitHub url |
+| `development_status` | classifier in `pyproject.toml` | Planning | Planning, Pre-Alpha, Alpha, Beta, Production, Mature, Inactive |
 | `license` | content of the constructed LICENSE file and in `pyproject.toml` | Apache 2.0 | Apache 2.0, BSD, ISC, GNU General Public v3, MIT, Other |
 | `badge_style` | badges in README and docs |  [![for-the-badge style](https://img.shields.io/badge/style-for--the--badge-blue?style=for-the-badge)](https://www.shields.io/) | [![for-the-badge style](https://img.shields.io/badge/style-for--the--badge-blue?style=for-the-badge)](https://www.shields.io/), [![flat style](https://img.shields.io/badge/style-flat-green?style=flat)](https://www.shields.io/), [![flat-square style](https://img.shields.io/badge/style-flat--square-orange?style=flat-square)](https://www.shields.io/), [![plastic style](https://img.shields.io/badge/style-plastic-purple?style=plastic)](https://www.shields.io/), [![social style](https://img.shields.io/badge/style-social-red?style=social)](https://www.shields.io/) |
+| `github_actions` | whether to include the GitHub Actions workflows | "y" | None |
+| `pre_commit` | whether to include a `pre-commit` configuration and run it in CI | "y" | None |
+| `dependabot` | whether to include a `dependabot` configuration | "y" | None |
+| `mkdocs` | whether to build and deploy documentation with `mkdocs` | "y" | None |
+| `mypy` | whether to type check with `mypy` | "y" | None |
+| `pypi` | whether to include the `publish` Action for PyPI | "y" | Must configure PyPI [trusted publishing](https://docs.pypi.org/trusted-publishers/adding-a-publisher/) |
+| `code_coverage` | whether to measure test coverage and upload it to Codecov | "y" | Must have the [Codecov GitHub App](https://github.com/apps/codecov) installed (see [Code Coverage](https://withprecedent.github.io/snickerdoodle/advanced/#code-coverage)) |
 | `commit_to_github` | whether to make an initial commit to GitHub | "n" (no commit) | Must have [GitHub credentials stored](https://docs.github.com/en/get-started/quickstart/set-up-git) |
-| `create_virtual_environment` | whether to create a virtual environment in ".venv" folder | "n" (no environment created) | Must have `uv` installed |
+| `virtual_environment` | whether to create a virtual environment in ".venv" folder | "n" (no environment created) | Must have `uv` installed |
 
 ## Connect Remote and Local Repositories
 
@@ -103,7 +111,7 @@ Your first commit with the new repository should now be visible on GitHub.
 
 !!! Warning
 
-    *You do not need to complete this step if you opted to `create_virtual_environment` in the
+    *You do not need to complete this step if you opted to `virtual_environment` in the
     questionnaire.*
 
 To create an environment with all of your dependencies (including development dependencies), enter the following in the repository folder.
@@ -127,7 +135,7 @@ source .venv/bin/activate  # For Linux and MacOS
 !!! Warning
 
     *You do not need to complete this step if you opted to `commit_to_github` and
-    `create_virtual_environment` in the
+    `virtual_environment` in the
     questionnaire.*
 
 Unlike `poetry`, `uv` does not use a shell. Instead, after you have created a virtual environment, enter the following commands to deploy your documentation.
