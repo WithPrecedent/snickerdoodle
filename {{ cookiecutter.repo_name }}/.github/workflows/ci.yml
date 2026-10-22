@@ -35,6 +35,10 @@ jobs:
       matrix:
         python-version: ["3.11", "3.12", "3.13", "3.14"]
         os: [ubuntu-latest, macos-latest, windows-latest]
+    # Makes every `uv` command use the matrix version. Otherwise, `uv run`
+    # recreates the environment with the version in ".python-version".
+    env:
+      UV_PYTHON: ${{"{{"}} matrix.python-version {{"}}"}}
 
     steps:
     - name: checkout repository
@@ -49,7 +53,7 @@ jobs:
       uses: astral-sh/setup-uv@v10.2.0
 
     - name: install dependencies
-      run: uv sync --python ${{"{{"}} matrix.python-version {{"}}"}}
+      run: uv sync
 
     - name: run tests
       run: uv run pytest tests{% if cookiecutter.code_coverage in ("y", "Y", True, "true", "True") %} --cov --cov-report=xml{% endif %}

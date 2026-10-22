@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file.
 ## 0.4.2
 
 * Made the tests run in `snickerdoodle`'s own `ci` Action on Linux, macOS, and Windows, and made releases wait for them
+* Fixed the created project's `ci` Action testing every Python version in its matrix with Python 3.11 (`uv run` recreated the environment from ".python-version")
 * Added `cruft` support: the created project skips files that belong to it during `cruft update`, and the post-generation hook no longer creates environments or pushes to GitHub from the temporary copies that `cruft` renders
 * Created `uv.lock` when the project is created
 * Read the created project's version from `__version__` in `__init__.py` instead of repeating it in `pyproject.toml`

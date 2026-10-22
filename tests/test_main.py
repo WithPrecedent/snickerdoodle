@@ -195,6 +195,9 @@ def test_ci_workflow_jobs(cookies: Cookies) -> None:
     assert 'run pre-commit' in steps
     steps = [step['name'] for step in ci['jobs']['build_and_test']['steps']]
     assert 'run pre-commit' not in steps
+    # Without this, `uv run` would switch to the version in ".python-version".
+    assert ci['jobs']['build_and_test']['env'] == {
+        'UV_PYTHON': '${{ matrix.python-version }}'}
 
 def test_ci_workflow_without_options(cookies: Cookies) -> None:
     path = bake(
