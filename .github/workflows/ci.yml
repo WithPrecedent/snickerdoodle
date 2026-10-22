@@ -49,7 +49,7 @@ jobs:
         python-version: ${{ matrix.python-version }}
 
     - name: install uv
-      uses: astral-sh/setup-uv@v10.2.0
+      uses: astral-sh/setup-uv@v10.3.0
 
     # The "quality" group includes `ruff`, which a test runs on the created
     # project.
@@ -73,7 +73,7 @@ jobs:
         python-version: "3.11"
 
     - name: install uv
-      uses: astral-sh/setup-uv@v10.2.0
+      uses: astral-sh/setup-uv@v10.3.0
       with:
         version: "latest"
         activate-environment: true
