@@ -1,4 +1,7 @@
-# Automatically performs jobs on a commit push
+# Automatically performs jobs on a commit push or pull request
+
+# This Action tests the template by creating projects with it. Then, it builds
+# the documentation and deploys it on GitHub Pages.
 
 # If the commit message matches a semantic version (e.g. "v0.1.2"), a GitHub
 # release will be created by the `create_github_release` job.
@@ -10,6 +13,8 @@ on:
   push:
     branches:
       - main
+  # Allows this Action to be called by a pull request
+  pull_request:
   # Allows this Action to be called by other Actions
   workflow_call:
   # Allows this Action to be called through GitHub
@@ -20,6 +25,35 @@ permissions:
   pull-requests: write
 
 jobs:
+
+  test_template:
+    name: Test Template
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.12", "3.13", "3.14"]
+        os: [ubuntu-latest, macos-latest, windows-latest]
+
+    steps:
+    - name: checkout repository
+      uses: actions/checkout@v7
+
+    - name: install python
+      uses: actions/setup-python@v7
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - name: install uv
+      uses: astral-sh/setup-uv@v10.2.0
+
+    # The "quality" group includes `ruff`, which a test runs on the created
+    # project.
+    - name: install dependencies
+      run: uv sync --all-groups --python ${{ matrix.python-version }}
+
+    - name: run tests
+      run: uv run pytest
 
   build_and_deploy_documentation:
     name: Build and Deploy Docs
@@ -47,15 +81,19 @@ jobs:
       run: uv run mkdocs build
 
     - name: deploy documentation to GitHub Pages
+      if: github.event_name != 'pull_request'
       run: uv run mkdocs gh-deploy --force --clean --verbose
       env:
         GITHUB_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
 
   # Only triggered if a line of the commit message is a semantic version (e.g.
   # "v0.1.2"). The `m` flag lets the version be followed by other lines, such
-  # as a "Co-Authored-By:" trailer.
+  # as a "Co-Authored-By:" trailer. Releases are only made after the template
+  # tests pass.
   create_github_release:
     name: Create GitHub Release
+    if: github.event_name != 'pull_request'
+    needs: test_template
     runs-on: ubuntu-latest
 
     steps:

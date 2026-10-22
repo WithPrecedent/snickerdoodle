@@ -8,6 +8,7 @@ import py_compile
 import shutil
 import subprocess
 import sys
+import tempfile
 import tomllib
 from typing import TYPE_CHECKING, Any
 
@@ -34,6 +35,17 @@ OPTIONS: list[str] = [
     'mypy',
     'pypi',
     'code_coverage']
+
+
+@pytest.fixture(autouse = True)
+def skip_lock(monkeypatch: pytest.MonkeyPatch) -> None:
+    """Keeps the post-generation hook from running `uv lock` for every bake.
+
+    Args:
+        monkeypatch: the `pytest` fixture.
+
+    """
+    monkeypatch.setenv('SNICKERDOODLE_SKIP_LOCK', '1')
 
 
 def bake(cookies: Cookies, **kwargs: Any) -> Result:
@@ -175,10 +187,14 @@ def test_ci_workflow_jobs(cookies: Cookies) -> None:
         'lint_and_format',
         'document_and_deploy',
         'create_github_release'}
+    # YAML 1.1 reads the `on` key as `True`.
+    assert ci[True]['push'] == {'branches': ['main']}
+    assert 'pull_request' in ci[True]
     steps = [step['name'] for step in ci['jobs']['lint_and_format']['steps']]
     assert 'run mypy' in steps
-    steps = [step['name'] for step in ci['jobs']['build_and_test']['steps']]
     assert 'run pre-commit' in steps
+    steps = [step['name'] for step in ci['jobs']['build_and_test']['steps']]
+    assert 'run pre-commit' not in steps
 
 def test_ci_workflow_without_options(cookies: Cookies) -> None:
     path = bake(
@@ -190,7 +206,6 @@ def test_ci_workflow_without_options(cookies: Cookies) -> None:
     assert 'document_and_deploy' not in ci['jobs']
     steps = [step['name'] for step in ci['jobs']['lint_and_format']['steps']]
     assert 'run mypy' not in steps
-    steps = [step['name'] for step in ci['jobs']['build_and_test']['steps']]
     assert 'run pre-commit' not in steps
 
 def test_pre_commit_does_not_format(cookies: Cookies) -> None:
@@ -294,6 +309,100 @@ def test_code_coverage_uploads_to_codecov(cookies: Cookies) -> None:
     readme = (path / 'README.md').read_text(encoding = 'utf-8')
     assert 'codecov' not in readme
 
+@pytest.mark.parametrize(('option', 'text'), [
+    ('github_actions', 'actions/workflows/ci.yml'),
+    ('code_coverage', 'codecov'),
+    ('pre_commit', 'pre-commit.com'),
+    ('dependabot', 'dependabot'),
+    ('mkdocs', 'MkDocs'),
+    ('mypy', 'mypy-lang.org'),
+    ('pypi', 'pypi.org')])
+def test_readme_badges_follow_options(
+        cookies: Cookies,
+        option: str,
+        text: str) -> None:
+    path = bake(cookies, **{option: True}).project_path
+    readme = (path / 'README.md').read_text(encoding = 'utf-8')
+    assert text in readme
+    path = bake(cookies, **{option: False}).project_path
+    readme = (path / 'README.md').read_text(encoding = 'utf-8')
+    assert text not in readme
+
+def test_readme_without_options(cookies: Cookies) -> None:
+    options = dict.fromkeys(OPTIONS, False)
+    path = bake(cookies, **options).project_path
+    readme = (path / 'README.md').read_text(encoding = 'utf-8')
+    assert readme.startswith('# Cookie Jar\n')
+    assert '| Documentation |' not in readme
+    assert 'pip install git+https://github.com/WithPrecedent/cookie_jar.git' in readme
+    assert 'github.io' not in readme
+    pyproject = tomllib.loads((path / 'pyproject.toml').read_text())
+    assert 'Documentation' not in pyproject['project']['urls']
+    assert pyproject['project']['urls']['Changelog'].endswith(
+        '/blob/main/CHANGELOG.md')
+
+def test_readme_links(cookies: Cookies) -> None:
+    path = bake(cookies).project_path
+    readme = (path / 'README.md').read_text(encoding = 'utf-8')
+    for link in [
+            '/blob/main/CONTRIBUTING.md',
+            '/blob/main/CODE_OF_CONDUCT.md',
+            'github.com/WithPrecedent/cookie_jar/issues',
+            'https://pypi.org/project/cookie-jar/']:
+        assert link in readme, link
+    assert 'pypi.org/project/cookie_jar' not in readme
+    assert 'TezRomacH' not in readme
+
+def test_release_requires_main_and_passing_jobs(cookies: Cookies) -> None:
+    path = bake(cookies).project_path
+    ci = yaml.safe_load((path / '.github/workflows/ci.yml').read_text())
+    release = ci['jobs']['create_github_release']
+    assert "github.ref == 'refs/heads/main'" in release['if']
+    assert release['needs'] == ['build_and_test', 'lint_and_format']
+
+def test_changelog_uses_version(cookies: Cookies) -> None:
+    path = bake(cookies, version = '0.2.0').project_path
+    changelog = (path / 'CHANGELOG.md').read_text(encoding = 'utf-8')
+    assert '## 0.2.0' in changelog
+
+def test_version_comes_from_package(cookies: Cookies) -> None:
+    path = bake(cookies, version = '0.2.0').project_path
+    pyproject = tomllib.loads((path / 'pyproject.toml').read_text())
+    assert 'version' not in pyproject['project']
+    assert pyproject['project']['dynamic'] == ['version']
+    assert pyproject['tool']['hatch']['version']['path'] == (
+        'src/cookie_jar/__init__.py')
+    init = (path / 'src/cookie_jar/__init__.py').read_text(encoding = 'utf-8')
+    assert "__version__ = '0.2.0'" in init
+
+def test_coverage_page_in_docs(cookies: Cookies) -> None:
+    path = bake(cookies, code_coverage = True).project_path
+    # `yaml.safe_load` cannot read the custom tags in "mkdocs.yml".
+    mkdocs = (path / 'mkdocs.yml').read_text(encoding = 'utf-8').splitlines()
+    assert '- coverage' in mkdocs
+    assert '  - Coverage Report: coverage.md' in mkdocs
+    pyproject = tomllib.loads((path / 'pyproject.toml').read_text())
+    assert 'mkdocs-coverage' in pyproject['dependency-groups']['dev']
+    ci = yaml.safe_load((path / '.github/workflows/ci.yml').read_text())
+    steps = {
+        step['name']: step
+        for step in ci['jobs']['document_and_deploy']['steps']}
+    assert '--cov-report=html' in steps['create coverage report']['run']
+    path = bake(cookies, code_coverage = False).project_path
+    mkdocs_text = (path / 'mkdocs.yml').read_text(encoding = 'utf-8')
+    assert 'coverage' not in mkdocs_text.lower()
+    pyproject = tomllib.loads((path / 'pyproject.toml').read_text())
+    assert 'mkdocs-coverage' not in pyproject['dependency-groups']['dev']
+
+def test_cruft_skips_project_files(cookies: Cookies) -> None:
+    path = bake(cookies).project_path
+    pyproject = tomllib.loads((path / 'pyproject.toml').read_text())
+    assert set(pyproject['tool']['cruft']['skip']) == {
+        'CHANGELOG.md',
+        'src',
+        'tests',
+        'uv.lock'}
+
 def test_dependabot_updates_uv(cookies: Cookies) -> None:
     path = bake(cookies).project_path
     config = yaml.safe_load((path / '.github/dependabot.yml').read_text())
@@ -302,14 +411,24 @@ def test_dependabot_updates_uv(cookies: Cookies) -> None:
         for update in config['updates']}
     assert ecosystems == {'uv': '/', 'github-actions': '/'}
 
-@pytest.mark.parametrize(('license_name', 'text'), [
-    ('MIT License', 'MIT License'),
-    ('BSD License', 'BSD License'),
-    ('ISC License', 'ISC License'),
-    ('Apache Software License 2.0', 'Apache License'),
-    ('GNU General Public License v3', 'GNU GENERAL PUBLIC LICENSE')])
-def test_licenses(cookies: Cookies, license_name: str, text: str) -> None:
+@pytest.mark.parametrize(('license_name', 'text', 'spdx'), [
+    ('MIT License', 'MIT License', 'MIT'),
+    ('BSD License', 'BSD License', 'BSD-3-Clause'),
+    ('ISC License', 'ISC License', 'ISC'),
+    ('Apache Software License 2.0', 'Apache License', 'Apache-2.0'),
+    (
+        'GNU General Public License v3',
+        'GNU GENERAL PUBLIC LICENSE',
+        'GPL-3.0-or-later')])
+def test_licenses(
+        cookies: Cookies,
+        license_name: str,
+        text: str,
+        spdx: str) -> None:
     path = bake(cookies, license = license_name).project_path
+    pyproject = tomllib.loads((path / 'pyproject.toml').read_text())
+    assert pyproject['project']['license'] == spdx
+    assert pyproject['project']['license-files'] == ['LICENSE']
     license_text = (path / 'LICENSE').read_text(encoding = 'utf-8')
     assert text in license_text
     assert not license_text[0].isspace()
@@ -319,6 +438,8 @@ def test_licenses(cookies: Cookies, license_name: str, text: str) -> None:
 
 def test_other_license(cookies: Cookies) -> None:
     path = bake(cookies, license = 'Other').project_path
+    pyproject = tomllib.loads((path / 'pyproject.toml').read_text())
+    assert 'license' not in pyproject['project']
     assert (path / 'LICENSE').read_text(encoding = 'utf-8') == ''
 
 @pytest.mark.parametrize('style', [
@@ -381,12 +502,59 @@ def test_post_gen_cleans_up_before_commit(
         '_TRUES',
         (*hook._TRUES, '{{ cookiecutter.commit_to_github }}'))
     monkeypatch.setattr(hook, 'cleanup_files', lambda: calls.append('clean'))
+    monkeypatch.setattr(hook, 'is_cruft_render', lambda **_: False)
+    monkeypatch.setattr(
+        hook,
+        'lock_dependencies',
+        lambda **_: calls.append('lock'))
     monkeypatch.setattr(
         hook,
         'commit_to_git',
         lambda **_: calls.append('commit'))
     hook.main()
-    assert calls == ['clean', 'commit']
+    assert calls == ['clean', 'lock', 'commit']
+
+def test_post_gen_skips_setup_for_cruft(
+        monkeypatch: pytest.MonkeyPatch) -> None:
+    hook = load_hook('post_gen_project')
+    calls: list[str] = []
+    monkeypatch.setattr(
+        hook,
+        '_TRUES',
+        (*hook._TRUES, '{{ cookiecutter.commit_to_github }}'))
+    monkeypatch.setattr(hook, 'cleanup_files', lambda: calls.append('clean'))
+    monkeypatch.setattr(hook, 'is_cruft_render', lambda **_: True)
+    monkeypatch.setattr(
+        hook,
+        'lock_dependencies',
+        lambda **_: calls.append('lock'))
+    monkeypatch.setattr(
+        hook,
+        'commit_to_git',
+        lambda **_: calls.append('commit'))
+    hook.main()
+    assert calls == ['clean']
+
+def test_is_cruft_render() -> None:
+    # The unrendered hook has a non-empty '_commit' placeholder, as the
+    # renders by `cruft` do.
+    hook = load_hook('post_gen_project')
+    with tempfile.TemporaryDirectory() as folder:
+        assert hook.is_cruft_render(folder = pathlib.Path(folder) / 'project')
+        # `cruft create` into a folder chosen by the user.
+        assert not hook.is_cruft_render(
+            folder = pathlib.Path(folder) / 'code' / 'project')
+    assert not hook.is_cruft_render(folder = ROOT)
+
+@pytest.mark.skipif(shutil.which('uv') is None, reason = 'uv not found')
+def test_uv_lock_created(
+        cookies: Cookies,
+        monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.delenv('SNICKERDOODLE_SKIP_LOCK')
+    path = bake(cookies).project_path
+    lock = tomllib.loads((path / 'uv.lock').read_text(encoding = 'utf-8'))
+    names = [package['name'] for package in lock['package']]
+    assert 'cookie-jar' in names
 
 def test_delete_path(tmp_path: pathlib.Path) -> None:
     hook = load_hook('post_gen_project')

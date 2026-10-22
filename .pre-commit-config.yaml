@@ -3,8 +3,11 @@ repos:
 - repo: https://github.com/pre-commit/pre-commit-hooks
   rev: "v6.0.0"
   hooks:
+  # The created project's Python and TOML files contain Jinja tags.
   - id: check-ast
+    exclude: ^\{\{ cookiecutter\.repo_name \}\}/
   - id: check-toml
+    exclude: ^\{\{ cookiecutter\.repo_name \}\}/
   - id: detect-private-key
   - id: end-of-file-fixer
   - id: trailing-whitespace

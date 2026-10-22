@@ -9,8 +9,13 @@
 
 name: continuous integration
 
-# Allows this Action to be called by a push or pull request
-on: [push, pull_request]
+# Allows this Action to be called by a push to `main` or a pull request. Only
+# pushes to `main` are included so that a pull request does not run every job
+# twice (once for the push to its branch and once for the pull request).
+on:
+  push:
+    branches: [main]
+  pull_request:
 
 permissions:
   contents: write
@@ -45,10 +50,7 @@ jobs:
 
     - name: install dependencies
       run: uv sync --python ${{"{{"}} matrix.python-version {{"}}"}}
-{% if cookiecutter.pre_commit in ("y", "Y", True, "true", "True") %}
-    - name: run pre-commit
-      run: uv run pre-commit run -a --show-diff-on-failure
-{% endif %}
+
     - name: run tests
       run: uv run pytest tests{% if cookiecutter.code_coverage in ("y", "Y", True, "true", "True") %} --cov --cov-report=xml{% endif %}
 {% if cookiecutter.code_coverage in ("y", "Y", True, "true", "True") %}
@@ -72,7 +74,12 @@ jobs:
 
     - name: install dependencies
       run: uv sync
-
+{% if cookiecutter.pre_commit in ("y", "Y", True, "true", "True") %}
+    # The hooks only need to run once, so they are here instead of in the
+    # `build_and_test` matrix.
+    - name: run pre-commit
+      run: uv run pre-commit run -a --show-diff-on-failure
+{% endif %}
     - name: run ruff
       run: uv run ruff check --no-fix --output-format=github
 {% if cookiecutter.mypy in ("y", "Y", True, "true", "True") %}
@@ -91,7 +98,11 @@ jobs:
 
     - name: install dependencies
       run: uv sync
-
+{% if cookiecutter.code_coverage in ("y", "Y", True, "true", "True") %}
+    # Creates the HTML report that `mkdocs-coverage` adds to the documentation.
+    - name: create coverage report
+      run: uv run pytest tests --cov --cov-report=html
+{% endif %}
     - name: build documentation with mkdocs
       run: uv run mkdocs build
 
@@ -101,10 +112,12 @@ jobs:
 {% endif %}
   # Only triggered if a line of the commit message is a semantic version (e.g.
   # "v0.1.2"). The `m` flag lets the version be followed by other lines, such
-  # as a "Co-Authored-By:" trailer.
+  # as a "Co-Authored-By:" trailer. Releases are only made from the `main`
+  # branch and after the tests and linters pass.
   create_github_release:
     name: create github release
-    if: github.event_name == 'push'
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: [build_and_test, lint_and_format]
     runs-on: ubuntu-latest
 
     steps:

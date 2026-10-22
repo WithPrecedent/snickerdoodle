@@ -31,8 +31,8 @@ nav:
 - Development:
   - Contributing: contributing.md
   - Code of Conduct: code_of_conduct.md
-  # - Coverage Report: coverage.md
-
+{% if cookiecutter.code_coverage in ("y", "Y", True, "true", "True") %}  - Coverage Report: coverage.md
+{% endif %}
 # Documentation Appearance
 
 theme:
@@ -119,10 +119,10 @@ markdown_extensions:
     permalink: true
 
 plugins:
-- autorefs
-# - coverage:
-#     page_name: coverage
-#     html_report_dir: htmlcov
+- autorefs{% if cookiecutter.code_coverage in ("y", "Y", True, "true", "True") %}
+# Adds the HTML report in "htmlcov" (from `pytest --cov --cov-report=html`) as
+# the "coverage" page.
+- coverage{% endif %}
 - gen-files:
     scripts:
     - docs/scripts/gen_ref_nav.py
@@ -150,6 +150,6 @@ plugins:
 extra:
   social:
   - icon: fontawesome/brands/github
-    link: https://github.com/{{cookiecutter.github_user}}
+    link: https://github.com/{{cookiecutter.github_user}}{% if cookiecutter.pypi in ("y", "Y", True, "true", "True") %}
   - icon: fontawesome/brands/python
-    link: https://pypi.org/project/{{cookiecutter.package_name}}/
+    link: https://pypi.org/project/{{cookiecutter.package_name}}/{% endif %}

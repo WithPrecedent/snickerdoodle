@@ -33,7 +33,7 @@ If you want `snickerdoodle` to support other options, please make a [feature req
 * **Options Supported**:
   * Automated Hooks: [![Pre-commit](https://img.shields.io/badge/pre--commit-darkolivegreen?style=plastic&logo=pre-commit&logoColor=white&labelColor=gray)](https://pre-commit.com/)
   * CI/CD: [![CI](https://img.shields.io/badge/GitHub_Actions-forestgreen?style=plastic&logo=githubactions&labelColor=gray&logoColor=white)](https://github.com/features/actions)
-  * Code Coverage: [![Coverage](https://img.shields.io/badge/Codecov-pink?style=plastic&logo=codecov&logoolor=white&labelColor=gray)](https://about.codecov.io/) uploaded with every push and pull request (must have the [Codecov GitHub App](https://github.com/apps/codecov) installed on the named GitHub account)
+  * Code Coverage: [![Coverage](https://img.shields.io/badge/Codecov-pink?style=plastic&logo=codecov&logoolor=white&labelColor=gray)](https://about.codecov.io/) uploaded with every push and pull request, with a coverage report page in the documentation (must have the [Codecov GitHub App](https://github.com/apps/codecov) installed on the named GitHub account)
   * Dependency Updater: [![Dependency Maintainer](https://img.shields.io/badge/Dependabot-forestgreen?style=plastic&logo=dependabot&logoColor=white&labelColor=gray)](https://github.com/dependabot)
   * Different Badge Styles:
     * [![flat style](https://img.shields.io/badge/flat-crimson?style=flat)](https://www.shields.io/)
@@ -51,6 +51,7 @@ If you want `snickerdoodle` to support other options, please make a [feature req
     * [![Repo Host](https://img.shields.io/badge/GitHub-blue?style=plastic&color=forestgreen&logo=github&labelColor=gray)](https://github.com) automatically with any commit whose message has a line with "v" and a version number (e.g., "v0.2.3")
   * Repository Initialization: [![Repo Host](https://img.shields.io/badge/GitHub-blue?style=plastic&color=forestgreen&logo=github&labelColor=gray)](https://github.com)
     with an [initial commit](https://github.com/WithPrecedent/snickerdoodle_demo) (must have [![Repo Host](https://img.shields.io/badge/GitHub_Credential_Manager-forestgreen?style=plastic&logo=github&labelColor=gray)](https://github.com) installed with token access)
+  * Template Updates: [![cruft](https://img.shields.io/badge/cruft-sienna?style=plastic&labelColor=gray)](https://cruft.github.io/cruft/) to pull later `snickerdoodle` improvements into your project
   * Virtual Environment Creation: [![Virtural Environment Manager](https://img.shields.io/badge/uv-mediumpurple?style=plastic&logo=uv&labelColor=gray)](https://docs.astral.sh/uv/)
 
 ## Getting started
@@ -73,8 +74,8 @@ documentation (and you need not use the manual process again).
 
 ### Usage
 
-After your repository is created, you can start coding right away. Every push to GitHub will run any tests in the "tests" folder,
-upload test coverage to Codecov, deploy documentation to GitHub Pages, and apply `ruff` for linting. For more information about the following topics, just click on the
+After your repository is created, you can start coding right away. Every push to `main` and every pull request will run any tests in the "tests" folder,
+upload test coverage to Codecov, and apply `ruff` for linting. Pushes to `main` also deploy documentation to GitHub Pages. For more information about the following topics, just click on the
 corresponding hyperlink.
 
 * [Code Coverage](https://withprecedent.github.io/snickerdoodle/advanced/#code-coverage)
@@ -82,6 +83,7 @@ corresponding hyperlink.
 * [GitHub Actions](https://withprecedent.github.io/snickerdoodle/advanced/#github-actions)
 * [Publishing](https://withprecedent.github.io/snickerdoodle/advanced/#publishing)
 * [Repository Layout](https://withprecedent.github.io/snickerdoodle/advanced/#repository-layout)
+* [Updating a Created Project](https://withprecedent.github.io/snickerdoodle/advanced/#updating-a-created-project)
 * [Versioning](https://withprecedent.github.io/snickerdoodle/advanced/#versioning)
 
 ## Contributing

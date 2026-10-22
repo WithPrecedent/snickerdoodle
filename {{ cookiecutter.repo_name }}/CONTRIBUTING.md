@@ -2,7 +2,23 @@
 
 Contributions are welcome and greatly appreciated!
 Every little bit helps, and credit will always be given.
-Environment Setup
+
+## Environment Setup
+
+Install [`uv`](https://docs.astral.sh/uv/), then create a virtual environment
+with all of the development dependencies from the repository folder:
+
+```bash
+uv sync
+```
+{% if cookiecutter.pre_commit in ("y", "Y", True, "true", "True") %}
+Then, install the `pre-commit` hooks so that they run before each commit:
+
+```bash
+uv run pre-commit install
+```
+{% endif %}
+Run the tests with `uv run pytest`.
 
 ## Development
 

@@ -4,6 +4,22 @@ All notable changes to this project will be documented in this file.
 
 <!-- insertion marker -->
 
+## 0.4.2
+
+* Made the tests run in `snickerdoodle`'s own `ci` Action on Linux, macOS, and Windows, and made releases wait for them
+* Added `cruft` support: the created project skips files that belong to it during `cruft update`, and the post-generation hook no longer creates environments or pushes to GitHub from the temporary copies that `cruft` renders
+* Created `uv.lock` when the project is created
+* Read the created project's version from `__version__` in `__init__.py` instead of repeating it in `pyproject.toml`
+* Used SPDX license expressions (PEP 639) in the created project's `pyproject.toml`
+* Added a coverage report page to the created project's documentation when `code_coverage` and `mkdocs` are selected
+* Ran the created project's `pre-commit` hooks once instead of in every test job, and only ran its `ci` Action on pushes to `main` and pull requests
+* Only created GitHub releases from `main` after the tests and linters pass
+* Showed only the README badges for the selected options and fixed broken README links in the created project
+* Fixed the created project's CHANGELOG version, CONTRIBUTING setup section, and `.editorconfig` file patterns
+* Used GitHub links for the documentation and changelog URLs and left out the PyPI link when `mkdocs` or `pypi` is not selected
+* Fixed the `pre-commit` hooks for `snickerdoodle` itself
+* Added instructions for updating a created project with `cruft` and for turning on GitHub Pages
+
 ## 0.4.1
 
 * Added Codecov uploads to the created project's `ci.yml` (authenticated with OIDC, so no `CODECOV_TOKEN` secret is needed) and a Codecov coverage badge to the created README

@@ -7,7 +7,9 @@ To use `snickerdoodle` and the repository that it creates, you just need:
 * [`python`](https://www.python.org/) 3.11 or later
 * [`git`](https://git-scm.com/)
 * [`cookiecutter`](https://www.cookiecutter.io/) or
-  [`cruft`](https://github.com/cruft/cruft)
+  [`cruft`](https://github.com/cruft/cruft) (`cruft` can [update your
+  project](https://withprecedent.github.io/snickerdoodle/advanced/#updating-a-created-project)
+  when `snickerdoodle` changes)
 * [`uv`](https://docs.astral.sh/uv/)
 * A [GitHub](https://github.com/) account
 
@@ -31,6 +33,12 @@ the `snickerdoodle` template either directly from GitHub or by cloning it on you
 
     ```sh
     cookiecutter gh:WithPrecedent/snickerdoodle
+    ```
+
+=== "with cruft"
+
+    ```sh
+    cruft create https://github.com/WithPrecedent/snickerdoodle
     ```
 
 === "from local source"
@@ -114,7 +122,9 @@ Your first commit with the new repository should now be visible on GitHub.
     *You do not need to complete this step if you opted to `virtual_environment` in the
     questionnaire.*
 
-To create an environment with all of your dependencies (including development dependencies), enter the following in the repository folder.
+`snickerdoodle` creates a `uv.lock` file with the exact versions of your
+dependencies (if `uv` is installed), so every environment created from the
+repository uses the same versions. To create an environment with all of your dependencies (including development dependencies), enter the following in the repository folder.
 
 ```sh
 uv venv
@@ -148,4 +158,11 @@ uv run mkdocs build
 uv run mkdocs gh-deploy --force --clean
 ```
 
-It's essential to run these commands once so that the documentation branch is created. Afterwards, the documentation for the repository will be automatically updated with every push to GitHub.
+It's essential to run these commands once so that the documentation branch is created. Afterwards, the documentation for the repository will be automatically updated with every push to `main`.
+
+!!! Tip
+
+    If your documentation site shows a 404 error after it is deployed, GitHub
+    Pages is not turned on for the repository. On GitHub, go to the repository's
+    "Settings", click "Pages", and, under "Build and deployment", choose "Deploy
+    from a branch" with the "gh-pages" branch and the "/ (root)" folder.

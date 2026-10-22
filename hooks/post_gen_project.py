@@ -4,6 +4,7 @@ import os
 import pathlib
 import shutil
 import subprocess
+import tempfile
 
 _TRUES: tuple[bool | str, ...] = ('y', 'Y', True, 'true', 'True')
 _PATHS_TO_REMOVE: list[str] = [
@@ -109,6 +110,49 @@ def create_virtual_environment(folder: str | pathlib.Path) -> None:
     execute_commands(commands = environment_commands, folder = folder)
     return
 
+def lock_dependencies(folder: str | pathlib.Path) -> None:
+    """Creates 'uv.lock' using `subprocess` so that installs are reproducible.
+
+    Setting the 'SNICKERDOODLE_SKIP_LOCK' environment variable skips this step,
+    which keeps the `snickerdoodle` tests from resolving dependencies for every
+    project that they create.
+
+    Args:
+        folder: path of repository folder.
+
+    """
+    if os.environ.get('SNICKERDOODLE_SKIP_LOCK'):
+        return
+    if shutil.which('uv') is None:
+        print(  # noqa: T201
+            'Cannot create uv.lock because uv is not installed. Run "uv lock" '
+            'after installing uv.')
+    else:
+        execute_commands(commands = [['uv', 'lock']], folder = folder)
+    return
+
+def is_cruft_render(folder: str | pathlib.Path) -> bool:
+    """Returns whether `cruft` is rendering the template to compare it.
+
+    `cruft update`, `cruft check`, and `cruft diff` render the template into a
+    new temporary folder (such as '/tmp/tmpabc123/project') and run this hook
+    there. `cruft` adds the '_commit' key to the context, which a normal
+    `cookiecutter` run does not have. `cruft create` also adds '_commit', but
+    it renders into the folder chosen by the user.
+
+    Args:
+        folder: path of repository folder.
+
+    Returns:
+        Whether `folder` is a temporary copy rendered by `cruft`.
+
+    """
+    if "{{ cookiecutter.get('_commit', '') }}" == '':
+        return False
+    temp = pathlib.Path(tempfile.gettempdir()).resolve()
+    parent = pathlib.Path(folder).resolve().parent
+    return parent.parent == temp and parent.name.startswith('tmp')
+
 def commit_to_git(url: str, folder: str | pathlib.Path) -> None:
     """Initializes and commits repository.
 
@@ -170,8 +214,15 @@ def main() -> None:
     # Files for unselected options are removed first so that they are not
     # committed to GitHub.
     cleanup_files()
+    # A copy rendered by `cruft` is only compared with the project and then
+    # deleted, so it should not create environments or push to GitHub.
+    if is_cruft_render(folder = folder):
+        return
+    # `uv sync` also creates 'uv.lock'.
     if "{{ cookiecutter.virtual_environment }}".lower() in _TRUES:
         create_virtual_environment(folder = folder)
+    else:
+        lock_dependencies(folder = folder)
     if "{{ cookiecutter.commit_to_github }}".lower() in _TRUES:
         git_url = ''.join(['{{ cookiecutter.url }}', '.git'])
         commit_to_git(url = git_url, folder = folder)

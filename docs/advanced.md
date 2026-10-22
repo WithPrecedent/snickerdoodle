@@ -75,7 +75,7 @@ are located in the ".github" folder and on the GitHub repository page under "Act
 
 | GitHub Action | Trigger | Jobs |
 | --- | --- | --- |
-| `ci` | automatically on push or pull request | builds repo, runs tests, uploads test coverage to Codecov, lints, builds docs, and deploys docs |
+| `ci` | automatically on push to `main` or a pull request | builds repo, runs tests, uploads test coverage to Codecov, runs `pre-commit`, lints, builds docs, deploys docs, and creates releases |
 | `publish` | another Action or manually on GitHub | publishes repository on PyPI (must configure PyPI to accept as [trusted publisher](https://docs.pypi.org/trusted-publishers/adding-a-publisher/)) |
 | `validate_codecov` | automatically on push to `main` or a pull request that changes `codecov.yml` | checks that `codecov.yml` is a valid Codecov configuration |
 
@@ -84,6 +84,12 @@ are located in the ".github" folder and on the GitHub repository page under "Act
     To run an Action (other than `ci.yml`) on GitHub, go to your repository, click
     "Actions" and select one of the Actions listed on the left side of the screen.
 
+The `ci` Action runs the tests on Linux, macOS, and Windows with every supported
+Python version. The `pre-commit` hooks, `ruff`, and `mypy` only run once,
+on Linux. Pushes to branches other than `main` do not start the `ci` Action, so
+that a pull request does not run every job twice. Open a pull request to test
+a branch.
+
 ## Code Coverage
 
 If you select `code_coverage` (and `github_actions`) in the questionnaire, the
@@ -91,7 +97,9 @@ If you select `code_coverage` (and `github_actions`) in the questionnaire, the
 [`pytest-cov`](https://pytest-cov.readthedocs.io/en/latest/) and uploads the
 coverage report to [Codecov](https://about.codecov.io/), which posts coverage
 results on pull requests. The created README also includes a Codecov coverage
-badge.
+badge. If you also select `mkdocs`, the documentation has a "Coverage Report"
+page with the HTML report from
+[`mkdocs-coverage`](https://github.com/pawamoy/mkdocs-coverage).
 
 To make uploads work, [install the Codecov GitHub
 App](https://github.com/apps/codecov) on the GitHub account that hosts the
@@ -112,6 +120,40 @@ To check coverage locally, run:
 ```sh
 uv run pytest --cov
 ```
+
+To include the coverage report when you build the documentation locally, create
+the HTML report first:
+
+```sh
+uv run pytest --cov --cov-report=html
+uv run mkdocs serve
+```
+
+## Updating a Created Project
+
+If you create your project with [`cruft`](https://cruft.github.io/cruft/)
+instead of `cookiecutter`, you can later pull in improvements made to
+`snickerdoodle`:
+
+```sh
+# Instead of "cookiecutter gh:WithPrecedent/snickerdoodle"
+cruft create https://github.com/WithPrecedent/snickerdoodle
+# Later, from the created repository's folder
+cruft check   # Reports whether the template has changed
+cruft diff    # Shows the changes
+cruft update  # Applies the changes
+```
+
+`cruft` records the template version and your questionnaire answers in
+`.cruft.json`, which you should commit. `cruft update` leaves alone the paths
+listed in `[tool.cruft]` in `pyproject.toml` ("CHANGELOG.md", "src", "tests",
+and "uv.lock") because they belong to your project. Add other paths, such as
+"README.md", if you do not want template changes applied to them.
+
+To compare your project with the template, `cruft` creates a temporary copy of
+the project and runs `snickerdoodle`'s setup steps on it. `snickerdoodle`
+recognizes those copies and skips the steps that would create a virtual
+environment, lock dependencies, or push to GitHub.
 
 ## Publishing
 
@@ -167,9 +209,10 @@ that you will ordinarily modify are commented.
 ├── mkdocs.yml                # Change documentation structure
 ├── pyproject.toml            # Add dependencies or project metadata
 ├── README.md                 # This will also be the docs landing page
+├── uv.lock                   # Updated by uv when dependencies change
 ├── src
 │   └── {repository name}     # Add Python modules
-│       └── __init__.py       # Update import info and version
+│       └── __init__.py       # Update imports and the version
 └── tests                     # Add other test files
     └── test_main.py          # Follow the 'test_NAME' convention
 ```
@@ -182,3 +225,8 @@ will [find yourself on version
 12.0.0](https://hynek.me/articles/semver-will-not-save-you/) and still in alpha
 or beta. And, while [calendar versioning](https://calver.org/) has a lot in its favor, it
 is alien and confusing to users unfamiliar with it.
+
+The version is set in one place: `__version__` in the package's `__init__.py`.
+`pyproject.toml` reads it from there (using [`hatchling`'s dynamic
+version](https://hatch.pypa.io/latest/version/)), so change the version only in
+`__init__.py`.

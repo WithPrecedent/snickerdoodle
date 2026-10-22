@@ -4,10 +4,12 @@
 name = "{{cookiecutter.package_name}}"
 description = "{{cookiecutter.description}}"
 authors = [{name = "{{cookiecutter.author_name}}", email = "{{cookiecutter.author_email}}"}]
-license = {text = "{{cookiecutter.license}}"}
-readme = "README.md"
+{% if cookiecutter.license != "Other" %}license = "{{ {"Apache Software License 2.0": "Apache-2.0", "BSD License": "BSD-3-Clause", "ISC License": "ISC", "GNU General Public License v3": "GPL-3.0-or-later", "MIT License": "MIT"}[cookiecutter.license] }}"
+license-files = ["LICENSE"]
+{% endif %}readme = "README.md"
 requires-python = ">=3.11"
-version = "{{cookiecutter.version}}"
+# The version is set by `__version__` in "src/{{cookiecutter.repo_name}}/__init__.py".
+dynamic = ["version"]
 classifiers = [
     "{{cookiecutter.development_status}}",
     "Intended Audience :: Developers",
@@ -25,11 +27,11 @@ dependencies = []
 
 
 [project.urls]
-Documentation = "https://{{cookiecutter.github_user}}.github.io/{{cookiecutter.repo_name}}"
-Repository = "https://github.com/{{cookiecutter.github_user}}/{{cookiecutter.repo_name}}"
+{% if cookiecutter.mkdocs in ("y", "Y", True, "true", "True") %}Documentation = "https://{{cookiecutter.github_user}}.github.io/{{cookiecutter.repo_name}}"
+{% endif %}Repository = "https://github.com/{{cookiecutter.github_user}}/{{cookiecutter.repo_name}}"
 Homepage = "https://github.com/{{cookiecutter.github_user}}/{{cookiecutter.repo_name}}"
 Issues = "https://github.com/{{cookiecutter.github_user}}/{{cookiecutter.repo_name}}/issues"
-Changelog = "https://{{cookiecutter.github_user}}.github.io/{{cookiecutter.repo_name}}/changelog"
+{% if cookiecutter.mkdocs in ("y", "Y", True, "true", "True") %}Changelog = "https://{{cookiecutter.github_user}}.github.io/{{cookiecutter.repo_name}}/changelog"{% else %}Changelog = "https://github.com/{{cookiecutter.github_user}}/{{cookiecutter.repo_name}}/blob/main/CHANGELOG.md"{% endif %}
 
 [dependency-groups]
 dev = [
@@ -37,8 +39,8 @@ dev = [
     "markdown-callouts",
     "markdown-exec",
     "mkdocs",
-    "mkdocs-coverage",
-    "mkdocs-gen-files",
+{% if cookiecutter.code_coverage in ("y", "Y", True, "true", "True") %}    "mkdocs-coverage",
+{% endif %}    "mkdocs-gen-files",
     "mkdocs-git-committers-plugin-2",
     "mkdocs-literate-nav",
     "mkdocs-material",
@@ -57,8 +59,12 @@ tests = [{% if cookiecutter.code_coverage in ("y", "Y", True, "true", "True") %}
     "pytest-xdist"]
 
 [build-system]
-requires = ["hatchling"]
+# Version 1.27 is the first to support SPDX license expressions (PEP 639).
+requires = ["hatchling>=1.27"]
 build-backend = "hatchling.build"
+
+[tool.hatch.version]
+path = "src/{{ cookiecutter.repo_name }}/__init__.py"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/{{ cookiecutter.repo_name }}"]
@@ -214,3 +220,8 @@ ignore-decorators = ["typing.overload"]
 
 [tool.uv]
 package = true
+
+[tool.cruft]
+# Paths that `cruft update` leaves alone because they belong to this project
+# instead of the `snickerdoodle` template.
+skip = ["CHANGELOG.md", "src", "tests", "uv.lock"]
