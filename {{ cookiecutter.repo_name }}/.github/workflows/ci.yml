@@ -114,10 +114,11 @@ jobs:
       if: github.event_name == 'push' && github.ref == 'refs/heads/main'
       run: uv run mkdocs gh-deploy --force --clean --verbose
 {% endif %}
-  # Only triggered if a line of the commit message is a semantic version (e.g.
-  # "v0.1.2"). The `m` flag lets the version be followed by other lines, such
-  # as a "Co-Authored-By:" trailer. Releases are only made from the `main`
-  # branch and after the tests and linters pass.
+  # Only releases if a line of the commit message is a semantic version (e.g.
+  # "v0.1.2"), so the version can be followed by other lines, such as a
+  # "Co-Authored-By:" trailer. The release notes are the version's section of
+  # CHANGELOG.md. Releases are only made from the `main` branch and after the
+  # tests and linters pass.
   create_github_release:
     name: create github release
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
@@ -125,11 +126,25 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: initiate github release
-      uses: CupOfTea696/gh-action-auto-release@v1.0.2
-      with:
-        title: "Release: $version"
-        tag: "v$semver"
-        regex: "/^v#{semver}$/im"
+    - name: checkout repository
+      uses: actions/checkout@v7
+
+    - name: create github release
       env:
-        GITHUB_TOKEN: ${{"{{"}} secrets.GITHUB_TOKEN {{"}}"}}
+        GH_TOKEN: ${{"{{"}} github.token {{"}}"}}
+      run: |
+        version=$(git log -1 --format=%B | grep -m 1 -oxE 'v[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z.-]+)?' | cut -c 2- || true)
+        if [ -z "$version" ]; then
+          echo "The commit message has no version line, so no release was made."
+          exit 0
+        fi
+        if gh release view "v$version" > /dev/null 2>&1; then
+          echo "::notice::Release v$version already exists."
+          exit 0
+        fi
+        awk -v v="$version" '$1 == "##" && $2 == v {found = 1; next} found && /^## / {exit} found' CHANGELOG.md > notes.md
+        if ! grep -q '[^[:space:]]' notes.md; then
+          echo "::error::Could not find an entry for $version in CHANGELOG.md"
+          exit 1
+        fi
+        gh release create "v$version" --title "Release: $version" --notes-file notes.md --target "$GITHUB_SHA"

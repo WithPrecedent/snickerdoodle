@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 <!-- insertion marker -->
 
+## 0.4.3
+
+* Replaced the deprecated `gh-action-auto-release` Action (Node.js 20 and `set-output`) with the GitHub CLI in the `create_github_release` job of `snickerdoodle` and the created project
+* Fixed GitHub releases using the top of CHANGELOG.md instead of the released version's entry as their notes
+
 ## 0.4.2
 
 * Made the tests run in `snickerdoodle`'s own `ci` Action on Linux, macOS, and Windows, and made releases wait for them
