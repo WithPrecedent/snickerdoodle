@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 <!-- insertion marker -->
 
+## Unreleased
+
+* Added support for Python 3.15 in `snickerdoodle` and the created project (its classifiers and `ci` Action test matrix)
+
 ## 0.4.3
 
 * Replaced the deprecated `gh-action-auto-release` Action (Node.js 20 and `set-output`) with the GitHub CLI in the `create_github_release` job of `snickerdoodle` and the created project
