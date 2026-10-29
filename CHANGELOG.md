@@ -4,9 +4,10 @@ All notable changes to this project will be documented in this file.
 
 <!-- insertion marker -->
 
-## Unreleased
+## 0.5.0
 
 * Added support for Python 3.15 in `snickerdoodle` and the created project (its classifiers and `ci` Action test matrix)
+* Removed the `pip` updates for "docs" and ".github/workflows" from `snickerdoodle`'s Dependabot configuration because those directories have no dependency files, which made the weekly update jobs fail
 
 ## 0.4.3
 
