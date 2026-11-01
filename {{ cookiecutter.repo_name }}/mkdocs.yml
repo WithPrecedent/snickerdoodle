@@ -136,13 +136,25 @@ plugins:
       python:
         options:
           docstring_section_style: table
+          # Keeps `""" Section """` markers from being read as attribute
+          # docstrings.
+          extensions:
+          - docs/scripts/griffe_section_markers.py
           # Leaves out private and dunder members (names that start with "_").
           filters:
             - "!^_"
           heading_level: 1
+          # Includes the public methods that classes inherit from other
+          # packages, since they are part of the public interface.
+          inherited_members: true
           # members_order: alphabetical
           merge_init_into_class: true
+          # Loads the packages that classes inherit from, so that their
+          # inherited members can be found.
+          # preload_modules: [some_package]
           separate_signature: false
+          show_root_full_path: false
+          show_root_heading: true
           show_signature_annotations: false
         paths: [src]
 - search:
