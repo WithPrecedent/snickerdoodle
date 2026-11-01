@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 <!-- insertion marker -->
 
-## Unreleased
+## 0.5.1
 
 * Made the created project's API documentation list only public objects (the names in each package's `__all__`), each once under the name users import it by, instead of one page per module
 * Added a `griffe` extension to the created project's documentation that keeps `""" Section """` markers from being read as attribute docstrings, and showed inherited members and root headings
